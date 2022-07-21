@@ -9,12 +9,17 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
-    avatar = db.Column(db.String(255), nullable=True, unique=False)
-    address	= db.Column(db.String(255), nullable=True, unique=False)
-    city = db.Column(db.String(40), nullable=True)
-    state = db.Column(db.String(20), nullable=True)
-    zip	= db.Column(db.Integer, nullable=True)
+    avatar = db.Column(db.String(255), nullable=True)
+    address	= db.Column(db.String(255), nullable=False)
+    city = db.Column(db.String(40), nullable=False)
+    state = db.Column(db.String(20), nullable=False)
+    zip	= db.Column(db.Integer, nullable=False)
     hashed_password = db.Column(db.String(255), nullable=False)
+
+
+    images = db.relationship('Image', back_populates='users')
+    restaurants = db.relationship('Restaurant', back_populates='user')
+    reviews = db.relationship('Review', back_populates='users')
 
     @property
     def password(self):
