@@ -13,7 +13,7 @@ class Restaurant(db.Model):
     zip	= db.Column(db.Integer, nullable=False)
     description	= db.Column(db.String(1000), nullable=False)
     price = db.Column(db.Integer, nullable=False)
-    lat	= db.Column(dbInteger, nullable=False)
+    lat	= db.Column(db.Integer, nullable=False)
     lng	= db.Column(db.Integer, nullable=False)
     logo = db.Column(db.String(255), nullable=False)
 
