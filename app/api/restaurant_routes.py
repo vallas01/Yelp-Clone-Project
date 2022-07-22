@@ -16,5 +16,6 @@ def restaurant_get():
 @restaurant_routes.route('/', methods =["POST"])
 def add_restaurant():
     # form = RestaurantForm()
-    if form.validate_on_submit():
-        pass
+    # if form.validate_on_submit():
+    return {'restaurant': 'done'}
+    #     pass

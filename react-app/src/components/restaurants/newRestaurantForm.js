@@ -1,7 +1,10 @@
 import { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { getRestaurantsThunk } from '../../store/restaurant'
 
 const RestaurantForm = () => {
+  const dispatch = useDispatch();
+
   const [name, setName] = useState('')
   const [address, setAddress] = useState('')
   const [city, setCity] = useState('')
@@ -16,8 +19,10 @@ const RestaurantForm = () => {
 
   const user = useSelector(state => state.session.user)
 
-  const submitRestaurant = (e) => {
+  const submitRestaurant = async(e) => {
     e.preventDefault()
+
+
     const newRestaurant = {
       name,
       userId: user.id,
@@ -32,6 +37,24 @@ const RestaurantForm = () => {
       lng
     }
     console.log(newRestaurant)
+
+    dispatch(getRestaurantsThunk())
+    console.log()
+    // const response = await fetch(`/api/restaurants`, {
+    //   method: "POST",
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({
+    //     newRestaurant
+    //   })
+    // });
+
+    // const response = await fetch(`/api/restaurants`);
+
+    // const data = await response.json()
+
+    // console.log(data)
   }
 
   return (<fieldset>
