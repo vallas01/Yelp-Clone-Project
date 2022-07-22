@@ -19,7 +19,7 @@ const RestaurantForm = () => {
 
   const user = useSelector(state => state.session.user)
 
-  const submitRestaurant = async(e) => {
+  const submitRestaurant = async (e) => {
     e.preventDefault()
 
 
@@ -39,22 +39,6 @@ const RestaurantForm = () => {
     console.log(newRestaurant)
 
     dispatch(getRestaurantsThunk())
-    console.log()
-    // const response = await fetch(`/api/restaurants`, {
-    //   method: "POST",
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({
-    //     newRestaurant
-    //   })
-    // });
-
-    // const response = await fetch(`/api/restaurants`);
-
-    // const data = await response.json()
-
-    // console.log(data)
   }
 
   return (<fieldset>

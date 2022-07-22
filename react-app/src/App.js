@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import RestaurantForm from './components/restaurants/newRestaurantForm';
+import Restaurants from './components/restaurants/allRestaurants';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -37,6 +38,9 @@ function App() {
         </Route>
         <ProtectedRoute path='/new-restaurant' exact={true}>
           <RestaurantForm />
+        </ProtectedRoute>
+        <ProtectedRoute path='/restaurants' exact={true}>
+          <Restaurants />
         </ProtectedRoute>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />
