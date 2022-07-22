@@ -24,7 +24,6 @@ def validation_errors_to_error_messages(validation_errors):
 def review_get():
     review = Review.query.all()
     return {'review': [review.to_dict() for review in reviews]}
-
 @review_routes.route('', methods=['POST'])
 def review_post():
     """
