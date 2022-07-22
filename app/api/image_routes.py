@@ -10,3 +10,6 @@ image_routes = Blueprint('image', __name__)
 def image_get():
     image = Image.query.all()
     return {'image': [image.to_dict() for image in images]}
+
+@image_routes.route('/', methods=['post'])
+def image_post():
