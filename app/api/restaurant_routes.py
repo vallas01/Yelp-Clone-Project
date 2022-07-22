@@ -1,11 +1,12 @@
 from flask import Blueprint, jsonify
+from flask_login import login_required
 from app.models import Restaurant
 
-user_routes = Blueprint('restaurant', __name__)
+restaurant_routes = Blueprint('restaurant', __name__)
 
 
-@user_routes.route('/')
+@restaurant_routes.route('/')
 @login_required
-def users():
-    users = Restaurant.query.all()
-    return {'users': [user.to_dict() for restaurants in restaurants]}
+def restaurant_get():
+    restaurant = Restaurant.query.all()
+    return {'restaurant': [restaurant.to_dict() for restaurant in restaurants]}
