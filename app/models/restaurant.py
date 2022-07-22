@@ -20,3 +20,19 @@ class Restaurant(db.Model):
     user = db.relationship("User", back_populates="restaurants")
     images = db.relationship("Image", back_populates="restaurants")
     reviews = db.relationship("Review", back_populates="restaurants")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "name": self.name,
+            "address": self.address,
+            "city": self.city,
+            "state": self.state,
+            "zip": self.zip,
+            "description": self.description,
+            "price": self.price,
+            "lat": self.lat,
+            "lng": self.lng,
+            "logo": self.logo
+        }
