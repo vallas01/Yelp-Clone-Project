@@ -18,3 +18,5 @@ class Restaurant(db.Model):
     logo = db.Column(db.String(255), nullable=False)
 
     user = db.relationship("User", back_populates="restaurants")
+    images = db.relationship("Image", back_populates="restaurants")
+    reviews = db.relationship("Review", back_populates="restaurants")
