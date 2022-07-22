@@ -14,7 +14,7 @@ const create_image = image => ({
 })
 
 export const getAllImages = () => async dispatch => {
-    const response = await csrfFetch('/api/images')
+    const response = await fetch('/api/images')
 
     if(response.ok){
         const images = await response.json()
@@ -23,7 +23,7 @@ export const getAllImages = () => async dispatch => {
 }
 
 export const createImage = data => async dispatch => {
-    const response = await csrfFetch('/api/images/new', {
+    const response = await fetch('/api/images/new', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data)
