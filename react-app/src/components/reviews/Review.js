@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { getReviews } from '../../store/review';
+import { getReviews, deleteReview } from '../../store/review';
 
 function Review() {
     const dispatch = useDispatch();
@@ -10,6 +10,10 @@ function Review() {
     useEffect(() => {
         dispatch(getReviews())
     }, [dispatch]);
+
+    const deleteThisReview = (id) => {
+        dispatch(deleteReview(id))
+    }
 
     return (
         <>
@@ -21,6 +25,7 @@ function Review() {
                     <li  key={review.id} >
                         <div>{review.text}</div>
                         <div>{review.rating}</div>
+                        <button onClick={()=>deleteThisReview(review.id)}>Delete</button>
                     </li>
                 )
             })}
