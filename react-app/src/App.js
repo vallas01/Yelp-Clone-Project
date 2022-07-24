@@ -8,11 +8,10 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
-<<<<<<< HEAD
 import ReviewForm from './components/ReviewForm';
-=======
+import Review from './components/Review';
 import RestaurantForm from './components/restaurants/newRestaurantForm';
->>>>>>> main
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -53,6 +52,9 @@ function App() {
         </ProtectedRoute>
         <Route path='/review' exact={true}>
           <ReviewForm />
+        </Route>
+        <Route path='/review/:reviewId' exact={true}>
+          <Review />
         </Route>
       </Switch>
     </BrowserRouter>
