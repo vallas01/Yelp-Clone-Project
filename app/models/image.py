@@ -14,3 +14,12 @@ class Image(db.Model):
     users = db.relationship("User", back_populates="images")
     reviews = db.relationship("Review", back_populates="images")
     restaurants = db.relationship("Restaurant", back_populates="images")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "restaurant_id": self.restaurant_id,
+            "title": self.title,
+            "img_url": self.img_url,
+        }
