@@ -9,12 +9,16 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 
+import ReviewForm from './components/ReviewForm';
+import RestaurantForm from './components/restaurants/newRestaurantForm';
+import Restaurants from './components/restaurants/allRestaurants';
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -34,8 +38,14 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
+        <ProtectedRoute path='/new-restaurant' exact={true}>
+          <RestaurantForm />
+        </ProtectedRoute>
+        <ProtectedRoute path='/restaurants' exact={true}>
+          <Restaurants />
+        </ProtectedRoute>
         <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+          <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
@@ -43,6 +53,9 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
         </ProtectedRoute>
+        <Route path='/review' exact={true}>
+          <ReviewForm />
+        </Route>
       </Switch>
     </BrowserRouter>
   );
