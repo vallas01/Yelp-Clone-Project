@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { getRestaurantsThunk } from '../../store/restaurant'
+import { getRestaurantsThunk, addRestaurantThunk } from '../../store/restaurant'
 
 const RestaurantForm = () => {
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ const RestaurantForm = () => {
 
     const newRestaurant = {
       name,
-      userId: user.id,
+      user_id: user.id,
       address,
       city,
       state,
@@ -34,11 +34,12 @@ const RestaurantForm = () => {
       price,
       category,
       lat,
-      lng
+      lng,
+      logo
     }
-    console.log(newRestaurant)
+    // console.log(newRestaurant)
 
-    dispatch(getRestaurantsThunk())
+    dispatch(addRestaurantThunk(newRestaurant))
   }
 
   return (<fieldset>

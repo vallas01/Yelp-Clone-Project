@@ -12,7 +12,7 @@ class RestaurantForm(FlaskForm):
   zip = IntegerField('Zip Code', validators)
   description = TextAreaField('Description', validators)
   price = IntegerField('Price Tag', validators)
-  category = SelectField('Category', validators)
+  category = StringField('Category', validators)
   lat = IntegerField('Latitude', validators)
   lng = IntegerField('Longittude', validators)
   logo = StringField('Logo', validators)

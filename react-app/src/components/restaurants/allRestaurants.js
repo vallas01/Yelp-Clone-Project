@@ -11,7 +11,7 @@ const Restaurants = () => {
     dispatch(getRestaurantsThunk())
   }, [dispatch])
 
-  console.log("allRestaurants.js", restaurants)
+  // console.log("allRestaurants.js", restaurants)
 
 
 
