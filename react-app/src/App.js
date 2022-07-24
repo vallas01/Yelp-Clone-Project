@@ -8,8 +8,8 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
-import ReviewForm from './components/ReviewForm';
-import Review from './components/Review';
+import ReviewForm from './components/reviews/newReviewForm';
+import Review from './components/reviews/Review';
 import RestaurantForm from './components/restaurants/newRestaurantForm';
 
 
