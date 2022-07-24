@@ -50,10 +50,10 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
         </ProtectedRoute>
-        <Route path='/review' exact={true}>
+        <Route path='/new-review' exact={true}>
           <ReviewForm />
         </Route>
-        <Route path='/review/:reviewId' exact={true}>
+        <Route path='/review' exact={true}>
           <Review />
         </Route>
       </Switch>
