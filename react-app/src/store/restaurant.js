@@ -30,7 +30,7 @@ export const updateRestaurantThunk = (restaurantInfo) => async (dispatch) => {
 
     if (response.ok) {
         const updatedRestaurant = await response.json()
-        // dispatch(updateRestaurant(updatedRestaurant))
+        dispatch(updateRestaurant(updatedRestaurant))
     }
 
 }
