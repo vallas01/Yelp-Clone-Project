@@ -19,7 +19,7 @@ def validation_errors_to_error_messages(validation_errors):
 
 
 
-@restaurant_routes.route('/')
+@restaurant_routes.route('')
 # @login_required
 def restaurant_get():
     restaurants = Restaurant.query.all()
@@ -39,8 +39,8 @@ def add_restaurant():
             city = form.data["city"],
             state = form.data["state"],
             zip = form.data["zip"],
-            description = form.data["description"],
             category = form.data["category"],
+            description = form.data["description"],
             price = form.data["price"],
             lat = form.data["lat"],
             lng = form.data["lng"],
