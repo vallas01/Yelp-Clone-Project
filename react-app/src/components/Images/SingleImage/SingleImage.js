@@ -1,6 +1,5 @@
-import { getAllImages, updateImage } from "../../../store/images"
-import { useDispatch, useSelector } from "react-redux"
-import { useParams } from "react-router-dom"
+import { updateImage } from "../../../store/images"
+import { useDispatch } from "react-redux"
 import { useState } from "react"
 
 const SingleImage = ({ img }) => {
@@ -9,7 +8,6 @@ const SingleImage = ({ img }) => {
 
   const handleEdit = e => {
     e.preventDefault()
-    // if (!img.review_id) img.review_id = 0
     const updatedImage = {
       title,
       img_url: img.img_url,
@@ -18,13 +16,14 @@ const SingleImage = ({ img }) => {
       restaurant_id: img.restaurant_id
 
     }
+    if (!img.review_id) delete updatedImage["review_id"]
     console.log(updatedImage)
     dispatch(updateImage(updatedImage, img.id))
     setTitle("")
   }
 
   return (<div>
-    <img style={{ width: "300px", height: "300px" }} src={img.img_url} />
+    <img style={{ width: "300px", height: "300px" }} src={img.img_url} alt={img.title} />
     <h1>{img.title}</h1>
     <form onSubmit={handleEdit}>
       <label htmlFor="ImageName"></label>

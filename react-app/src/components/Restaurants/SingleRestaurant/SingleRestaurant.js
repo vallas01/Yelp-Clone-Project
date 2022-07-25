@@ -14,7 +14,7 @@ const SingleRestaurant = () => {
   const restaurant = useSelector(state => state.restaurant[restaurantId])
   const images = useSelector(state => state?.image)
   //this one below is an array of all images that filter
-  const restaurantImgs = Object.values(images).filter(img => img.restaurant_id == restaurantId)
+  const restaurantImgs = Object.values(images).filter(img => img.restaurant_id === restaurantId)
 
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const SingleRestaurant = () => {
     {restaurantImgs && restaurantImgs.map(img => {
       return (
         <div key={img.id}>
-          <img src={img.img_url} />
+          <img src={img.img_url} alt={img.title} />
           <SingleImageModal img={img} />
         </div>
       )

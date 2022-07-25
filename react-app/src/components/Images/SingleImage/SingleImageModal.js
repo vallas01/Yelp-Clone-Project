@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import React, { useState } from 'react';
 import SingleImage from './SingleImage';
 import './SingleImageModal.css'
 
