@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getRestaurantsThunk } from "../../store/restaurant"
+import { getRestaurantsThunk } from "../../../store/restaurant"
 
 
 const Restaurants = () => {

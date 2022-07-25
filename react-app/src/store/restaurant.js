@@ -1,5 +1,6 @@
 const GET_RESTAURANTS = 'restaurants/GET_RESTAURANTS';
 const ADD_RESTAURANT = 'restaurants/ADD_RESTAURANT';
+const UPDATE_RESTAURANT = 'restaurants/UPDATE_RESTAURANT'
 
 const getRestaurants = (data) => ({
     type: GET_RESTAURANTS,
@@ -12,6 +13,29 @@ const addRestaurant = (data) => ({
     payload: data
 })
 
+const updateRestaurant = (data) => ({
+    type: UPDATE_RESTAURANT,
+    payload: data
+})
+
+
+export const updateRestaurantThunk = (restaurantInfo) => async (dispatch) => {
+    const response = await fetch('/api/restaurants', {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(
+            restaurantInfo
+        )
+    })
+
+    if (response.ok) {
+        const updatedRestaurant = await response.json()
+        // dispatch(updateRestaurant(updatedRestaurant))
+    }
+
+}
+
+
 
 export const getRestaurantsThunk = () => async (dispatch) => {
     const response = await fetch('/api/restaurants')
@@ -19,7 +43,7 @@ export const getRestaurantsThunk = () => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(getRestaurants(data))
-        console.log(data)
+        // console.log(data)
 
     }
     return null
@@ -27,7 +51,7 @@ export const getRestaurantsThunk = () => async (dispatch) => {
 
 export const addRestaurantThunk = (newRestaurant) => async (dispatch) => {
     const response = await fetch('/api/restaurants', {
-        headers: {'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json' },
         method: 'POST',
         body: JSON.stringify(newRestaurant)
     })
@@ -61,7 +85,11 @@ export default function reducer(state = initialState, action) {
 
 
         case ADD_RESTAURANT:
-            newState = {...state, [action.payload.id]: action.payload}
+            newState = { ...state, [action.payload.id]: action.payload }
+            return newState
+
+        case UPDATE_RESTAURANT:
+            newState[action.payload.id] = action.payload
             return newState
         default:
             return state;

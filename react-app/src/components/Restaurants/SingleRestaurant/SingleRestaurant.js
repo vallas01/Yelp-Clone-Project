@@ -1,0 +1,25 @@
+import { useSelector, useDispatch } from "react-redux"
+import { useParams } from "react-router-dom"
+import { useEffect } from "react"
+import { getRestaurantsThunk } from "../../../store/restaurant"
+import UpdateRestaurantForm from "./UpdateRestaurant"
+const SingleRestaurant = () => {
+  const dispatch = useDispatch()
+  const { restaurantId } = useParams()
+  const restaurant = useSelector(state => state.restaurant[restaurantId])
+  console.log(restaurant)
+
+  useEffect(() => {
+    dispatch(getRestaurantsThunk())
+  }, [dispatch])
+
+  if (!restaurant) return ("loading")
+
+  return (<div>
+    <h1>{restaurant.name}</h1>
+    <UpdateRestaurantForm />
+
+  </div>)
+}
+
+export default SingleRestaurant

@@ -10,8 +10,9 @@ import User from './components/User';
 import { authenticate } from './store/session';
 
 import ReviewForm from './components/ReviewForm';
-import RestaurantForm from './components/restaurants/newRestaurantForm';
-import Restaurants from './components/restaurants/allRestaurants';
+import RestaurantForm from './components/Restaurants/NewRestaurant/NewRestaurantForm';
+import Restaurants from './components/Restaurants/Restaurants/Restaurants';
+import SingleRestaurant from './components/Restaurants/SingleRestaurant/SingleRestaurant';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -40,6 +41,9 @@ function App() {
         </Route>
         <ProtectedRoute path='/new-restaurant' exact={true}>
           <RestaurantForm />
+        </ProtectedRoute>
+        <ProtectedRoute path='/restaurants/:restaurantId' exact={true}>
+          <SingleRestaurant />
         </ProtectedRoute>
         <ProtectedRoute path='/restaurants' exact={true}>
           <Restaurants />

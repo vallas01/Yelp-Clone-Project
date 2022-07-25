@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request, redirect
 from flask_login import login_required
 from app.models import Restaurant, db
-from app.forms import RestaurantForm
+from app.forms import RestaurantForm, UpdateRestaurantForm
 
 restaurant_routes = Blueprint('restaurant', __name__)
 
@@ -54,3 +54,25 @@ def add_restaurant():
 
     # return {'restaurant': 'done'}
     #     pass
+
+@restaurant_routes.route('', methods=["PUT"])
+def update_restaurant():
+    form = UpdateRestaurantForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        restaurant = Restaurant.query.get(form.restaurant_id.data)
+
+        restaurant.name = form.name.data
+        restaurant.address = form.address.data
+        restaurant.city = form.city.data
+        restaurant.state = form.state.data
+        restaurant.zip = form.zip.data
+        restaurant.description = form.description.data
+        restaurant.price = form.price.data
+        restaurant.lat = form.lat.data
+        restaurant.lng = form.lng.data
+        restaurant.logo = form.logo.data
+        db.session.commit()
+        return restaurant.to_dict()
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}
