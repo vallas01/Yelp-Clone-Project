@@ -24,7 +24,7 @@ def image_get():
 
 @image_routes.route('/', methods=['post'])
 def image_post():
-     form = ImageForm()
+    form = ImageForm()
     # Get the csrf_token from the request cookie and put it into the
     # form manually to validate_on_submit can be used
 
