@@ -5,6 +5,7 @@ import { getRestaurantsThunk } from "../../../store/restaurant"
 import UpdateRestaurantForm from "./UpdateRestaurant"
 import RestaurantToDelete from "./DeleteRestaurant"
 import { getAllImages } from "../../../store/images"
+import SingleImageModal from "../../Images/SingleImage/SingleImageModal"
 
 
 const SingleRestaurant = () => {
@@ -26,14 +27,15 @@ const SingleRestaurant = () => {
   return (<div>
     <h1>{restaurant.name}</h1>
     {restaurantImgs && restaurantImgs.map(img => {
-      return(
+      return (
         <div key={img.id}>
-          <h2>{img.title}</h2>
+          <img src={img.img_url} />
+          <SingleImageModal img={img} />
         </div>
       )
     })}
     <UpdateRestaurantForm />
-    <RestaurantToDelete restaurantId={restaurant.id}/>
+    <RestaurantToDelete restaurantId={restaurant.id} />
   </div>)
 }
 
