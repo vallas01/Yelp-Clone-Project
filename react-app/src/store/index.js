@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import session from './session'
 import restaurant from './restaurant'
 import review from './review'
-import image from './image'
+import image from './images'
 
 const rootReducer = combineReducers({
   session,
