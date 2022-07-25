@@ -35,26 +35,15 @@ def review_post():
     form = ReviewForm()
     # Get the csrf_token from the request cookie and put it into the
     # form manually to validate_on_submit can be used
-<<<<<<< HEAD
-=======
-
->>>>>>> main
     form['csrf_token'].data = request.cookies['csrf_token']
     print('HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE')
     print(form.data)
     if form.validate_on_submit():
         new_review = Review(
-<<<<<<< HEAD
             user_id = form.data["user_id"],
             restaurant_id = form.data["restaurant_id"],
             text = form.data["text"],
             rating = form.data["rating"],
-=======
-            user_id = 1,
-            restaurant_id = 2,
-            text = form.data['text'],
-            rating = form.data['rating'],
->>>>>>> main
             )
         db.session.add(new_review)
         db.session.commit()
