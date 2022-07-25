@@ -41,7 +41,6 @@ def add_restaurant():
             zip = form.data["zip"],
             category = form.data["category"],
             description = form.data["description"],
-            category = form.data["category"],
             price = form.data["price"],
             lat = form.data["lat"],
             lng = form.data["lng"],

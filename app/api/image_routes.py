@@ -23,7 +23,7 @@ def image_get():
     images = Image.query.all()
     return {'images': [image.to_dict() for image in images]}
 
-@image_routes.route('/new', methods=['post'])
+@image_routes.route('/new', methods=['POST'])
 def image_post():
     form = ImageForm()
     # Get the csrf_token from the request cookie and put it into the
@@ -62,3 +62,10 @@ def update_image(id):
         return image.to_dict()
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+@image_routes.route('/delete/<int:id>', methods=['DELETE'])
+def delete_image(id):
+    image = Image.query.get(id)
+    db.session.delete(image)
+    db.session.commit()
+    return image.to_dict()

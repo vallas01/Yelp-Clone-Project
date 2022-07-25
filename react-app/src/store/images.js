@@ -79,7 +79,7 @@ export const deleteimage = imageId => async dispatch => {
 const initialState = {}
 
 const imagesReducer = (state = initialState, action) => {
-    let newState = {}
+    let newState = {...state}
 
     switch (action.type) {
         case LOAD_IMAGES:
@@ -95,7 +95,7 @@ const imagesReducer = (state = initialState, action) => {
             return { ...state, [action.image.id]: action.image }
 
         case DELETE_IMAGE:
-            delete (newState[action.imageId.id])
+            delete(newState[action.imageId.id])
             return newState
 
         default:

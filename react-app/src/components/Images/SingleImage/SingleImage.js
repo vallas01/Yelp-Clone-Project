@@ -1,8 +1,10 @@
-import { updateImage } from "../../../store/images"
+import { deleteimage, updateImage } from "../../../store/images"
 import { useDispatch } from "react-redux"
 import { useState } from "react"
+import { useHistory } from 'react-router-dom';
 
 const SingleImage = ({ img }) => {
+  const history = useHistory()
   const dispatch = useDispatch();
   const [title, setTitle] = useState("")
 
@@ -21,9 +23,15 @@ const SingleImage = ({ img }) => {
     dispatch(updateImage(updatedImage, img.id))
     setTitle("")
   }
+  const handleDelete = e => {
+    e.preventDefault()
+    dispatch(deleteimage(img.id))
+    // history.push(`/restaurants/${img.restaurant_id}`)
+    
+  }
 
   return (<div>
-    <img style={{ width: "300px", height: "300px" }} src={img.img_url} alt={img.title} />
+    <img style={{ width: "300px", height: "auto" }} src={img.img_url} alt={img.title} />
     <h1>{img.title}</h1>
     <form onSubmit={handleEdit}>
       <label htmlFor="ImageName"></label>
@@ -35,7 +43,8 @@ const SingleImage = ({ img }) => {
 
       />
 
-      <button >Change Name</button>
+      <button>Change Name</button>
+      <button onClick={handleDelete}>Delete Image</button>
     </form>
   </div>)
 }
