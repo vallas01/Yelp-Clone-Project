@@ -19,7 +19,7 @@ def validation_errors_to_error_messages(validation_errors):
 
 
 
-@restaurant_routes.route('/')
+@restaurant_routes.route('')
 # @login_required
 def restaurant_get():
     restaurants = Restaurant.query.all()
