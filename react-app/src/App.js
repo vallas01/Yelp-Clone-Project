@@ -13,6 +13,7 @@ import Review from './components/reviews/Review';
 import RestaurantForm from './components/Restaurants/NewRestaurant/NewRestaurantForm';
 import Restaurants from './components/Restaurants/Restaurants/Restaurants';
 import SingleRestaurant from './components/Restaurants/SingleRestaurant/SingleRestaurant';
+import NewImage from './components/Images/NewImage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -36,30 +37,43 @@ function App() {
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
+
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
+
         <ProtectedRoute path='/new-restaurant' exact={true}>
           <RestaurantForm />
         </ProtectedRoute>
+
         <ProtectedRoute path='/restaurants/:restaurantId' exact={true}>
           <SingleRestaurant />
         </ProtectedRoute>
+
         <ProtectedRoute path='/restaurants' exact={true}>
           <Restaurants />
         </ProtectedRoute>
+
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />
         </ProtectedRoute>
+
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
+
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
         </ProtectedRoute>
+
+        <ProtectedRoute path='/restaurants/:restaurantId/new-image' exact={true} >
+          <NewImage />
+        </ProtectedRoute>
+
         <Route path='/new-review' exact={true}>
           <ReviewForm />
         </Route>
+
         <Route path='/review' exact={true}>
           <Review />
         </Route>

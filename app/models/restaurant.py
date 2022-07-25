@@ -31,6 +31,7 @@ class Restaurant(db.Model):
             "city": self.city,
             "state": self.state,
             "zip": self.zip,
+            "category": self.category,
             "description": self.description,
             "price": self.price,
             "lat": self.lat,

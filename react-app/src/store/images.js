@@ -24,16 +24,17 @@ const delete_image = imageId => ({
 })
 
 export const getAllImages = () => async dispatch => {
-    const response = await fetch('/api/images')
+    const response = await fetch('/api/image')
 
     if (response.ok) {
         const images = await response.json()
-        dispatch(load_images(images))
+        // console.log('HEREEEEEEEEEEEEEE',images.images)
+        dispatch(load_images(images.images))
     }
 }
 
 export const createImage = data => async dispatch => {
-    const response = await fetch('/api/images/new', {
+    const response = await fetch('/api/image/new', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
@@ -47,7 +48,8 @@ export const createImage = data => async dispatch => {
 }
 
 export const updateImage = (data, id) => async dispatch => {
-    const response = await fetch(`/api/images/edit/${id}`, {
+    console.log(data.review_id)
+    const response = await fetch(`/api/image/edit/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -58,12 +60,13 @@ export const updateImage = (data, id) => async dispatch => {
     if (response.ok) {
         const image = await response.json()
         dispatch(update_image(image))
+        console.log(image)
         return image
     }
 };
 
 export const deleteimage = imageId => async dispatch => {
-    const response = await fetch(`/api/images/delete/${imageId}`, {
+    const response = await fetch(`/api/image/delete/${imageId}`, {
         method: 'DELETE'
     })
 
@@ -76,7 +79,7 @@ export const deleteimage = imageId => async dispatch => {
 const initialState = {}
 
 const imagesReducer = (state = initialState, action) => {
-    let newState = {}
+    let newState = {...state}
 
     switch (action.type) {
         case LOAD_IMAGES:
@@ -92,7 +95,7 @@ const imagesReducer = (state = initialState, action) => {
             return { ...state, [action.image.id]: action.image }
 
         case DELETE_IMAGE:
-            delete (newState[action.imageId.id])
+            delete(newState[action.imageId.id])
             return newState
 
         default:
