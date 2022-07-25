@@ -1,4 +1,3 @@
-import {csrfFetch} from './csrf'
 
 const LOAD_IMAGES = 'images/LOAD'
 const CREATE_IMAGE = 'image/CREATE'
@@ -27,7 +26,7 @@ const delete_image = imageId => ({
 export const getAllImages = () => async dispatch => {
     const response = await fetch('/api/images')
 
-    if(response.ok){
+    if (response.ok) {
         const images = await response.json()
         dispatch(load_images(images))
     }
@@ -36,11 +35,11 @@ export const getAllImages = () => async dispatch => {
 export const createImage = data => async dispatch => {
     const response = await fetch('/api/images/new', {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     })
 
-    if(response.ok){
+    if (response.ok) {
         const image = await response.json()
         dispatch(create_image)
         return image
@@ -48,7 +47,7 @@ export const createImage = data => async dispatch => {
 }
 
 export const updateImage = (data, id) => async dispatch => {
-    const response = await csrfFetch(`/api/images/edit/${id}`, {
+    const response = await fetch(`/api/images/edit/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -56,7 +55,7 @@ export const updateImage = (data, id) => async dispatch => {
         body: JSON.stringify(data)
     });
 
-    if (response.ok){
+    if (response.ok) {
         const image = await response.json()
         dispatch(update_image(image))
         return image
@@ -64,11 +63,11 @@ export const updateImage = (data, id) => async dispatch => {
 };
 
 export const deleteimage = imageId => async dispatch => {
-    const response = await csrfFetch(`/api/images/delete/${imageId}`, {
+    const response = await fetch(`/api/images/delete/${imageId}`, {
         method: 'DELETE'
     })
 
-    if(response.ok){
+    if (response.ok) {
         const deletedImage = await response.json()
         dispatch(delete_image(deletedImage))
     }
@@ -79,7 +78,7 @@ const initialState = {}
 const imagesReducer = (state = initialState, action) => {
     let newState = {}
 
-    switch(action.type) {
+    switch (action.type) {
         case LOAD_IMAGES:
             action.images.forEach(img => {
                 newState[img.id] = img
@@ -87,13 +86,13 @@ const imagesReducer = (state = initialState, action) => {
             return newState
 
         case CREATE_IMAGE:
-            return {...state, [action.image.id]: action.image}
+            return { ...state, [action.image.id]: action.image }
 
         case UPDATE_IMAGE:
-            return {...state, [action.image.id]: action.image}
+            return { ...state, [action.image.id]: action.image }
 
         case DELETE_IMAGE:
-            delete(newState[action.imageId.id])
+            delete (newState[action.imageId.id])
             return newState
 
         default:
