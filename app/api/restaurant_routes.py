@@ -76,3 +76,12 @@ def update_restaurant():
         return restaurant.to_dict()
 
     return {'errors': validation_errors_to_error_messages(form.errors)}
+
+
+
+@restaurant_routes.route('/<int:id>', methods =["DELETE"])
+def delete_restaurant(id):
+    restaurant = Restaurant.query.get(id)
+    db.session.delete(restaurant)
+    db.session.commit()
+    return ({"done": "complete"})
