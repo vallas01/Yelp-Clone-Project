@@ -20,10 +20,12 @@ def validation_errors_to_error_messages(validation_errors):
 
 
 @review_routes.route('')
-@login_required
+# @login_required
 def review_get():
-    review = Review.query.all()
+    reviews = Review.query.all()
     return {'review': [review.to_dict() for review in reviews]}
+    
+
 @review_routes.route('', methods=['POST'])
 def review_post():
     """
@@ -47,3 +49,13 @@ def review_post():
         return new_review.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
    
+@review_routes.route('/<id>', methods=['DELETE'])
+def delete_post(id):
+    """
+    Deletes a review (ACV)
+    """
+    
+    review = Review.query.get(id)
+    db.session.delete(review)
+    db.session.commit()
+    return review.to_dict()

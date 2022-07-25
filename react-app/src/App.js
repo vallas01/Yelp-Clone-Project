@@ -8,8 +8,8 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
-
-import ReviewForm from './components/ReviewForm';
+import ReviewForm from './components/reviews/newReviewForm';
+import Review from './components/reviews/Review';
 import RestaurantForm from './components/Restaurants/NewRestaurant/NewRestaurantForm';
 import Restaurants from './components/Restaurants/Restaurants/Restaurants';
 import SingleRestaurant from './components/Restaurants/SingleRestaurant/SingleRestaurant';
@@ -57,8 +57,11 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
         </ProtectedRoute>
-        <Route path='/review' exact={true}>
+        <Route path='/new-review' exact={true}>
           <ReviewForm />
+        </Route>
+        <Route path='/review' exact={true}>
+          <Review />
         </Route>
       </Switch>
     </BrowserRouter>

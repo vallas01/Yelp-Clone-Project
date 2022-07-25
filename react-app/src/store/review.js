@@ -85,7 +85,7 @@ const reviewReducer = (state = initialState, action) => {
 
     case LIST_REVIEWS: {
       newState={...state}
-      action.list.forEach(review=>newState[review.id]=review)
+      action.list.review.forEach(review=>newState[review.id]=review)
       return newState
     }
 
