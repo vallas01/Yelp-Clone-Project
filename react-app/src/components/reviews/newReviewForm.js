@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createReview } from '../../store/review'
 
@@ -10,17 +10,21 @@ function ReviewForm() {
   const [errors, setErrors] = useState([]);
   const [text, setText] = useState('');
   const [rating, setRating] = useState('');
+
+  const user = useSelector(state => state.session.user)
+
     
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    // const user_id = sessionUser.id
+   
     const newReview = {
-        user_id: 1,
+        user_id: user.id,
         restaurant_id: 1,
         text,
         rating
     };
+    
     dispatch(createReview(newReview))
         .then(()=>history.push(`/account`))
         .catch(async (res) => {
@@ -30,7 +34,7 @@ function ReviewForm() {
     // reset();
   }
 
-
+  
 
     
   return (
@@ -48,6 +52,8 @@ function ReviewForm() {
                 <label>
                 Enter your review information...
                 </label>
+
+                
                 <input
                     type="text"
                     placeholder='Enter your review...'
