@@ -24,16 +24,17 @@ const delete_image = imageId => ({
 })
 
 export const getAllImages = () => async dispatch => {
-    const response = await fetch('/api/images')
+    const response = await fetch('/api/image')
 
     if (response.ok) {
         const images = await response.json()
-        dispatch(load_images(images))
+        // console.log('HEREEEEEEEEEEEEEE',images.images)
+        dispatch(load_images(images.images))
     }
 }
 
 export const createImage = data => async dispatch => {
-    const response = await fetch('/api/images/new', {
+    const response = await fetch('/api/image/new', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
@@ -47,7 +48,7 @@ export const createImage = data => async dispatch => {
 }
 
 export const updateImage = (data, id) => async dispatch => {
-    const response = await fetch(`/api/images/edit/${id}`, {
+    const response = await fetch(`/api/image/edit/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -63,7 +64,7 @@ export const updateImage = (data, id) => async dispatch => {
 };
 
 export const deleteimage = imageId => async dispatch => {
-    const response = await fetch(`/api/images/delete/${imageId}`, {
+    const response = await fetch(`/api/image/delete/${imageId}`, {
         method: 'DELETE'
     })
 
