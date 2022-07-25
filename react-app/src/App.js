@@ -41,6 +41,12 @@ function App() {
         <ProtectedRoute path='/new-restaurant' exact={true}>
           <RestaurantForm />
         </ProtectedRoute>
+        <ProtectedRoute path='/restaurants/:restaurantId' exact={true}>
+          <SingleRestaurant />
+        </ProtectedRoute>
+        <ProtectedRoute path='/restaurants' exact={true}>
+          <Restaurants />
+        </ProtectedRoute>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />
         </ProtectedRoute>
