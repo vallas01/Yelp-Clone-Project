@@ -1,8 +1,8 @@
-"""create new tables
+"""empty message
 
-Revision ID: e38cdf4ba57d
+Revision ID: c08a6b2ccbb5
 Revises: ffdc0a98111c
-Create Date: 2022-07-21 17:03:16.302923
+Create Date: 2022-07-25 11:07:01.645672
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'e38cdf4ba57d'
+revision = 'c08a6b2ccbb5'
 down_revision = 'ffdc0a98111c'
 branch_labels = None
 depends_on = None
@@ -27,10 +27,11 @@ def upgrade():
     sa.Column('state', sa.String(length=20), nullable=False),
     sa.Column('zip', sa.Integer(), nullable=False),
     sa.Column('description', sa.String(length=1000), nullable=False),
+    sa.Column('category', sa.String(length=40), nullable=False),
     sa.Column('price', sa.Integer(), nullable=False),
     sa.Column('lat', sa.Integer(), nullable=False),
     sa.Column('lng', sa.Integer(), nullable=False),
-    sa.Column('logo', sa.String(length=255), nullable=False),
+    sa.Column('logo', sa.String(length=255), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('address'),
@@ -59,10 +60,10 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     op.add_column('users', sa.Column('avatar', sa.String(length=255), nullable=True))
-    op.add_column('users', sa.Column('address', sa.String(length=255), nullable=True))
-    op.add_column('users', sa.Column('city', sa.String(length=40), nullable=True))
-    op.add_column('users', sa.Column('state', sa.String(length=20), nullable=True))
-    op.add_column('users', sa.Column('zip', sa.Integer(), nullable=True))
+    op.add_column('users', sa.Column('address', sa.String(length=255), nullable=False))
+    op.add_column('users', sa.Column('city', sa.String(length=40), nullable=False))
+    op.add_column('users', sa.Column('state', sa.String(length=20), nullable=False))
+    op.add_column('users', sa.Column('zip', sa.Integer(), nullable=False))
     # ### end Alembic commands ###
 
 
