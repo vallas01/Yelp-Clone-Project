@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createReview } from '../../store/review'
+import './index.css'
 
 
 function ReviewForm() {
@@ -10,17 +11,22 @@ function ReviewForm() {
   const [errors, setErrors] = useState([]);
   const [text, setText] = useState('');
   const [rating, setRating] = useState('');
+
+  const user = useSelector(state => state.session.user)
+  // const restaurant = useSelector(state => state.restaurant)
+  
     
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    // const user_id = sessionUser.id
+    
     const newReview = {
-        user_id: 1,
+        user_id: user.id,
         restaurant_id: 1,
         text,
         rating
     };
+    
     dispatch(createReview(newReview))
         .then(()=>history.push(`/account`))
         .catch(async (res) => {
@@ -28,6 +34,14 @@ function ReviewForm() {
         if (data && data.errors) setErrors(data.errors);
     });
     // reset();
+  }
+
+  const handleSetRating = e => {
+    if (e.target.value > 0 && e.target.value <= 5) {
+      setRating(e.target.value)
+    } else {
+      setRating('')
+    }
   }
 
 
@@ -43,11 +57,18 @@ function ReviewForm() {
       </ul>
       )}
 
+      <label>Rating: 1 to 5</label>
+                <input onChange={e => handleSetRating(e)} id='rating-input' type='text' placeholder='1 to 5' value={rating}></input>
+      
+      <label>Review</label>
+
       <form onSubmit={handleSubmit} className="login-form">
       
                 <label>
                 Enter your review information...
                 </label>
+
+                
                 <input
                     type="text"
                     placeholder='Enter your review...'
