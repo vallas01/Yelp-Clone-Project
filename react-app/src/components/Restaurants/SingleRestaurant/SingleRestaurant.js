@@ -12,7 +12,7 @@ const SingleRestaurant = () => {
   const { restaurantId } = useParams()
   const restaurant = useSelector(state => state.restaurant[restaurantId])
   const images = useSelector(state => state?.image)
-  //this one below is an array of all images that filter 
+  //this one below is an array of all images that filter
   const restaurantImgs = Object.values(images).filter(img => img.restaurant_id == restaurantId)
 
 
@@ -28,7 +28,7 @@ const SingleRestaurant = () => {
     {restaurantImgs && restaurantImgs.map(img => {
       return(
         <div key={img.id}>
-          <h2>{img.img_url}</h2>
+          <h2>{img.title}</h2>
         </div>
       )
     })}
