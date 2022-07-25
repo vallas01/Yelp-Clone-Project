@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { getRestaurantsThunk, addRestaurantThunk } from '../../store/restaurant'
+import { addRestaurantThunk } from '../../../store/restaurant'
 
 const RestaurantForm = () => {
   const dispatch = useDispatch();
