@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getRestaurantsThunk } from "../../../store/restaurant"
-
+import { NavLink } from 'react-router-dom';
 
 const Restaurants = () => {
   const dispatch = useDispatch()
@@ -22,9 +22,10 @@ const Restaurants = () => {
 
   return (<div>
     {restaurants.map(restaurant => {
-      return (<div key={restaurant.id}>
-        {restaurant.name}
-      </div>)
+      return (<li key={restaurant.id}>
+        <NavLink to={`/restaurants/${restaurant.id}`}>{restaurant.name}</NavLink>
+      </li>
+      )
     })}
   </div>)
 }
