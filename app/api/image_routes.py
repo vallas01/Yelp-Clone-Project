@@ -44,3 +44,21 @@ def image_post():
 
         return new_img.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}
+
+@image_routes.route('/edit/<int:id>', methods=["PUT"])
+def update_image(id):
+    form = ImageForm()
+
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        image = Image.query.get(id)
+        image.user_id = form.data['userId']
+        image.restaurant_id = form.data['restaurant_id']
+        image.review_id = form.data['review_id']
+        image.title = form.data['title']
+        image.img_url = form.data['img_url']
+
+        db.session.commit()
+        return image.to_dict()
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400

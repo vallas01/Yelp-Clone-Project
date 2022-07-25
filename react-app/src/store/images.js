@@ -48,6 +48,7 @@ export const createImage = data => async dispatch => {
 }
 
 export const updateImage = (data, id) => async dispatch => {
+    console.log(data.review_id)
     const response = await fetch(`/api/image/edit/${id}`, {
         method: 'PUT',
         headers: {
@@ -59,6 +60,7 @@ export const updateImage = (data, id) => async dispatch => {
     if (response.ok) {
         const image = await response.json()
         dispatch(update_image(image))
+        console.log(image)
         return image
     }
 };
