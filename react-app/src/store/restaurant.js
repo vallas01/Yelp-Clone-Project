@@ -1,6 +1,7 @@
 const GET_RESTAURANTS = 'restaurants/GET_RESTAURANTS';
 const ADD_RESTAURANT = 'restaurants/ADD_RESTAURANT';
-const UPDATE_RESTAURANT = 'restaurants/UPDATE_RESTAURANT'
+const UPDATE_RESTAURANT = 'restaurants/UPDATE_RESTAURANT';
+const DELETE_RESTAURANT = 'restaurants/DELETE_RESTAURANT';
 
 const getRestaurants = (data) => ({
     type: GET_RESTAURANTS,
@@ -15,6 +16,11 @@ const addRestaurant = (data) => ({
 
 const updateRestaurant = (data) => ({
     type: UPDATE_RESTAURANT,
+    payload: data
+})
+
+const deleteRestaurant = (data) => ({
+    type: DELETE_RESTAURANT,
     payload: data
 })
 
@@ -68,6 +74,19 @@ export const addRestaurantThunk = (newRestaurant) => async (dispatch) => {
 }
 
 
+export const deleteRestaurantThunk = (restaurantId) => async (dispatch) => {
+    const response = await fetch(`/api/restaurants/${restaurantId}`, {
+        method: 'DELETE',
+    })
+
+    if (response.ok) {
+        // const data = await response.json();
+        // console.log(data)
+        dispatch(deleteRestaurant(restaurantId))
+
+    }
+    return null
+}
 
 
 
@@ -83,7 +102,6 @@ export default function reducer(state = initialState, action) {
             })
             return newState
 
-
         case ADD_RESTAURANT:
             newState = { ...state, [action.payload.id]: action.payload }
             return newState
@@ -91,6 +109,11 @@ export default function reducer(state = initialState, action) {
         case UPDATE_RESTAURANT:
             newState[action.payload.id] = action.payload
             return newState
+
+        case DELETE_RESTAURANT:
+            delete newState[action.payload]
+            return newState
+
         default:
             return state;
     }
