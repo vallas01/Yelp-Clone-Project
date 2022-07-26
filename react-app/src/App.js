@@ -46,10 +46,6 @@ function App() {
           <SignUpForm />
         </Route>
 
-        <Route path='/' exact={true} >
-          <h1>My Home Page</h1>
-        </Route>
-
         <ProtectedRoute path='/new-restaurant' exact={true}>
           <RestaurantForm />
         </ProtectedRoute>
@@ -87,11 +83,11 @@ function App() {
         </Route>
 
         <Route exact path="/technology">
-            <Technology />
+          <Technology />
         </Route>
 
         <Route exact path="/about">
-            <About />
+          <About />
         </Route>
 
       </Switch>

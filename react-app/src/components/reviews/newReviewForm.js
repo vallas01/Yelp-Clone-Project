@@ -14,16 +14,6 @@ function ReviewForm() {
 
   const user = useSelector(state => state.session.user)
   // const restaurant = useSelector(state => state.restaurant)
-<<<<<<< HEAD
-  
-    
-  const handleStars = (e) => {
-    e.preventDefault();
-    setRating(e.target.value)
-  } 
-    
-=======
->>>>>>> main
 
 
   const handleSubmit = (e) => {
@@ -62,45 +52,6 @@ function ReviewForm() {
       )}
 
 
-<<<<<<< HEAD
-      
-
-      <form onSubmit={handleSubmit} className="login-form">
-      
-                <label>
-                Enter your review information...
-                </label>
-
-
-                <div className="star-rating">
-                  <input type="radio" id="5-stars" className='rating' value="5" 
-                    onChange={handleStars} />
-                  <label htmlFor="5-stars" className="star">&#9733;</label>
-                  <input type="radio" id="4-stars" className='rating' value="4" 
-                    onChange={(e) => setRating(e.target.value)} />
-                  <label htmlFor="4-stars" className="star">&#9733;</label>
-                  <input type="radio" id="3-stars" className='rating' value="3" 
-                    onChange={(e) => setRating(e.target.value)} />
-                  <label htmlFor="3-stars" className="star">&#9733;</label>
-                  <input type="radio" id="2-stars" className='rating' value="2" 
-                    onChange={(e) => setRating(e.target.value)} />
-                  <label htmlFor="2-stars" className="star">&#9733;</label>
-                  <input type="radio" id="1-star" className='rating' value="1" 
-                    onChange={(e) => setRating(e.target.value)} />
-                  <label htmlFor="1-star" className="star">&#9733;</label>
-                </div>    
-
-
-                
-                <input
-                    type="text"
-                    placeholder='Enter your review...'
-                    value={text}
-                    onChange={(e) => setText(e.target.value)}
-                    required
-                />
-                
-=======
 
 
       <form onSubmit={handleSubmit} className="review-form">
@@ -137,10 +88,9 @@ function ReviewForm() {
           required
         />
 
->>>>>>> main
         <button className='hostSubmit' type="submit">Submit</button>
       </form>
-      
+
     </>
   );
 }
