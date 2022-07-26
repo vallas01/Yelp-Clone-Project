@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import { getReviews, deleteReview } from '../../store/review';
 import './index.css'
+import Footer from '../Footer/Footer';
 
 function Review() {
     const dispatch = useDispatch();
@@ -30,7 +31,7 @@ function Review() {
                 return(
                     <li  key={review.id} >
                         <div>{review.text}</div>
-                        
+
                         <div>
                             { review.rating === 5 && (
                                 <label  className="star-review">&#9733; &#9733; &#9733; &#9733; &#9733;</label>
@@ -55,6 +56,7 @@ function Review() {
             })}
                 
            </ul>
+           <Footer />
         </>
     );
 }
