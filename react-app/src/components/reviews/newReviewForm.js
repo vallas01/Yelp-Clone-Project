@@ -28,7 +28,7 @@ function ReviewForm() {
     };
     
     dispatch(createReview(newReview))
-        .then(()=>history.push(`/account`))
+        .then(()=>history.push(`/review`))
         .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
