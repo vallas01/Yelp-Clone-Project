@@ -4,6 +4,7 @@ import { useState } from "react"
 import { useHistory } from 'react-router-dom';
 
 const SingleImage = ({ img }) => {
+  // eslint-disable-next-line 
   const history = useHistory()
   const dispatch = useDispatch();
   const [title, setTitle] = useState("")
