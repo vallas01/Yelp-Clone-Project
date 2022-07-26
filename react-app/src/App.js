@@ -16,6 +16,8 @@ import SingleRestaurant from './components/Restaurants/SingleRestaurant/SingleRe
 import NewImage from './components/Images/NewImage';
 import Technology from './components/Footer/Technology';
 import About from './components/Footer/About';
+import HomePage from './components/HomePage/HomePage';
+import Footer from './components/Footer/Footer';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -65,7 +67,7 @@ function App() {
         </ProtectedRoute>
 
         <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
+          <HomePage />
         </ProtectedRoute>
 
         <ProtectedRoute path='/restaurants/:restaurantId/new-image' exact={true} >
@@ -89,6 +91,7 @@ function App() {
         </Route>
 
       </Switch>
+      <Footer />
     </BrowserRouter>
   );
 }

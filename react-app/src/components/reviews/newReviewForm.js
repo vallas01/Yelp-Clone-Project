@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createReview } from '../../store/review'
 import './index.css'
-import Footer from '../Footer/Footer';
 
 
 function ReviewForm() {
@@ -17,6 +16,13 @@ function ReviewForm() {
   // const restaurant = useSelector(state => state.restaurant)
   
     
+  const handleStars = (e) => {
+    e.preventDefault();
+    setRating(e.target.value)
+  } 
+    
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
@@ -64,7 +70,7 @@ function ReviewForm() {
 
                 <div className="star-rating">
                   <input type="radio" id="5-stars" className='rating' value="5" 
-                    onChange={(e) => setRating(e.target.value)} />
+                    onChange={handleStars} />
                   <label htmlFor="5-stars" className="star">&#9733;</label>
                   <input type="radio" id="4-stars" className='rating' value="4" 
                     onChange={(e) => setRating(e.target.value)} />
@@ -92,7 +98,7 @@ function ReviewForm() {
                 
         <button className='hostSubmit' type="submit">Submit</button>
       </form>
-      <Footer />
+      
     </>
   );
 }

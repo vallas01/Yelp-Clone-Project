@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import { getReviews, deleteReview } from '../../store/review';
 import './index.css'
-import Footer from '../Footer/Footer';
+
 
 function Review() {
     const dispatch = useDispatch();
@@ -56,7 +56,7 @@ function Review() {
             })}
                 
            </ul>
-           <Footer />
+         
         </>
     );
 }
