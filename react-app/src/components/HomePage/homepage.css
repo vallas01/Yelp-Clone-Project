@@ -1,0 +1,23 @@
+.homepageImage {
+    width: 100%;
+}
+
+.homepage-tagline {
+    color: white;
+    outline: 5px solid rgba(0,0,0,25%);
+    border-radius: 10px;
+    background: rgba(0,0,0,30%);
+    font-size: 1.8rem;
+    white-space: nowrap;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.homepage-list {
+    margin: 50px 0px 0px 0px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: center;
+}

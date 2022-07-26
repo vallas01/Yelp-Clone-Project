@@ -1,4 +1,4 @@
-import './technology.css'
+import './footer.css'
 
 const Technology = () => {
     return (
