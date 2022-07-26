@@ -38,7 +38,7 @@ const SingleRestaurant = () => {
         )
       })}
       <UpdateRestaurantForm />
-      <RestaurantToDelete restaurantId={restaurant.id} />
+      <RestaurantToDelete restaurant={restaurant} />
 
       {
         user?
