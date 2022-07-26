@@ -18,12 +18,12 @@ def validation_errors_to_error_messages(validation_errors):
 
 
 @image_routes.route('')
-@login_required
 def image_get():
     images = Image.query.all()
     return {'images': [image.to_dict() for image in images]}
 
 @image_routes.route('/new', methods=['POST'])
+@login_required
 def image_post():
     form = ImageForm()
     # Get the csrf_token from the request cookie and put it into the

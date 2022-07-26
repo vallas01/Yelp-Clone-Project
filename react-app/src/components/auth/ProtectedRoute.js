@@ -8,6 +8,7 @@ const ProtectedRoute = props => {
     <Route {...props}>
       {(user)? props.children  : <Redirect to='/login' />}
     </Route>
+
   )
 };
 
