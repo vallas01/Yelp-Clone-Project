@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createReview } from '../../store/review'
 import './index.css'
+import Footer from '../Footer/Footer';
 
 
 function ReviewForm() {
@@ -87,22 +88,11 @@ function ReviewForm() {
                     value={text}
                     onChange={(e) => setText(e.target.value)}
                     required
-                />/
-                {/* <select
-                    className='dropList'
-                    value={rating}
-                    required
-                    onChange={(e) => setRating(e.target.value)}
-                >
-                    <option value='' disabled  >How many stars...</option>
-                    <option value='1'>One Star</option>
-                    <option value='2'>Two Stars</option>
-                    <option value='3'>Three Stars</option>
-                    <option value='4'>Four Stars</option>
-                    <option value='4'>Five Stars</option>
-                </select> */}
+                />
+                
         <button className='hostSubmit' type="submit">Submit</button>
       </form>
+      <Footer />
     </>
   );
 }
