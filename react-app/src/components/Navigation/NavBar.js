@@ -10,27 +10,31 @@ const NavBar = () => {
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
+      <>
       <li>
         <NavLink to='/new-restaurant' exact={true} activeClassName='active'>
-          Open your Restaurant
+          New Restaurant
         </NavLink>
-      </li>,
+      </li>
       <li>
         <LogoutButton />
       </li>
+      </>
     )
   } else {
     sessionLinks = (
+      <>
       <li>
         <NavLink to='/login' exact={true} activeClassName='active'>
           Login
         </NavLink>
-      </li>,
+      </li>
       <li>
         <NavLink to='/sign-up' exact={true} activeClassName='active'>
           Sign Up
         </NavLink>
       </li>
+      </>
     )
   }
 
