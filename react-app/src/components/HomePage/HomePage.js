@@ -8,6 +8,8 @@ function HomePage() {
 
     // useEffect(() => {
     //     const timer = setInterval(() => {
+
+    // okay
     // })
       
 
