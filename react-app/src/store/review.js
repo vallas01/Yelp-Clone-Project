@@ -36,7 +36,7 @@ export const getReviews = () => async (dispatch) => {
 
 
 export const createReview = (details) => async dispatch => {
-    
+    console.log(`HEREEEEEEEEEEEEEEEEEEEEEEEEE`, details)
     const response = await fetch('/api/review', {
       headers: {'Content-Type': 'application/json'},
       method: 'POST',
@@ -50,7 +50,7 @@ export const createReview = (details) => async dispatch => {
     }
   };
 
-  export const updateReviewDetails = (reviewDetails) => async dispatch => {
+export const updateReviewDetails = (reviewDetails) => async dispatch => {
     const response = await fetch(`/api/review/${reviewDetails.id}`, {
       method: 'PUT',
       body: JSON.stringify(reviewDetails)
@@ -60,9 +60,9 @@ export const createReview = (details) => async dispatch => {
       dispatch(editReview(updatedReview))
       return updatedReview;
     }
-  };
+ };
   
-  export const deleteReview = (reviewId) => async dispatch => {
+export const deleteReview = (reviewId) => async dispatch => {
     const response = await fetch(`/api/review/${reviewId}`, {
       method: 'DELETE',
       body: JSON.stringify({reviewId})
@@ -72,7 +72,7 @@ export const createReview = (details) => async dispatch => {
         dispatch(removeReview(allReviews));
         return 'review deleted';
     }
-  };
+};
 
 
   /*-------- REDUCER -------*/

@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, session, request
 from flask_login import login_required
 from app.models import Review, db
 from app.forms.review_form import ReviewForm
+import json
 
 
 review_routes = Blueprint('review', __name__)
@@ -24,7 +25,7 @@ def validation_errors_to_error_messages(validation_errors):
 def review_get():
     reviews = Review.query.all()
     return {'review': [review.to_dict() for review in reviews]}
-    
+
 
 @review_routes.route('', methods=['POST'])
 def review_post():
@@ -34,27 +35,28 @@ def review_post():
     form = ReviewForm()
     # Get the csrf_token from the request cookie and put it into the
     # form manually to validate_on_submit can be used
-   
     form['csrf_token'].data = request.cookies['csrf_token']
+    print('HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE')
+    print(form.data)
     if form.validate_on_submit():
         new_review = Review(
-            user_id = 1,
-            restaurant_id = 1,
-            text = form.data['text'],
-            rating = form.data['rating'],
+            user_id = form.data["user_id"],
+            restaurant_id = form.data["restaurant_id"],
+            text = form.data["text"],
+            rating = form.data["rating"],
             )
         db.session.add(new_review)
         db.session.commit()
-        
+
         return new_review.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-   
+
 @review_routes.route('/<id>', methods=['DELETE'])
 def delete_post(id):
     """
     Deletes a review (ACV)
     """
-    
+
     review = Review.query.get(id)
     db.session.delete(review)
     db.session.commit()
