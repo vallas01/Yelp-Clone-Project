@@ -44,21 +44,21 @@ function App() {
           <SignUpForm />
         </Route>
 
-        <ProtectedRoute path='/' exact={true} >
+        <Route path='/' exact={true} >
           <h1>My Home Page</h1>
-        </ProtectedRoute>
+        </Route>
 
         <ProtectedRoute path='/new-restaurant' exact={true}>
           <RestaurantForm />
         </ProtectedRoute>
 
-        <ProtectedRoute path='/restaurants/:restaurantId' exact={true}>
+        <Route path='/restaurants/:restaurantId' exact={true}>
           <SingleRestaurant />
-        </ProtectedRoute>
+        </Route>
 
-        <ProtectedRoute path='/restaurants' exact={true}>
+        <Route path='/restaurants' exact={true}>
           <Restaurants />
-        </ProtectedRoute>
+        </Route>
 
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />
