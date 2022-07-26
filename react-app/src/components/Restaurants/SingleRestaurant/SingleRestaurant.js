@@ -33,7 +33,7 @@ const SingleRestaurant = () => {
         </div>
       )
     })}
-    <UpdateRestaurantForm />
+    <UpdateRestaurantForm restaurant={restaurant} />
     <RestaurantToDelete restaurantId={restaurant.id} />
   </div>)
 }
