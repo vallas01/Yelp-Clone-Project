@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createReview } from '../../store/review'
 import './index.css'
+import Footer from '../Footer/Footer';
 
 
 function ReviewForm() {
@@ -28,7 +29,7 @@ function ReviewForm() {
     };
     
     dispatch(createReview(newReview))
-        .then(()=>history.push(`/account`))
+        .then(()=>history.push(`/review`))
         .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
@@ -36,13 +37,7 @@ function ReviewForm() {
     // reset();
   }
 
-  const handleSetRating = e => {
-    if (e.target.value > 0 && e.target.value <= 5) {
-      setRating(e.target.value)
-    } else {
-      setRating('')
-    }
-  }
+ 
 
 
 
@@ -57,16 +52,34 @@ function ReviewForm() {
       </ul>
       )}
 
-      <label>Rating: 1 to 5</label>
-                <input onChange={e => handleSetRating(e)} id='rating-input' type='text' placeholder='1 to 5' value={rating}></input>
+
       
-      <label>Review</label>
 
       <form onSubmit={handleSubmit} className="login-form">
       
                 <label>
                 Enter your review information...
                 </label>
+
+
+                <div className="star-rating">
+                  <input type="radio" id="5-stars" className='rating' value="5" 
+                    onChange={(e) => setRating(e.target.value)} />
+                  <label htmlFor="5-stars" className="star">&#9733;</label>
+                  <input type="radio" id="4-stars" className='rating' value="4" 
+                    onChange={(e) => setRating(e.target.value)} />
+                  <label htmlFor="4-stars" className="star">&#9733;</label>
+                  <input type="radio" id="3-stars" className='rating' value="3" 
+                    onChange={(e) => setRating(e.target.value)} />
+                  <label htmlFor="3-stars" className="star">&#9733;</label>
+                  <input type="radio" id="2-stars" className='rating' value="2" 
+                    onChange={(e) => setRating(e.target.value)} />
+                  <label htmlFor="2-stars" className="star">&#9733;</label>
+                  <input type="radio" id="1-star" className='rating' value="1" 
+                    onChange={(e) => setRating(e.target.value)} />
+                  <label htmlFor="1-star" className="star">&#9733;</label>
+                </div>    
+
 
                 
                 <input
@@ -75,22 +88,11 @@ function ReviewForm() {
                     value={text}
                     onChange={(e) => setText(e.target.value)}
                     required
-                />/
-                <select
-                    className='dropList'
-                    value={rating}
-                    required
-                    onChange={(e) => setRating(e.target.value)}
-                >
-                    <option value='' disabled  >How many stars...</option>
-                    <option value='1'>One Star</option>
-                    <option value='2'>Two Stars</option>
-                    <option value='3'>Three Stars</option>
-                    <option value='4'>Four Stars</option>
-                    <option value='4'>Five Stars</option>
-                </select>
+                />
+                
         <button className='hostSubmit' type="submit">Submit</button>
       </form>
+      <Footer />
     </>
   );
 }

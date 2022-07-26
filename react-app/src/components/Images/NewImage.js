@@ -1,5 +1,7 @@
+// eslint-disable-next-line 
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+// eslint-disable-next-line 
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { createImage } from '../../store/images'
 
@@ -8,6 +10,7 @@ function NewImage() {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
     const userId = user.id
+    // eslint-disable-next-line 
     const history = useHistory()
 
     const [title, setTitle] = useState("");

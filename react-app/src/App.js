@@ -14,6 +14,8 @@ import RestaurantForm from './components/Restaurants/NewRestaurant/NewRestaurant
 import Restaurants from './components/Restaurants/Restaurants/Restaurants';
 import SingleRestaurant from './components/Restaurants/SingleRestaurant/SingleRestaurant';
 import NewImage from './components/Images/NewImage';
+import Technology from './components/Footer/Technology';
+import About from './components/Footer/About';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -77,6 +79,15 @@ function App() {
         <Route path='/review' exact={true}>
           <Review />
         </Route>
+
+        <Route exact path="/technology">
+            <Technology />
+        </Route>
+
+        <Route exact path="/about">
+            <About />
+        </Route>
+
       </Switch>
     </BrowserRouter>
   );
