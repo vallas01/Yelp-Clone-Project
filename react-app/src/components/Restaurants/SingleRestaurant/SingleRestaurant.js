@@ -37,11 +37,11 @@ const SingleRestaurant = () => {
           </div>
         )
       })}
-      <UpdateRestaurantForm />
+      <UpdateRestaurantForm restaurant={restaurant} />
       <RestaurantToDelete restaurant={restaurant} />
 
       {
-        user?
+        user ?
           <div>
             <NewImage />
             <ReviewForm />
