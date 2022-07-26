@@ -3,24 +3,24 @@ import { useParams } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { updateRestaurantThunk } from "../../../store/restaurant"
 
-const UpdateRestaurantForm = () => {
+const UpdateRestaurantForm = ({ restaurant }) => {
   const { restaurantId } = useParams()
   const dispatch = useDispatch()
   const user = useSelector(state => state.session.user)
 
   const [openEdit, setOpenEdit] = useState(false)
 
-  const [name, setName] = useState('')
-  const [address, setAddress] = useState('')
-  const [city, setCity] = useState('')
-  const [state, setState] = useState('')
-  const [zip, setZip] = useState('')
-  const [description, setDescription] = useState('')
-  const [price, setPrice] = useState('')
-  const [category, setCategory] = useState('')
-  const [lat, setLat] = useState('')
-  const [lng, setLng] = useState('')
-  const [logo, setLogo] = useState('')
+  const [name, setName] = useState(restaurant.name)
+  const [address, setAddress] = useState(restaurant.address)
+  const [city, setCity] = useState(restaurant.city)
+  const [state, setState] = useState(restaurant.state)
+  const [zip, setZip] = useState(restaurant.zip)
+  const [description, setDescription] = useState(restaurant.description)
+  const [price, setPrice] = useState(restaurant.price)
+  const [category, setCategory] = useState(restaurant.category)
+  const [lat, setLat] = useState(restaurant.lat)
+  const [lng, setLng] = useState(restaurant.lng)
+  const [logo, setLogo] = useState(restaurant.logo)
 
   const updateRestaurant = e => {
     e.preventDefault()
@@ -45,11 +45,11 @@ const UpdateRestaurantForm = () => {
 
   }
 
-
-  return (
-    <div>
+  if (user && user.id === restaurant.user_id) return (
+    < div >
       <button onClick={() => { setOpenEdit(!openEdit) }}>Edit</button>
-      {openEdit &&
+      {
+        openEdit &&
         <fieldset>
           <form onSubmit={updateRestaurant}>
             <div>
@@ -156,9 +156,11 @@ const UpdateRestaurantForm = () => {
             </div>
             <button>Submit</button>
           </form>
-        </fieldset>}
-    </div>
+        </fieldset>
+      }
+    </div >
   )
+  return null
 }
 
 export default UpdateRestaurantForm

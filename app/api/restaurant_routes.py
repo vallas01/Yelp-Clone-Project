@@ -20,13 +20,13 @@ def validation_errors_to_error_messages(validation_errors):
 
 
 @restaurant_routes.route('')
-# @login_required
 def restaurant_get():
     restaurants = Restaurant.query.all()
     return {'restaurant': [restaurant.to_dict() for restaurant in restaurants]}
 
 
 @restaurant_routes.route('', methods =["POST"])
+@login_required
 def add_restaurant():
     form = RestaurantForm()
 
