@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux'
 import { getReviews } from "./../store/review"
+import { getRestaurantsThunk } from "./../store/restaurant"
 import './UserPage.css'
 
 function User() {
@@ -9,10 +10,12 @@ function User() {
   const [user, setUser] = useState({});
   const { userId } = useParams();
   const userReviews = Object.values(useSelector(state => state?.review)).filter(review => review.user_id == userId)
-  console.log('COMPONENT HEREEEEEEEEEEEEEEE', userReviews)
+  const userRestaurants = Object.values(useSelector(state => state.restaurant)).filter(restaurant => restaurant.user_id == userId)
+  console.log('COMPONENT HEREEEEEEEEEEEEEEE', userRestaurants)
 
   useEffect(() => {
     dispatch(getReviews())
+    dispatch(getRestaurantsThunk())
   },[dispatch])
 
   useEffect(() => {
@@ -69,7 +72,9 @@ function User() {
         })}
     </div>
 
-    
+    <div className='user-restaurants'>
+      <h2 style={{color:'tomato'}}>Your Restaurants</h2>
+    </div>
     </>
   );
 }
