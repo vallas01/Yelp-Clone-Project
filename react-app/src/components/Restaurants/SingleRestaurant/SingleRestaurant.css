@@ -1,5 +1,19 @@
 .restaurant-image-container {
     text-align: center;
     flex-direction: column;
-
 }
+
+.container-redirect {
+    display: flex;
+    justify-content: right;
+}
+.navBtn {
+    text-decoration: none;
+    margin: 0px 40px;
+}
+
+.navBtn:hover {
+    text-decoration: underline;
+    text-decoration-color: tomato;
+}
+

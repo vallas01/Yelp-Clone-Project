@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux"
-import { useParams } from "react-router-dom"
+import { NavLink, useParams } from "react-router-dom"
 import { useEffect } from "react"
 import { getRestaurantsThunk } from "../../../store/restaurant"
 import UpdateRestaurantForm from "./UpdateRestaurant"
@@ -29,29 +29,41 @@ const SingleRestaurant = () => {
 
   return (
     <div>
-      <h1>{restaurant.name}</h1>
-      {restaurantImgs && restaurantImgs.map(img => {
-        return (
-          <div key={img.id} className="restaurant-image-container">
-            <img src={img.img_url} alt={img.title} />
-            <SingleImageModal img={img} />
-          </div>
-        )
-      })}
-      <UpdateRestaurantForm restaurant={restaurant} />
-      <RestaurantToDelete restaurant={restaurant} />
+      <div>
+          <NavLink className="navBtn" to="/new-image">Add a Photo</NavLink>
+          <NavLink className="navBtn" to="/new-review">Write a Review</NavLink>
+      </div>
+      
+      <div>
+
+          <h1>{restaurant.name}</h1>
+          {restaurantImgs && restaurantImgs.map(img => {
+              return (
+                <div key={img.id} className="restaurant-image-container">
+                  <img className="imageRestaurant" src={img.img_url} alt={img.title} />
+                  <SingleImageModal img={img} />
+                </div>
+              )
+          })}
+      </div>
+
+      <div className="container-buttons">
+          <UpdateRestaurantForm restaurant={restaurant} />
+          <RestaurantToDelete restaurant={restaurant} />
+      </div>
 
       {
         user ?
           <div>
-            <NewImage />
-            <ReviewForm />
+            
+            
           </div>
           :
           <div>
             <p>Please log in to discover more features!</p>
           </div>
       }
+
     </div>
 
   )
