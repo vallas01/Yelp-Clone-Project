@@ -43,8 +43,8 @@ const NavBar = () => {
     <nav id='navbar-body'>
       <ul>
         <li>
-          <NavLink to='/' exact={true} activeClassName='active'>
-            Home
+          <NavLink to='/' exact={true} activeClassName='active' id='kelp-me-home-link'>
+            Kelp me!
           </NavLink>
         </li>
         {/* <li>
