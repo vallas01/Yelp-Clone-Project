@@ -1,0 +1,17 @@
+.user-details{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+.info{
+    display:flex;
+    align-items:left;
+    flex-direction: column;
+}
+
+.user-detail-header{
+    display: flex;
+    justify-content: center;
+}
