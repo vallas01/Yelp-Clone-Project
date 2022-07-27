@@ -16,7 +16,6 @@ class User(db.Model, UserMixin):
     zip	= db.Column(db.Integer, nullable=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-
     images = db.relationship('Image', back_populates='users')
     restaurants = db.relationship('Restaurant', back_populates='user')
     reviews = db.relationship('Review', back_populates='users')
@@ -36,5 +35,10 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'avatar': self.avatar,
+            'address': self.address,
+            'city': self.city,
+            'state': self.state,
+            'zip': self.zip,
         }
