@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useSelector } from "react-redux"
 import './UserPage.css'
 
 function User() {
   const [user, setUser] = useState({});
   const { userId }  = useParams();
-  console.log('HEREEEEEEEEEEE', user)
 
   useEffect(() => {
     if (!userId) {
