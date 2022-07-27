@@ -4,24 +4,30 @@ import './homepage.css'
 
 
 function HomePage() {
-    const [count, setCount] = useState(2)
+    const [count, setCount] = useState(3)
 
-    // useEffect(() => {
-    //     const timer = setInterval(() => {
-    // })
-      
+    useEffect(() => {
+
+        const timer = setInterval(() => {
+                setCount((count) => count + 1)
+                if (count===3) {setCount(1)}
+        }, 6000);
+        return () => clearInterval(timer)
+    
+    });
+  
 
     return (
         <>
             <div className='homepage-container'>
                 {count ===1 && (
-                    <img className='homepageImage' src='./restaurant1.jpg' alt='restaurant'></img>
+                    <img className='homepageImage' src='https://res.cloudinary.com/kelp-me/image/upload/v1658875840/restaurant1_vadale.jpg' alt='restaurant'></img>
                 )}
                 {count ===2 && (
-                    <img className='homepageImage' src='./restaurant2.jpg' alt='restaurant'></img>
+                    <img className='homepageImage' src='https://res.cloudinary.com/kelp-me/image/upload/v1658875820/restaurant2_xsywsl.jpg' alt='restaurant'></img>
                 )}
-                {count ===3 && (
-                    <img className='homepageImage' src='./restaurant3.jpg' alt='restaurant'></img>
+                {count >= 3 && (
+                    <img className='homepageImage' src='https://res.cloudinary.com/kelp-me/image/upload/v1658875796/restaurant3_w9xnyu.jpg' alt='restaurant'></img>
                 )}
             </div>
             <div className='homepage-tagline'>
