@@ -1,10 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import {useSelector, useDispatch} from 'react-redux'
+import { getReviews } from "./../store/review"
 import './UserPage.css'
 
 function User() {
+  const dispatch = useDispatch()
   const [user, setUser] = useState({});
-  const { userId }  = useParams();
+  const { userId } = useParams();
+  const userReviews = Object.values(useSelector(state => state?.review)).filter(review => review.user_id == userId)
+  console.log('COMPONENT HEREEEEEEEEEEEEEEE', userReviews)
+
+  useEffect(() => {
+    dispatch(getReviews())
+  },[dispatch])
 
   useEffect(() => {
     if (!userId) {
@@ -50,6 +59,17 @@ function User() {
         <img src={user.avatar}/>
       </div>
     </div>
+
+    <div className='user-reviews'>
+      <h2 style={{color:'tomato'}}>Your Reviews</h2>
+        {userReviews && userReviews.map(review => {
+          return (
+            <h4>{review.text}</h4>
+          )
+        })}
+    </div>
+
+    
     </>
   );
 }
