@@ -6,7 +6,7 @@ html, body {
     font-family: 'Raleway', sans-serif;
 }
 
-button {
+button  {
     background-color: tomato;
     color: white;
     border-radius: 5px;

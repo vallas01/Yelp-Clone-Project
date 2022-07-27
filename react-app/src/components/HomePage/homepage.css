@@ -4,9 +4,9 @@
 
 .homepage-tagline {
     color: white;
-    outline: 5px solid rgba(0,0,0,25%);
+    outline: 5px solid rgba(0, 0, 0, 25%);
     border-radius: 10px;
-    background: rgba(0,0,0,30%);
+    background: rgba(0, 0, 0, 30%);
     font-size: 1.8rem;
     white-space: nowrap;
     position: absolute;
@@ -20,4 +20,23 @@
     font-size: 1.3rem;
     font-weight: 600;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.top8-Image {
+    height: 250px;
+    width: 250px;
+    margin: 10px
+}
+
+.top8-Image-Container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1080px;
+    justify-content: center;
+
 }

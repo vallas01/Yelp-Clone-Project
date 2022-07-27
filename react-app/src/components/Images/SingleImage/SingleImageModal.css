@@ -18,3 +18,9 @@
   background-color: rgb(245, 245, 245);
   border: 2px solid black;
 }
+
+.imageRestaurant {
+  width: 200px;
+  height: 200px;
+  border-radius: 25px;;
+}
