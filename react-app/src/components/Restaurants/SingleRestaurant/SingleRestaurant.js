@@ -28,16 +28,18 @@ const SingleRestaurant = () => {
   if (!restaurant) return ("loading")
 
   return (
-    <div>
+    <div className="single-image-page">
       <h1>{restaurant.name}</h1>
-      {restaurantImgs && restaurantImgs.map(img => {
-        return (
-          <div key={img.id} className="restaurant-image-container">
-            <img src={img.img_url} alt={img.title} />
-            <SingleImageModal img={img} />
-          </div>
-        )
-      })}
+      <div className="restaurant-images-container">
+        {restaurantImgs && restaurantImgs.map(img => {
+          return (
+            <div key={img.id} className="restaurant-single-image-container">
+              <img src={img.img_url} alt={img.title} />
+              <SingleImageModal img={img} />
+            </div>
+          )
+        })}
+      </div>
       <UpdateRestaurantForm restaurant={restaurant} />
       <RestaurantToDelete restaurant={restaurant} />
 
