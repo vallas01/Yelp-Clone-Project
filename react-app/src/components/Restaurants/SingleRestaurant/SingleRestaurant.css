@@ -1,6 +1,6 @@
 .single-image-page {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .container-redirect {
@@ -22,13 +22,18 @@
     color: tomato;
 }
 
+.restaurant-data-container {
+    background-color: #fc0;
+    width: 50%;
+}
+
 .restaurant-images-container {
+    background-color: aqua;
     align-items: center;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 80%;
-    margin: 50px 70px;
+    width: 50%;
     align-items: center;
 }
 
@@ -40,13 +45,14 @@
     align-items: center;
 }
 
-/* .restaurant-image-container > * {
-    flex-direction: column;
 
-} */
 
 .star-review {
     color: #fc0;
     font-size: 1.5em;
   }
   
+
+.reviewedBy {
+    color: tomato
+}  
