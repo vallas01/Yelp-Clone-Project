@@ -35,6 +35,7 @@ const Top8Restaurants = () => {
         {topRestaurants.map(restaurant => (
           <div>
             <h3>{restaurant.name} </h3>
+            <h5>Rating: {restaurant.rating} &#9733;'s</h5>
             <img className="top8-Image" src={restaurant.logo} alt={restaurant.name} />
           </div>
         ))}
