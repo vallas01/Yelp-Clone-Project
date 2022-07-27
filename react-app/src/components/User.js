@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useSelector } from "react-redux"
 
 function User() {
   const [user, setUser] = useState({});
   const { userId }  = useParams();
+  console.log('HEREEEEEEEEEEE', user)
 
   useEffect(() => {
     if (!userId) {
@@ -21,6 +23,7 @@ function User() {
   }
 
   return (
+    <>
     <ul>
       <li>
         <strong>User Id</strong> {userId}
@@ -32,6 +35,20 @@ function User() {
         <strong>Email</strong> {user.email}
       </li>
     </ul>
+    <div className='user-details'>
+      <h1 style={{color:'tomato'}}>User Details</h1>
+      
+        <h3>Name: {user.username}</h3>
+        <h3>Address: {user.address}</h3>
+        <h3>City: {user.city}</h3>
+        <h3>State: {user.state}</h3>
+        <h3>Zip: {user.zip}</h3>
+
+      <div className='user-avatar'>
+        <img src={user.avatar}/>
+      </div>
+    </div>
+    </>
   );
 }
 export default User;
