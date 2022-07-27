@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux'
 import { getReviews } from "./../store/review"
 import { getRestaurantsThunk } from "./../store/restaurant"
@@ -74,6 +74,16 @@ function User() {
 
     <div className='user-restaurants'>
       <h2 style={{color:'tomato'}}>Your Restaurants</h2>
+        {userRestaurants && userRestaurants.map(place => {
+          return(
+            <>
+              <h4>{place.name}</h4>
+              <NavLink to={`/restaurants/${place.id}`}>
+                <img src={place.logo} style={{height:'300px', width:'auto'}}></img>
+              </NavLink>
+            </>
+          )
+        })}
     </div>
     </>
   );
