@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request, redirect
 from flask_login import login_required
-from app.models import Restaurant, db
+from app.models import Restaurant, db, Review
 from app.forms import RestaurantForm, UpdateRestaurantForm
 
 restaurant_routes = Blueprint('restaurant', __name__)

@@ -30,13 +30,13 @@
 .top8-Image {
     height: 250px;
     width: 250px;
-    margin: 5px
+    margin: 10px
 }
 
 .top8-Image-Container {
     display: flex;
     flex-wrap: wrap;
-    max-width: 530px;
+    max-width: 1080px;
     justify-content: center;
 
 }

@@ -1,17 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getRestaurantsThunk } from '../../store/restaurant';
+import React, { useEffect, useState } from 'react'
 import './homepage.css'
+import Top8Restaurants from './Top8Restaurants';
 
 
 
 function HomePage() {
-    const dispatch = useDispatch()
-
     const [count, setCount] = useState(3)
 
-    const restaurants = Object.values(useSelector(state => state.restaurant))
-    const topRestaurants = restaurants.splice(0, 8)
 
     useEffect(() => {
 
@@ -41,17 +36,7 @@ function HomePage() {
             <div className='homepage-tagline'>
                 Heading Out?  Bring Kelp-Me with you
             </div>
-            <div className='homepage-list'>
-                <label> Our 8 Best Restaurants on Kelp-Me</label>
-                <div className='top8-Image-Container'>
-                    {topRestaurants.map(restaurant => (
-                        <div>
-                            <h3>{restaurant.name} </h3>
-                            <img className="top8-Image" src={restaurant.logo} alt={restaurant.name} />
-                        </div>
-                    ))}
-                </div>
-            </div>
+            <Top8Restaurants />
         </>
     )
 }
