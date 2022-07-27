@@ -77,6 +77,10 @@ function App() {
         <ProtectedRoute path='/new-review' exact={true}>
           <ReviewForm />
         </ProtectedRoute>
+        
+        <ProtectedRoute path='/new-image' exact={true}>
+          <NewImage />
+        </ProtectedRoute>
 
         <Route path='/review' exact={true}>
           <Review />

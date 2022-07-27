@@ -1,7 +1,25 @@
 .single-image-page {
     display: flex;
     flex-direction: column;
-    align-items: center;
+}
+
+.container-redirect {
+    display: flex;
+    justify-content: right;
+}
+
+.container-buttons {
+    display: flex;
+    justify-content: left;
+}
+.navBtn {
+    
+    margin: 0px 40px;
+    list-style-type: none;
+}
+
+.navBtn:hover {
+    color: tomato;
 }
 
 .restaurant-images-container {
@@ -11,6 +29,7 @@
     justify-content: center;
     width: 80%;
     margin: 50px 70px;
+    align-items: center;
 }
 
 .restaurant-single-image-container {
@@ -25,3 +44,9 @@
     flex-direction: column;
 
 } */
+
+.star-review {
+    color: #fc0;
+    font-size: 1.5em;
+  }
+  
