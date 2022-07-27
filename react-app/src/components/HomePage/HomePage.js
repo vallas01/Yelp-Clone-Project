@@ -13,15 +13,15 @@ function HomePage() {
     const restaurants = Object.values(useSelector(state => state.restaurant))
     const topRestaurants = restaurants.splice(0, 8)
 
-    // useEffect(() => {
-    //     const timer = setInterval(() => {
-
-    // okay
-    // })
-
     useEffect(() => {
-        dispatch(getRestaurantsThunk())
-    }, [dispatch])
+
+        const timer = setInterval(() => {
+            setCount((count) => count + 1)
+            if (count === 3) { setCount(1) }
+        }, 6000);
+        return () => clearInterval(timer)
+
+    });
 
 
     return (
@@ -33,10 +33,11 @@ function HomePage() {
                 {count === 2 && (
                     <img className='homepageImage' src='https://res.cloudinary.com/kelp-me/image/upload/v1658875820/restaurant2_xsywsl.jpg' alt='restaurant'></img>
                 )}
-                {count === 3 && (
+                {count >= 3 && (
                     <img className='homepageImage' src='https://res.cloudinary.com/kelp-me/image/upload/v1658875796/restaurant3_w9xnyu.jpg' alt='restaurant'></img>
-                )}
-            </div>
+                )
+                }
+            </div >
             <div className='homepage-tagline'>
                 Heading Out?  Bring Kelp-Me with you
             </div>
