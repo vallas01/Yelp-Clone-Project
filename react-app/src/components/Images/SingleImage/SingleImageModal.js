@@ -6,7 +6,7 @@ function SingleImageModal({ img }) {
   const [openModal, setOpenModal] = useState(false)
 
   return (<>
-    <button onClick={() => setOpenModal(true)}>Image</button>
+    <button onClick={() => setOpenModal(true)}>Edit Image</button>
     {openModal && <div className="ImageModalBackground">
       <div className="ImageModalContent">
         <button onClick={() => setOpenModal(false)}>X</button>

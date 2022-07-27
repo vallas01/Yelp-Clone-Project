@@ -58,17 +58,17 @@ function App() {
           <Restaurants />
         </Route>
 
-        <ProtectedRoute path='/users' exact={true} >
+        <Route path='/users' exact={true} >
           <UsersList />
-        </ProtectedRoute>
+        </Route>
 
-        <ProtectedRoute path='/users/:userId' exact={true} >
+        <Route path='/users/:userId' exact={true} >
           <User />
-        </ProtectedRoute>
+        </Route>
 
-        <ProtectedRoute path='/' exact={true} >
+        <Route path='/' exact={true} >
           <HomePage />
-        </ProtectedRoute>
+        </Route>
 
         <ProtectedRoute path='/restaurants/:restaurantId/new-image' exact={true} >
           <NewImage />

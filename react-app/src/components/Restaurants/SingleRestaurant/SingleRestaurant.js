@@ -8,6 +8,7 @@ import { getAllImages } from "../../../store/images"
 import SingleImageModal from "../../Images/SingleImage/SingleImageModal"
 import NewImage from "../../Images/NewImage"
 import ReviewForm from "../../reviews/newReviewForm"
+import './SingleRestaurant.css'
 
 const SingleRestaurant = () => {
   const dispatch = useDispatch()
@@ -31,7 +32,7 @@ const SingleRestaurant = () => {
       <h1>{restaurant.name}</h1>
       {restaurantImgs && restaurantImgs.map(img => {
         return (
-          <div key={img.id}>
+          <div key={img.id} className="restaurant-image-container">
             <img src={img.img_url} alt={img.title} />
             <SingleImageModal img={img} />
           </div>
