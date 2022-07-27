@@ -2,6 +2,7 @@ import { deleteimage, updateImage } from "../../../store/images"
 import { useDispatch } from "react-redux"
 import { useState } from "react"
 import { useHistory } from 'react-router-dom';
+import './SingleImageModal.css'
 
 const SingleImage = ({ img }) => {
   // eslint-disable-next-line 
@@ -32,7 +33,7 @@ const SingleImage = ({ img }) => {
   }
 
   return (<div>
-    <img style={{ width: "300px", height: "auto" }} src={img.img_url} alt={img.title} />
+    <img className="imageRestaurant"  src={img.img_url} alt={img.title} />
     <h1>{img.title}</h1>
     <form onSubmit={handleEdit}>
       <label htmlFor="ImageName"></label>
