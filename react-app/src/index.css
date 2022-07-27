@@ -20,3 +20,25 @@ a {
     text-decoration: none;
     color: black;
 }
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+
+form div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+div h1 {
+    text-align: center;
+}
+
+div img {
+    text-align: center;
+}

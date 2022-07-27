@@ -47,7 +47,7 @@ const UpdateRestaurantForm = ({ restaurant }) => {
 
   if (user && user.id === restaurant.user_id) return (
     < div >
-      <button onClick={() => { setOpenEdit(!openEdit) }}>Edit</button>
+      <button onClick={() => { setOpenEdit(!openEdit) }}>Edit Restaurant</button>
       {
         openEdit &&
         <fieldset>
