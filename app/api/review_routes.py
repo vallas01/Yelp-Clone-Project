@@ -24,6 +24,7 @@ def validation_errors_to_error_messages(validation_errors):
 # @login_required
 def review_get():
     reviews = Review.query.all()
+     
     return {'review': [review.to_dict() for review in reviews]}
 
 
@@ -36,8 +37,7 @@ def review_post():
     # Get the csrf_token from the request cookie and put it into the
     # form manually to validate_on_submit can be used
     form['csrf_token'].data = request.cookies['csrf_token']
-    print('HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE')
-    print(form.data)
+    
     if form.validate_on_submit():
         new_review = Review(
             user_id = form.data["user_id"],

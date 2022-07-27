@@ -9,11 +9,11 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
-    avatar = db.Column(db.String(255), nullable=True)
-    address	= db.Column(db.String(255), nullable=False)
-    city = db.Column(db.String(40), nullable=False)
-    state = db.Column(db.String(20), nullable=False)
-    zip	= db.Column(db.Integer, nullable=False)
+    avatar = db.Column(db.String(255), nullable=True, default='https://www.austriabc.com/wp-content/uploads/2019/08/default-profile.png')
+    address	= db.Column(db.String(255), nullable=True)
+    city = db.Column(db.String(40), nullable=True)
+    state = db.Column(db.String(20), nullable=True)
+    zip	= db.Column(db.Integer, nullable=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
 
