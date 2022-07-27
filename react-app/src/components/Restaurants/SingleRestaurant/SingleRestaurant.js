@@ -28,29 +28,20 @@ const SingleRestaurant = () => {
   if (!restaurant) return ("loading")
 
   return (
-    <div>
-      <div>
-          <NavLink className="navBtn" to="/new-image">Add a Photo</NavLink>
-          <NavLink className="navBtn" to="/new-review">Write a Review</NavLink>
+    <div className="single-image-page">
+      <h1>{restaurant.name}</h1>
+      <div className="restaurant-images-container">
+        {restaurantImgs && restaurantImgs.map(img => {
+          return (
+            <div key={img.id} className="restaurant-single-image-container">
+              <img src={img.img_url} alt={img.title} />
+              <SingleImageModal img={img} />
+            </div>
+          )
+        })}
       </div>
-      
-      <div>
-
-          <h1>{restaurant.name}</h1>
-          {restaurantImgs && restaurantImgs.map(img => {
-              return (
-                <div key={img.id} className="restaurant-image-container">
-                  <img className="imageRestaurant" src={img.img_url} alt={img.title} />
-                  <SingleImageModal img={img} />
-                </div>
-              )
-          })}
-      </div>
-
-      <div className="container-buttons">
-          <UpdateRestaurantForm restaurant={restaurant} />
-          <RestaurantToDelete restaurant={restaurant} />
-      </div>
+      <UpdateRestaurantForm restaurant={restaurant} />
+      <RestaurantToDelete restaurant={restaurant} />
 
       {
         user ?
