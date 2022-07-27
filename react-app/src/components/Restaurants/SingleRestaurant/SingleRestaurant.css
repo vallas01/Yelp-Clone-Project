@@ -7,17 +7,20 @@
     display: flex;
     justify-content: right;
 }
+
+.container-buttons {
+    display: flex;
+    justify-content: left;
+}
 .navBtn {
-    text-decoration: none;
+    
     margin: 0px 40px;
+    list-style-type: none;
 }
 
 .navBtn:hover {
-    text-decoration: underline;
-    text-decoration-color: tomato;
+    color: tomato;
 }
-
-    align-items: center;
 
 .restaurant-images-container {
     align-items: center;
@@ -26,6 +29,7 @@
     justify-content: center;
     width: 80%;
     margin: 50px 70px;
+    align-items: center;
 }
 
 .restaurant-single-image-container {
@@ -40,3 +44,9 @@
     flex-direction: column;
 
 } */
+
+.star-review {
+    color: #fc0;
+    font-size: 1.5em;
+  }
+  
