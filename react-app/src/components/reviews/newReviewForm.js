@@ -18,6 +18,8 @@ function ReviewForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
+    
+    if (!rating) alert('The minimum is one star, try again!');
 
     const newReview = {
       user_id: user.id,
@@ -26,7 +28,6 @@ function ReviewForm() {
       rating
     };
 
-console.log('newReview======>',newReview)
 
     dispatch(createReview(newReview))
       .then(() => history.push(`/restaurants/${restaurantId}`))
@@ -62,7 +63,7 @@ console.log('newReview======>',newReview)
         </label>
 
         <div className="star-rating">
-          <input type="radio" id="5-stars" value="5" name="stars"
+          <input type="radio" id="5-stars" value="5" name="stars" 
             onChange={(e) => setRating(e.target.value)} />
           <label htmlFor="5-stars">&#9733;</label>
           <input type="radio" id="4-stars" value="4" name="stars"

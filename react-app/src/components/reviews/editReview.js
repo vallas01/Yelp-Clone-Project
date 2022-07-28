@@ -27,6 +27,8 @@ console.log('review details====', review)
     e.preventDefault();
     setErrors([]);
 
+    if (!rating) alert('The minimum is one star, try again!');
+
     const newReview = {
       user_id: review[0].user_id,
       restaurant_id: review[0].restaurant_id,
