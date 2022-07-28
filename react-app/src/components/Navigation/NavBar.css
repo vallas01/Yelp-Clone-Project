@@ -26,3 +26,25 @@ li a:hover {
     color: tomato;
 
 }
+
+.dropdown-menu {
+    display: block;
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    border: red 1px solid;
+    right: 20px;
+    top: 58px;
+    width: 280px;
+    height: 150px;
+
+    padding: 30px 40px;
+
+    /* z-index: 1; */
+
+    /* top: var(--navbar-body-height); */
+}
+
+/* .dropdown:hover .dropdown-menu {
+    transition-delay: 2s;
+    display: block;
+} */
