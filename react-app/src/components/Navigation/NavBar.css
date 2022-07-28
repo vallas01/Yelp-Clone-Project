@@ -31,14 +31,14 @@ li a:hover {
     display: block;
     position: absolute;
     background-color: rgb(255, 255, 255);
-    border: red 1px solid;
+    border-radius: 5px;
+    box-shadow: 0 3px 7px 2px rgba(94, 94, 94, 0.414);
     right: 20px;
-    top: 58px;
-    width: 280px;
-    height: 150px;
-
-    padding: 30px 40px;
-
+    top: 62px;
+    width: 250px;
+    height: 120px;
+    /* padding: 20px 20px; */
+    align-items: center;
     /* z-index: 1; */
 
     /* top: var(--navbar-body-height); */
@@ -48,3 +48,13 @@ li a:hover {
     transition-delay: 2s;
     display: block;
 } */
+
+.dropdown-menu ul {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.dropdown-menu ul li {
+    margin: 12px;
+}

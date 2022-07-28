@@ -21,9 +21,9 @@ const NavBar = () => {
       setShowMenu(false);
     };
 
-    document.addEventListener('click', closeMenu);
+    document?.addEventListener('click', closeMenu);
 
-    return () => document.removeEventListener("click", closeMenu);
+    return () => document?.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
   // console.log("NavBarrrrrrrrrrrrrr", sessionUser)
@@ -41,7 +41,6 @@ const NavBar = () => {
 
             {showMenu && (
               <div className='dropdown-menu'>
-
                   <ul>
                     <li>
                       <NavLink to={`/users/${sessionUser.id}`} exact={true} activeClassName='active'>
