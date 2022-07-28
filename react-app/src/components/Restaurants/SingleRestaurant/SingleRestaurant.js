@@ -53,8 +53,8 @@ const SingleRestaurant = () => {
       <div className="single-image-page">
 
           <div className='restaurant-data-container'>
+              <img className="logoRest" src={restaurant.logo} alt='logo'></img>
               <h2 className="nameRest">{restaurant.name}</h2>
-              
               <p>{restaurant.address}</p>
               <p>{restaurant.city}, {restaurant.state} {restaurant.zip}</p>
               <div className="descRest">{restaurant.description}</div>
@@ -62,7 +62,7 @@ const SingleRestaurant = () => {
 
           </div>
           
-          <div className="restaurant-images-container">
+          <div className="restaurant-images-container"> 
               {restaurantImgs && restaurantImgs.map(img => {
                   return (
                     <div key={img.id} className="restaurant-single-image-container">

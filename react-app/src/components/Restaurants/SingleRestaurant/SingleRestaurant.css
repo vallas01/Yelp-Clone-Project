@@ -28,12 +28,12 @@
 }
 
 .restaurant-data-container {
-    background-color: #fc0;
+    
     width: 25%;
 }
 
 .restaurant-images-container {
-    background-color: aqua;
+    
     display: flex;
     align-items: center;
     /* flex-wrap: wrap; */
@@ -50,25 +50,40 @@
     align-items: center;
 }
 
-.nameRest {
-    color: tomato;
-}
- 
 .restaurant-data-container > p {
     color: tomato;
-    margin: 5px 30px;
+    margin: 0px 30px;
+    font-size: .9rem;
+}
+
+.logoRest {
+    position: static;
+    width: 100%;
+    z-index: 0;
+}
+
+.nameRest {
+    position: absolute;
+    top: 105px;
+    margin-left: 5px;
+    color: white;
+    outline: 5px solid rgba(0,0,0,25%);
+    border-radius: 10px;
+    background: rgba(0,0,0,30%);
+    font-size: 1.8rem;
+}
+ 
+.descRest {
+    margin: 10px 30px;
 }
 
 .ownerRest {
     color: black;
     font-style: italic;
-    font-size: .8rem;
-    margin: 30px 30px;
+    font-size: .6rem;
+    margin: 10px 30px;
 }
 
-.descRest {
-    margin: 30px 30px;
-}
 
 
 
