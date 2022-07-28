@@ -1,0 +1,25 @@
+.Restaurants-Page-Container {
+  border: 1px solid aqua;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 80vh
+}
+
+.restaurants-filters {
+  border: 1px solid black;
+  height: 100%;
+  width: 20%;
+}
+
+.restaurants-page-details {
+  border: 1px solid red;
+  width: 45%;
+  height: 100%;
+}
+
+.restaurants-map-details {
+  border: 1px solid green;
+  height: 100%;
+  width: 30%;
+}
