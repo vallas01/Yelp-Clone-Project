@@ -169,6 +169,23 @@ function User() {
             <li key={review.id}>
             <>
               <h4>{allRestaurants[review?.restaurant_id - 1]?.name}</h4>
+              <div>
+                { review.rating === 5 && (
+                    <label  className="star-review">&#9733; &#9733; &#9733; &#9733; &#9733;</label>
+                    )}
+                { review.rating === 4 && (
+                    <label  className="star-review">&#9733; &#9733; &#9733; &#9733;</label>
+                    )}
+                { review.rating === 3 && (
+                    <label  className="star-review">&#9733; &#9733; &#9733;</label>
+                    )}
+                { review.rating === 2 && (
+                    <label  className="star-review">&#9733; &#9733;</label>
+                    )}
+                { review.rating === 1 && (
+                    <label  className="star-review">&#9733;</label>
+                    )}
+              </div>
               <h4>{review.text}</h4>
               <button onClick={handleEdit}>Edit</button>
               <button onClick={()=>deleteThisReview(review.id)}>Delete</button>
