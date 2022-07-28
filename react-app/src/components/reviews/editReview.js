@@ -1,36 +1,44 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import { createReview } from '../../store/review'
+import { updateReviewDetails, getReviews } from '../../store/review'
 import './index.css'
 
 
-function ReviewForm() {
+function EditReview() {
   const dispatch = useDispatch();
   const history = useHistory();
   const [errors, setErrors] = useState([]);
   const [text, setText] = useState('');
   const [rating, setRating] = useState('');
-
+  const { reviewId } = useParams()
+// eslint-disable-next-line
   const user = useSelector(state => state.session.user)
-  const { restaurantId } = useParams()
+  const reviews = Object.values(useSelector(state => state.review))
+  const review = reviews.filter(review => review.id === Number(reviewId))
+  
+console.log('review details====', review)
+
+  useEffect(() => {
+    dispatch(getReviews())
+    }, [dispatch]);
   
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    
+
     if (!rating) alert('The minimum is one star, try again!');
 
     const newReview = {
-      user_id: user.id,
-      restaurant_id: restaurantId,
+      user_id: review[0].user_id,
+      restaurant_id: review[0].restaurant_id,
       text,
-      rating
+      rating: Number(rating)
     };
 
 
-    dispatch(createReview(newReview))
-      .then(() => history.push(`/restaurants/${restaurantId}`))
+    dispatch(updateReviewDetails(newReview, reviewId))
+      .then(() => history.push(`/users/${review[0].user_id}`))
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
@@ -45,7 +53,7 @@ function ReviewForm() {
 
   return (
     <>
-      <h1> Enter Review </h1>
+      <h1> Edit Review </h1>
 
       {errors.length > 0 && (
         <ul className='error-container'>
@@ -63,7 +71,7 @@ function ReviewForm() {
         </label>
 
         <div className="star-rating">
-          <input type="radio" id="5-stars" value="5" name="stars" 
+          <input type="radio" id="5-stars" value="5" name="stars"
             onChange={(e) => setRating(e.target.value)} />
           <label htmlFor="5-stars">&#9733;</label>
           <input type="radio" id="4-stars" value="4" name="stars"
@@ -84,7 +92,7 @@ function ReviewForm() {
 
         <input
           type="text"
-          placeholder='Enter your review...'
+          placeholder= {review[0].text}
           value={text}
           onChange={(e) => setText(e.target.value)}
           required
@@ -97,4 +105,4 @@ function ReviewForm() {
   );
 }
 
-export default ReviewForm;
+export default EditReview;

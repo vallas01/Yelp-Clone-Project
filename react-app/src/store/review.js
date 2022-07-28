@@ -49,9 +49,12 @@ export const createReview = (details) => async dispatch => {
     }
   };
 
-export const updateReviewDetails = (reviewDetails) => async dispatch => {
-    const response = await fetch(`/api/review/${reviewDetails.id}`, {
+export const updateReviewDetails = (reviewDetails, id) => async dispatch => {
+    const response = await fetch(`/api/review/${id}`, {
       method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify(reviewDetails)
     })
     if(response.ok){

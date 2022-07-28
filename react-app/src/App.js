@@ -18,6 +18,7 @@ import Technology from './components/Footer/Technology';
 import About from './components/Footer/About';
 import HomePage from './components/HomePage/HomePage';
 import Footer from './components/Footer/Footer';
+import EditReview from './components/reviews/editReview';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -84,6 +85,10 @@ function App() {
 
         <Route path='/review' exact={true}>
           <Review />
+        </Route>
+
+        <Route path='/edit-review/:reviewId' exact={true}>
+          <EditReview />
         </Route>
 
         <Route exact path="/technology">

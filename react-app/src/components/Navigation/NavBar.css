@@ -26,3 +26,35 @@ li a:hover {
     color: tomato;
 
 }
+
+.dropdown-menu {
+    display: block;
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    box-shadow: 0 3px 7px 2px rgba(94, 94, 94, 0.414);
+    right: 20px;
+    top: 62px;
+    width: 250px;
+    height: 120px;
+    /* padding: 20px 20px; */
+    align-items: center;
+    /* z-index: 1; */
+
+    /* top: var(--navbar-body-height); */
+}
+
+/* .dropdown:hover .dropdown-menu {
+    transition-delay: 2s;
+    display: block;
+} */
+
+.dropdown-menu ul {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.dropdown-menu ul li {
+    margin: 12px;
+}
