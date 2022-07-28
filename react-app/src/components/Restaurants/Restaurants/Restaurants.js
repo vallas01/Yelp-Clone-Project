@@ -1,20 +1,23 @@
 import { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 // import { getRestaurantsThunk } from "../../../store/restaurant"
 import { NavLink } from 'react-router-dom';
 import { useSearchBar } from "../../../context/SearchBarContext";
+import { useState } from "react";
 import './Restaurants.css'
+
+
 const Restaurants = () => {
   const dispatch = useDispatch()
-  const restaurants = Object.values(useSelector(state => state.restaurant)).reverse()
-  const { searchTerm, setSearchTerm } = useSearchBar()
+  const [restaurants, setRestaurants] = useState('')
+  const { searchTerm } = useSearchBar()
   console.log('SEARCHTERM', searchTerm)
 
   useEffect(() => {
     (async function () {
-      const response = await fetch('/api/restaurants/here');
+      const response = await fetch('/api/restaurants/2');
       const responseData = await response.json();
-      console.log(responseData)
+      setRestaurants(responseData.restaurant)
     })()
   }, [dispatch])
 
@@ -29,7 +32,7 @@ const Restaurants = () => {
     )
   })
 
-
+  console.log(restaurants.reviews)
 
 
 
@@ -40,13 +43,21 @@ const Restaurants = () => {
 
     </div>
     <div className="restaurants-page-details">
-      <h1>{searchTerm.toUpperCase()}</h1>
-      {filteredRestaurants.map(restaurant => {
-        return (<li key={restaurant.id}>
-          <NavLink to={`/restaurants/${restaurant.id}`}>{restaurant.name}</NavLink>
-        </li>
-        )
-      })}
+      <h1 className="restaurants-details-h1">All {searchTerm} Results</h1>
+      <div>
+
+        {filteredRestaurants.map(restaurant => {
+          return (<div className="individual-restaurant-details" key={restaurant.id}>
+            <img className="restaurant-logo" src={restaurant.logo} />
+            <div>
+              <NavLink className="restaurant-name" to={`/restaurants/${restaurant.id}`}>{restaurant.name}</NavLink>
+              <div className="restaurant-address"> {restaurant.address} </div>
+              <div className="restaurant-address"> {restaurant.city} {restaurant.state} {restaurant.zip}</div>
+            </div>
+          </div>
+          )
+        })}
+      </div>
     </div>
     <div className="restaurants-map-details">
 

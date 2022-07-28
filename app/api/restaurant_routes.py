@@ -89,7 +89,7 @@ def delete_restaurant(id):
     return ({"done": "complete"})
 
 
-@restaurant_routes.route('/here')
+@restaurant_routes.route('2')
 def restaurant_get2():
     restaurants = Restaurant.query.all()
     return {'restaurant': [restaurant.to_dict_2() for restaurant in restaurants]}
