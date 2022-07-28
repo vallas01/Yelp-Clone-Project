@@ -38,3 +38,23 @@ class Restaurant(db.Model):
             "lng": self.lng,
             "logo": self.logo
         }
+
+    def to_dict_2(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "name": self.name,
+            "address": self.address,
+            "city": self.city,
+            "state": self.state,
+            "zip": self.zip,
+            "category": self.category,
+            "description": self.description,
+            "price": self.price,
+            "lat": self.lat,
+            "lng": self.lng,
+            "logo": self.logo,
+            "owner": self.user.to_dict(),
+            "images": [image.to_dict() for image in self.images],
+            "reviews": [review.to_dict() for review in self.reviews],
+        }

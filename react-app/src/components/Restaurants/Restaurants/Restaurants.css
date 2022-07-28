@@ -1,0 +1,60 @@
+.Restaurants-Page-Container {
+  border: 1px solid blueviolet;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* min-height: 80vh */
+}
+
+.restaurants-filters {
+  /* border: 1px solid black; */
+  /* height: 100%; */
+  width: 15%;
+}
+
+.restaurants-page-details {
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid red; */
+  width: 55%;
+  /* height: 100%; */
+}
+
+.restaurants-map-details {
+  /* border: 1px solid green; */
+  /* height: 100%; */
+  width: 25%;
+}
+
+.restaurants-details-h1 {
+  text-align: left;
+}
+
+.individual-restaurant-details {
+  display: flex;
+  border: 1px rgba(0, 0, 0, 20%) solid;
+  height: 225px;
+  min-width: 200px;
+  width: 100%;
+  margin: 10px;
+  padding: 8px;
+}
+
+.restaurant-logo {
+  align-self: center;
+  height: 200px;
+  width: 200px;
+  border-radius: 10px;
+
+}
+
+.restaurant-name {
+  background: rgba(0, 0, 0, 5%);
+  font-size: 1.2rem;
+
+}
+
+.restaurant-address {
+  font-size: .8rem;
+  color: tomato;
+}
