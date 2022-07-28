@@ -8,7 +8,7 @@ function SingleImageModal({ img }) {
   const user = useSelector(state => state.session.user)
 
   return (<>
-    {user && user.id === img.id && <button onClick={() => setOpenModal(true)}>Edit Image</button>}
+    {user && user.id === img.user_id && <button onClick={() => setOpenModal(true)}>Edit Image</button>}
     {openModal && <div className="ImageModalBackground">
       <div className="ImageModalContent">
         <button onClick={() => setOpenModal(false)}>X</button>
