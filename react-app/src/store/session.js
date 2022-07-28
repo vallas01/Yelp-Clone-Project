@@ -1,6 +1,7 @@
 // constants
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
+const UPDATE_USER = 'session/UPDATE_USER'
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -10,6 +11,12 @@ const setUser = (user) => ({
 const removeUser = () => ({
   type: REMOVE_USER,
 })
+
+const updateUser = (payload) => ({
+  type: UPDATE_USER,
+  payload
+})
+
 
 const initialState = { user: null };
 
@@ -24,7 +31,7 @@ export const authenticate = () => async (dispatch) => {
     if (data.errors) {
       return;
     }
-  
+
     dispatch(setUser(data));
   }
 }
@@ -40,8 +47,8 @@ export const login = (email, password) => async (dispatch) => {
       password
     })
   });
-  
-  
+
+
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data))
@@ -71,7 +78,6 @@ export const logout = () => async (dispatch) => {
 
 
 export const signUp = (username, email, avatar, password) => async (dispatch) => {
-  console.log("THUNK",avatar)
   const response = await fetch('/api/auth/signup', {
     method: 'POST',
     headers: {
@@ -84,7 +90,7 @@ export const signUp = (username, email, avatar, password) => async (dispatch) =>
       password,
     }),
   });
-  
+
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data))
@@ -98,13 +104,33 @@ export const signUp = (username, email, avatar, password) => async (dispatch) =>
     return ['An error occurred. Please try again.']
   }
 }
+export const updateUserThunk = (data, userId) => async (dispatch) => {
+  const response = await fetch(`/api/users/${userId}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data)
+  })
+
+  if(response.ok){
+    const user = await response.json()
+    dispatch(updateUser(user))
+    return user
+  }
+}
+;
 
 export default function reducer(state = initialState, action) {
+  let newState
   switch (action.type) {
     case SET_USER:
       return { user: action.payload }
     case REMOVE_USER:
       return { user: null }
+    case UPDATE_USER:
+      newState = {...state}
+      return newState = {...state, [action.payload.id]:action.payload}
     default:
       return state;
   }

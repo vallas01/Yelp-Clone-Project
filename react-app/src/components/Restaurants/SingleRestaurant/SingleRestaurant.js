@@ -36,7 +36,7 @@ const SingleRestaurant = () => {
   useEffect(() => {
     dispatch(getRestaurantsThunk())
     dispatch(getAllImages())
-    dispatch(getReviews())  
+    dispatch(getReviews())
   }, [dispatch])
 
   if (!restaurant) return ("loading")
@@ -50,18 +50,18 @@ const SingleRestaurant = () => {
           <NavLink className="navBtn" to="/new-image">Add a Photo</NavLink>
           <NavLink className="navBtn" to="/new-review">Write a Review</NavLink>
       </div>
-      
+
       <div className="single-image-page">
 
           <div className='restaurant-data-container'>
               <h2 className="nameRest">{restaurant.name}</h2>
-              
+
               <p>{restaurant.address}</p>
               <p>{restaurant.city}, {restaurant.state} {restaurant.zip}</p>
               <p>{restaurant.description}</p>
 
           </div>
-          
+
           <div className="restaurant-images-container">
               {restaurantImgs && restaurantImgs.map(img => {
                   return (
@@ -75,8 +75,8 @@ const SingleRestaurant = () => {
 
       </div>
 
-      
-      { user.id===restaurant.user_id && (
+
+      {user && user.id===restaurant.user_id && (
         <div className="container-buttons">
             <UpdateRestaurantForm restaurant={restaurant} />
             <RestaurantToDelete restaurant={restaurant} />
@@ -90,7 +90,7 @@ const SingleRestaurant = () => {
           {filteredReviews.map(review => {
             return (
               <li key={review.id}>
-                
+
                 <div>
                       { review.rating === 5 && (
                           <label  className="star-review">&#9733; &#9733; &#9733; &#9733; &#9733;</label>
@@ -107,9 +107,9 @@ const SingleRestaurant = () => {
                       { review.rating === 1 && (
                           <label  className="star-review">&#9733;</label>
                           )}
-                  
+
                       <div>{review.text} <span className="reviewedBy">Reviewer: {review.owner.username} </span></div>
-                  
+
                 </div>
 
               </li>
@@ -118,15 +118,15 @@ const SingleRestaurant = () => {
 
           </ul>
       </div>
-      
-     
-    
+
+
+
 
       {
         user ?
           <div>
-            
-            
+
+
           </div>
           :
           <div>
