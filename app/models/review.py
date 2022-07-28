@@ -21,4 +21,5 @@ class Review(db.Model):
             "restaurant_id": self.restaurant_id,
             "text": self.text,
             "rating": self.rating,
+            "owner":self.users.to_dict(),
         }

@@ -17,7 +17,7 @@ const SingleRestaurant = () => {
   const restaurant = useSelector(state => state.restaurant[restaurantId])
   const images = useSelector(state => state?.image)
   const reviews = Object.values(useSelector(state => state?.review))
-
+  // eslint-disable-next-line
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -29,11 +29,8 @@ const SingleRestaurant = () => {
     fetchData();
   }, []);
 
-  console.log(users)
-
   const user = useSelector(state => state.session.user)
 
-  //this one below is an array of all images that filter
   const restaurantImgs = Object.values(images).filter(img => img.restaurant_id === Number(restaurantId))
 
   useEffect(() => {
@@ -44,6 +41,9 @@ const SingleRestaurant = () => {
 
   if (!restaurant) return ("loading")
 
+  const filteredReviews = reviews.filter(review => review.restaurant_id === restaurant.id)
+
+
   return (
     <div>
       <div className='container-redirect'>
@@ -53,17 +53,26 @@ const SingleRestaurant = () => {
 
       <div className="single-image-page">
 
-        <h1>{restaurant.name}</h1>
+        <div className='restaurant-data-container'>
+          <h2 className="nameRest">{restaurant.name}</h2>
+
+          <p>{restaurant.address}</p>
+          <p>{restaurant.city}, {restaurant.state} {restaurant.zip}</p>
+          <p>{restaurant.description}</p>
+
+        </div>
+
         <div className="restaurant-images-container">
           {restaurantImgs && restaurantImgs.map(img => {
             return (
-              <div key={img.id} className="restaurant-image-container">
+              <div key={img.id} className="restaurant-single-image-container">
                 <img className="imageRestaurant" src={img.img_url} alt={img.title} />
                 <SingleImageModal img={img} />
               </div>
             )
           })}
         </div>
+
       </div>
 
 
@@ -78,10 +87,9 @@ const SingleRestaurant = () => {
         <h2>Reviews</h2>
         <ul>
 
-          {reviews.map(review => {
+          {filteredReviews.map(review => {
             return (
               <li key={review.id}>
-                <p></p>
 
                 <div>
                   {review.rating === 5 && (
@@ -100,34 +108,16 @@ const SingleRestaurant = () => {
                     <label className="star-review">&#9733;</label>
                   )}
 
-                  <div>{review.text}</div>
+                  <div>{review.text} <span className="reviewedBy">Reviewer: {review.owner.username} </span></div>
 
-                </div>
+                </div >
 
-
-
-                {/* <p> {review.user_id}</p> */}
-                {/* {users.map(reviewOwner=>(
-                    {if (reviewOwner.id===review.user_id) {
-                        <p>{reviewOwner.email}</p>
-                      }}
-                ))} */}
-
-              </li>
+              </li >
             )
           })}
 
-        </ul>
-      </div>
-
-
-      {/* {restaurants.map(restaurant => {
-      return (<li key={restaurant.id}>
-        <NavLink to={`/restaurants/${restaurant.id}`}>{restaurant.name}</NavLink>
-      </li>
-      )
-    })} */}
-
+        </ul >
+      </div >
 
 
 
@@ -144,7 +134,7 @@ const SingleRestaurant = () => {
           </div>
       }
 
-    </div>
+    </div >
 
   )
 }
