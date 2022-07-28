@@ -60,5 +60,25 @@ def delete_post(id):
     review = Review.query.get(id)
     db.session.delete(review)
     db.session.commit()
-    print('********************************************', review)
     return review.to_dict_2()
+
+@review_routes.route('/<id>', methods=['PUT'])
+def edit_post(id):
+    """
+    Edits a review
+    """
+    form = ReviewForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    review = Review.query.get(id)
+    print('GOT HERE======================================================', review)
+
+    if form.validate_on_submit():
+        review.user_id = form.user_id.data
+        review.restaurant_id = form.restaurant_id.data
+        review.text = form.text.data
+        review.rating = form.rating.data
+        print('REVIEW=====================',review)
+        db.session.commit()
+
+        return review.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401

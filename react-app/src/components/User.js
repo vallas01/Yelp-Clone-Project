@@ -50,10 +50,10 @@ function User() {
     }
   }
 
-  const handleEdit = async e => {
-    e.preventDefault()
-    history.push()
+  const handleEdit = async (id) => {
+      history.push(`/edit-review/${id}`)
   }
+
   const deleteThisReview = async (id) => {
 
     await dispatch(deleteReview(id))
@@ -187,7 +187,7 @@ function User() {
                     )}
               </div>
               <h4>{review.text}</h4>
-              <button onClick={handleEdit}>Edit</button>
+              <button onClick={()=>handleEdit(review.id)}>Edit</button>
               <button onClick={()=>deleteThisReview(review.id)}>Delete</button>
             </>
             </li>
