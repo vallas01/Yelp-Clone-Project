@@ -60,11 +60,10 @@ export const updateReviewDetails = (reviewDetails) => async dispatch => {
       return updatedReview;
     }
  };
-  
+
 export const deleteReview = (reviewId) => async dispatch => {
     const response = await fetch(`/api/review/${reviewId}`, {
       method: 'DELETE',
-      body: JSON.stringify({reviewId})
     })
     if(response.ok){
         const allReviews = await response.json();
@@ -102,7 +101,7 @@ const reviewReducer = (state = initialState, action) => {
 
     case REMOVE_REVIEW: {
       newState = {...state}
-      delete newState[action.id]
+      delete newState[action.id.id]
       return newState
     }
 
