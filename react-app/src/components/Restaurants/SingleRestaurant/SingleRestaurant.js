@@ -14,10 +14,9 @@ import { getReviews } from "../../../store/review"
 const SingleRestaurant = () => {
   const dispatch = useDispatch()
   const { restaurantId } = useParams()
-  const restaurant = useSelector(state => state.restaurant[restaurantId])
+  const restaurant = useSelector(state => state?.restaurant[restaurantId])
   const images = useSelector(state => state?.image)
   const reviews = Object.values(useSelector(state=> state?.review))
-  // eslint-disable-next-line
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -29,8 +28,8 @@ const SingleRestaurant = () => {
     fetchData();
   }, []);
 
+  const owner = users[restaurant?.user_id]?.username
   const user = useSelector(state => state.session.user)
-
   const restaurantImgs = Object.values(images).filter(img => img.restaurant_id === Number(restaurantId))
 
   useEffect(() => {
@@ -58,7 +57,8 @@ const SingleRestaurant = () => {
               
               <p>{restaurant.address}</p>
               <p>{restaurant.city}, {restaurant.state} {restaurant.zip}</p>
-              <p>{restaurant.description}</p>
+              <div className="descRest">{restaurant.description}</div>
+              <div className="ownerRest">Account Owner: {owner}</div>
 
           </div>
           
