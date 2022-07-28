@@ -7,6 +7,7 @@ import { useSearchBar } from "../../../context/SearchBarContext";
 const Restaurants = () => {
   const dispatch = useDispatch()
   const restaurants = Object.values(useSelector(state => state.restaurant)).reverse()
+  // eslint-disable-next-line 
   const { searchTerm, setSearchTerm } = useSearchBar()
   console.log('SEARCHTERM', searchTerm)
 
