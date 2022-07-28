@@ -10,6 +10,12 @@ const LoginForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+  const demoLogin = async (e) => {
+    e.preventDefault();
+    // const data =
+
+  }
+
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
