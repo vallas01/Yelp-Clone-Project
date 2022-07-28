@@ -47,8 +47,8 @@ const SingleRestaurant = () => {
   return (
     <div>
       <div className='container-redirect'>
-          <NavLink className="navBtn" to="/new-image">Add a Photo</NavLink>
-          <NavLink className="navBtn" to="/new-review">Write a Review</NavLink>
+          <NavLink className="navBtn" to={`/new-image/${restaurantId}`}>Add a Photo</NavLink>
+          <NavLink className="navBtn" to={`/new-review/${restaurantId}`}>Write a Review</NavLink>
       </div>
       
       <div className="single-image-page">
@@ -76,7 +76,7 @@ const SingleRestaurant = () => {
       </div>
 
       
-      { user.id===restaurant.user_id && (
+      { user && user.id===restaurant.user_id && (
         <div className="container-buttons">
             <UpdateRestaurantForm restaurant={restaurant} />
             <RestaurantToDelete restaurant={restaurant} />
