@@ -60,8 +60,8 @@ const SingleRestaurant = () => {
               <div className="ownerRest">Account Owner: {owner}</div>
 
           </div>
-          
-          <div className="restaurant-images-container"> 
+
+          <div className="restaurant-images-container">
               {restaurantImgs && restaurantImgs.map(img => {
                   return (
                     <div key={img.id} className="restaurant-single-image-container">
@@ -74,7 +74,7 @@ const SingleRestaurant = () => {
 
       </div>
 
-      
+
       { user && user.id===restaurant.user_id && (
         <div className="container-buttons">
           <UpdateRestaurantForm restaurant={restaurant} />

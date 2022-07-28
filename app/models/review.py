@@ -23,3 +23,12 @@ class Review(db.Model):
             "rating": self.rating,
             "owner":self.users.to_dict(),
         }
+        
+    def to_dict_2(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "restaurant_id": self.restaurant_id,
+            "text": self.text,
+            "rating": self.rating,
+        }
