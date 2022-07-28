@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { createReview } from '../../store/review'
 import './index.css'
 
@@ -13,22 +13,23 @@ function ReviewForm() {
   const [rating, setRating] = useState('');
 
   const user = useSelector(state => state.session.user)
-  // const restaurant = useSelector(state => state.restaurant)
-
-
+  const { restaurantId } = useParams()
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
 
     const newReview = {
       user_id: user.id,
-      restaurant_id: 1,
+      restaurant_id: restaurantId,
       text,
       rating
     };
 
+console.log('newReview======>',newReview)
+
     dispatch(createReview(newReview))
-      .then(() => history.push(`/review`))
+      .then(() => history.push(`/restaurants/${restaurantId}`))
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);

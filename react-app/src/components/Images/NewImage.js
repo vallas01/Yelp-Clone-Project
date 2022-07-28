@@ -36,7 +36,7 @@ function NewImage() {
         )
 
         if(createdImg)
-            history.push('/restaurants')
+            history.push(`/restaurants/${restaurantId}`)
 
     }
 
