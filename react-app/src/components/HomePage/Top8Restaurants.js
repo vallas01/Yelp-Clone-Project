@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getRestaurantsThunk } from "../../store/restaurant";
 import { getReviews } from "../../store/review";
@@ -13,11 +13,11 @@ const Top8Restaurants = () => {
   if (reviews) {
     for (let restaurant of restaurants) {
       let count = 0
-      let resReviews = reviews.filter(review => review.restaurant_id == restaurant.id)
+      let resReviews = reviews.filter(review => review.restaurant_id === restaurant.id)
       for (let review of resReviews) {
         count += review['rating']
       }
-      if (count != 0) restaurant["rating"] = count / resReviews.length
+      if (count !== 0) restaurant["rating"] = count / resReviews.length
       else restaurant["rating"] = count
     }
     topRestaurants = [...restaurants].sort((a, b) => (a.rating < b.rating) ? 1 : -1).splice(0, 8)
@@ -33,7 +33,7 @@ const Top8Restaurants = () => {
       <label> Our 8 Best Restaurants on Kelp-Me</label>
       <div className='top8-Image-Container'>
         {topRestaurants.map(restaurant => (
-          <div>
+          <div key={restaurant.id}>
             <h3>{restaurant.name} </h3>
             <h5>Rating: {restaurant.rating} &#9733;'s</h5>
             <img className="top8-Image" src={restaurant.logo} alt={restaurant.name} />

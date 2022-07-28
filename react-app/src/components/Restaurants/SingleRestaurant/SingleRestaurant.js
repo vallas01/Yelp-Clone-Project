@@ -35,12 +35,12 @@ const SingleRestaurant = () => {
   useEffect(() => {
     dispatch(getRestaurantsThunk())
     dispatch(getAllImages())
-    dispatch(getReviews())  
+    dispatch(getReviews())
   }, [dispatch])
 
   if (!restaurant) return ("loading")
 
-  const filteredReviews = reviews.filter(review=>review.restaurant_id===restaurant.id)
+  const filteredReviews = reviews.filter(review => review.restaurant_id === restaurant.id)
 
 
   return (
@@ -49,9 +49,8 @@ const SingleRestaurant = () => {
           <NavLink className="navBtn" to={`/new-image/${restaurantId}`}>Add a Photo</NavLink>
           <NavLink className="navBtn" to={`/new-review/${restaurantId}`}>Write a Review</NavLink>
       </div>
-      
-      <div className="single-image-page">
 
+      <div className="single-image-page">
           <div className='restaurant-data-container'>
               <img className="logoRest" src={restaurant.logo} alt='logo'></img>
               <h2 className="nameRest">{restaurant.name}</h2>
@@ -78,11 +77,10 @@ const SingleRestaurant = () => {
       
       { user && user.id===restaurant.user_id && (
         <div className="container-buttons">
-            <UpdateRestaurantForm restaurant={restaurant} />
-            <RestaurantToDelete restaurant={restaurant} />
+          <UpdateRestaurantForm restaurant={restaurant} />
+          <RestaurantToDelete restaurant={restaurant} />
         </div>
       )}
-
       <div className="container-review">
           <h2>Reviews</h2>
           <ul>
@@ -90,43 +88,43 @@ const SingleRestaurant = () => {
           {filteredReviews.map(review => {
             return (
               <li key={review.id}>
-                
+
                 <div>
-                      { review.rating === 5 && (
-                          <label  className="star-review">&#9733; &#9733; &#9733; &#9733; &#9733;</label>
-                          )}
-                      { review.rating === 4 && (
-                          <label  className="star-review">&#9733; &#9733; &#9733; &#9733;</label>
-                          )}
-                      { review.rating === 3 && (
-                          <label  className="star-review">&#9733; &#9733; &#9733;</label>
-                          )}
-                      { review.rating === 2 && (
-                          <label  className="star-review">&#9733; &#9733;</label>
-                          )}
-                      { review.rating === 1 && (
-                          <label  className="star-review">&#9733;</label>
-                          )}
-                  
-                      <div>{review.text} <span className="reviewedBy">Reviewer: {review.owner.username} </span></div>
-                  
-                </div>
+                  {review.rating === 5 && (
+                    <label className="star-review">&#9733; &#9733; &#9733; &#9733; &#9733;</label>
+                  )}
+                  {review.rating === 4 && (
+                    <label className="star-review">&#9733; &#9733; &#9733; &#9733;</label>
+                  )}
+                  {review.rating === 3 && (
+                    <label className="star-review">&#9733; &#9733; &#9733;</label>
+                  )}
+                  {review.rating === 2 && (
+                    <label className="star-review">&#9733; &#9733;</label>
+                  )}
+                  {review.rating === 1 && (
+                    <label className="star-review">&#9733;</label>
+                  )}
 
-              </li>
-               )
-              })}
+                  <div>{review.text} <span className="reviewedBy">Reviewer: {review.owner.username} </span></div>
 
-          </ul>
-      </div>
-      
-     
-    
+                </div >
+
+              </li >
+            )
+          })}
+
+        </ul >
+      </div >
+
+
+
 
       {
         user ?
           <div>
-            
-            
+
+
           </div>
           :
           <div>
@@ -134,7 +132,7 @@ const SingleRestaurant = () => {
           </div>
       }
 
-    </div>
+    </div >
 
   )
 }
