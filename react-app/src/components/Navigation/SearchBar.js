@@ -16,14 +16,17 @@ const SearchBar = () => {
     setSearchTerm(tempSearch)
     setTempSearch('')
   }
-  return (<form onSubmit={submitSearch}>
-    <input
-      placeholder="Donuts, Burgers, Tacos, etc..."
-      value={tempSearch}
-      onChange={e => setTempSearch(e.target.value)}
-    />
-    <button>Res</button>
-  </form>)
+  return (
+    <form className="search-Form" onSubmit={submitSearch}>
+      <input className="search-Input"
+        placeholder="Donuts, Burgers, Tacos, etc..."
+        value={tempSearch}
+        onChange={e => setTempSearch(e.target.value)}
+      />
+      <button className="search-Button">
+        <i className="fa-solid fa-magnifying-glass fa-xs" style={{ margin: "0" }}></i>
+      </button>
+    </form>)
 }
 
 
