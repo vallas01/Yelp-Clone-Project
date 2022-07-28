@@ -83,7 +83,7 @@ const SingleRestaurant = () => {
         </div>
       )}
 
-      <div>
+      <div className="container-review">
           <h2>Reviews</h2>
           <ul>
 

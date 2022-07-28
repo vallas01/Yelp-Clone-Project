@@ -14,8 +14,7 @@ function ReviewForm() {
 
   const user = useSelector(state => state.session.user)
   const { restaurantId } = useParams()
-  console.log('restaurantId= ',restaurantId)
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
