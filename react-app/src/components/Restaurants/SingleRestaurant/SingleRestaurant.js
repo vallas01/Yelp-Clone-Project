@@ -14,10 +14,9 @@ import { getReviews } from "../../../store/review"
 const SingleRestaurant = () => {
   const dispatch = useDispatch()
   const { restaurantId } = useParams()
-  const restaurant = useSelector(state => state.restaurant[restaurantId])
+  const restaurant = useSelector(state => state?.restaurant[restaurantId])
   const images = useSelector(state => state?.image)
   const reviews = Object.values(useSelector(state=> state?.review))
-  // eslint-disable-next-line
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -29,8 +28,8 @@ const SingleRestaurant = () => {
     fetchData();
   }, []);
 
+  const owner = users[restaurant?.user_id]?.username
   const user = useSelector(state => state.session.user)
-
   const restaurantImgs = Object.values(images).filter(img => img.restaurant_id === Number(restaurantId))
 
   useEffect(() => {
@@ -41,24 +40,24 @@ const SingleRestaurant = () => {
 
   if (!restaurant) return ("loading")
 
-  const filteredReviews = reviews.filter(review=>review.restaurant_id===restaurant.id)
+  const filteredReviews = reviews.filter(review => review.restaurant_id === restaurant.id)
 
 
   return (
     <div>
       <div className='container-redirect'>
-          <NavLink className="navBtn" to="/new-image">Add a Photo</NavLink>
-          <NavLink className="navBtn" to="/new-review">Write a Review</NavLink>
+          <NavLink className="navBtn" to={`/new-image/${restaurantId}`}>Add a Photo</NavLink>
+          <NavLink className="navBtn" to={`/new-review/${restaurantId}`}>Write a Review</NavLink>
       </div>
 
       <div className="single-image-page">
-
           <div className='restaurant-data-container'>
+              <img className="logoRest" src={restaurant.logo} alt='logo'></img>
               <h2 className="nameRest">{restaurant.name}</h2>
-
               <p>{restaurant.address}</p>
               <p>{restaurant.city}, {restaurant.state} {restaurant.zip}</p>
-              <p>{restaurant.description}</p>
+              <div className="descRest">{restaurant.description}</div>
+              <div className="ownerRest">Account Owner: {owner}</div>
 
           </div>
 
@@ -76,14 +75,13 @@ const SingleRestaurant = () => {
       </div>
 
 
-      {user && user.id===restaurant.user_id && (
+      { user && user.id===restaurant.user_id && (
         <div className="container-buttons">
-            <UpdateRestaurantForm restaurant={restaurant} />
-            <RestaurantToDelete restaurant={restaurant} />
+          <UpdateRestaurantForm restaurant={restaurant} />
+          <RestaurantToDelete restaurant={restaurant} />
         </div>
       )}
-
-      <div>
+      <div className="container-review">
           <h2>Reviews</h2>
           <ul>
 
@@ -92,32 +90,32 @@ const SingleRestaurant = () => {
               <li key={review.id}>
 
                 <div>
-                      { review.rating === 5 && (
-                          <label  className="star-review">&#9733; &#9733; &#9733; &#9733; &#9733;</label>
-                          )}
-                      { review.rating === 4 && (
-                          <label  className="star-review">&#9733; &#9733; &#9733; &#9733;</label>
-                          )}
-                      { review.rating === 3 && (
-                          <label  className="star-review">&#9733; &#9733; &#9733;</label>
-                          )}
-                      { review.rating === 2 && (
-                          <label  className="star-review">&#9733; &#9733;</label>
-                          )}
-                      { review.rating === 1 && (
-                          <label  className="star-review">&#9733;</label>
-                          )}
+                  {review.rating === 5 && (
+                    <label className="star-review">&#9733; &#9733; &#9733; &#9733; &#9733;</label>
+                  )}
+                  {review.rating === 4 && (
+                    <label className="star-review">&#9733; &#9733; &#9733; &#9733;</label>
+                  )}
+                  {review.rating === 3 && (
+                    <label className="star-review">&#9733; &#9733; &#9733;</label>
+                  )}
+                  {review.rating === 2 && (
+                    <label className="star-review">&#9733; &#9733;</label>
+                  )}
+                  {review.rating === 1 && (
+                    <label className="star-review">&#9733;</label>
+                  )}
 
-                      <div>{review.text} <span className="reviewedBy">Reviewer: {review.owner.username} </span></div>
+                  <div>{review.text} <span className="reviewedBy">Reviewer: {review.owner.username} </span></div>
 
-                </div>
+                </div >
 
-              </li>
-               )
-              })}
+              </li >
+            )
+          })}
 
-          </ul>
-      </div>
+        </ul >
+      </div >
 
 
 
@@ -134,7 +132,7 @@ const SingleRestaurant = () => {
           </div>
       }
 
-    </div>
+    </div >
 
   )
 }
