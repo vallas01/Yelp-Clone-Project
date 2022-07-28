@@ -36,7 +36,6 @@ export const getReviews = () => async (dispatch) => {
 
 
 export const createReview = (details) => async dispatch => {
-    console.log(`HEREEEEEEEEEEEEEEEEEEEEEEEEE`, details)
     const response = await fetch('/api/review', {
       headers: {'Content-Type': 'application/json'},
       method: 'POST',
