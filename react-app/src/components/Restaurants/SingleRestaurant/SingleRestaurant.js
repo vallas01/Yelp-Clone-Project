@@ -16,8 +16,8 @@ const SingleRestaurant = () => {
   const { restaurantId } = useParams()
   const restaurant = useSelector(state => state.restaurant[restaurantId])
   const images = useSelector(state => state?.image)
-  const reviews = Object.values(useSelector(state=> state?.review))
-  
+  const reviews = Object.values(useSelector(state => state?.review))
+
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const SingleRestaurant = () => {
     fetchData();
   }, []);
 
-console.log(users)
+  console.log(users)
 
   const user = useSelector(state => state.session.user)
 
@@ -39,7 +39,7 @@ console.log(users)
   useEffect(() => {
     dispatch(getRestaurantsThunk())
     dispatch(getAllImages())
-    dispatch(getReviews())  
+    dispatch(getReviews())
   }, [dispatch])
 
   if (!restaurant) return ("loading")
@@ -47,36 +47,36 @@ console.log(users)
   return (
     <div>
       <div className='container-redirect'>
-          <NavLink className="navBtn" to="/new-image">Add a Photo</NavLink>
-          <NavLink className="navBtn" to="/new-review">Write a Review</NavLink>
+        <NavLink className="navBtn" to="/new-image">Add a Photo</NavLink>
+        <NavLink className="navBtn" to="/new-review">Write a Review</NavLink>
       </div>
-      
+
       <div className="single-image-page">
 
-          <h1>{restaurant.name}</h1>
-          <div className="restaurant-images-container">
+        <h1>{restaurant.name}</h1>
+        <div className="restaurant-images-container">
           {restaurantImgs && restaurantImgs.map(img => {
-              return (
-                <div key={img.id} className="restaurant-image-container">
-                  <img className="imageRestaurant" src={img.img_url} alt={img.title} />
-                  <SingleImageModal img={img} />
-                </div>
-              )
+            return (
+              <div key={img.id} className="restaurant-image-container">
+                <img className="imageRestaurant" src={img.img_url} alt={img.title} />
+                <SingleImageModal img={img} />
+              </div>
+            )
           })}
-          </div>
+        </div>
       </div>
 
-      
-      { user.id===restaurant.user_id && (
+
+      {user && user.id === restaurant.user_id && (
         <div className="container-buttons">
-            <UpdateRestaurantForm restaurant={restaurant} />
-            <RestaurantToDelete restaurant={restaurant} />
+          <UpdateRestaurantForm restaurant={restaurant} />
+          <RestaurantToDelete restaurant={restaurant} />
         </div>
       )}
 
       <div>
-          <h2>Reviews</h2>
-          <ul>
+        <h2>Reviews</h2>
+        <ul>
 
           {reviews.map(review => {
             return (
@@ -84,24 +84,24 @@ console.log(users)
                 <p></p>
 
                 <div>
-                      { review.rating === 5 && (
-                          <label  className="star-review">&#9733; &#9733; &#9733; &#9733; &#9733;</label>
-                          )}
-                      { review.rating === 4 && (
-                          <label  className="star-review">&#9733; &#9733; &#9733; &#9733;</label>
-                          )}
-                      { review.rating === 3 && (
-                          <label  className="star-review">&#9733; &#9733; &#9733;</label>
-                          )}
-                      { review.rating === 2 && (
-                          <label  className="star-review">&#9733; &#9733;</label>
-                          )}
-                      { review.rating === 1 && (
-                          <label  className="star-review">&#9733;</label>
-                          )}
-                  
-                      <div>{review.text}</div>
-                  
+                  {review.rating === 5 && (
+                    <label className="star-review">&#9733; &#9733; &#9733; &#9733; &#9733;</label>
+                  )}
+                  {review.rating === 4 && (
+                    <label className="star-review">&#9733; &#9733; &#9733; &#9733;</label>
+                  )}
+                  {review.rating === 3 && (
+                    <label className="star-review">&#9733; &#9733; &#9733;</label>
+                  )}
+                  {review.rating === 2 && (
+                    <label className="star-review">&#9733; &#9733;</label>
+                  )}
+                  {review.rating === 1 && (
+                    <label className="star-review">&#9733;</label>
+                  )}
+
+                  <div>{review.text}</div>
+
                 </div>
 
 
@@ -114,20 +114,20 @@ console.log(users)
                 ))} */}
 
               </li>
-               )
-              })}
+            )
+          })}
 
-          </ul>
+        </ul>
       </div>
-      
-     
-    {/* {restaurants.map(restaurant => {
+
+
+      {/* {restaurants.map(restaurant => {
       return (<li key={restaurant.id}>
         <NavLink to={`/restaurants/${restaurant.id}`}>{restaurant.name}</NavLink>
       </li>
       )
     })} */}
- 
+
 
 
 
@@ -135,8 +135,8 @@ console.log(users)
       {
         user ?
           <div>
-            
-            
+
+
           </div>
           :
           <div>
