@@ -16,11 +16,11 @@ const UpdateRestaurantForm = ({ restaurant }) => {
   const [state, setState] = useState(restaurant.state)
   const [zip, setZip] = useState(restaurant.zip)
   const [description, setDescription] = useState(restaurant.description)
-  const [price, setPrice] = useState(restaurant.price)
   const [category, setCategory] = useState(restaurant.category)
-  const [lat, setLat] = useState(restaurant.lat)
-  const [lng, setLng] = useState(restaurant.lng)
   const [logo, setLogo] = useState(restaurant.logo)
+  // const [lat, setLat] = useState(restaurant.lat)
+  // const [lng, setLng] = useState(restaurant.lng)
+  // const [price, setPrice] = useState(restaurant.price)
 
   const updateRestaurant = e => {
     e.preventDefault()
@@ -34,10 +34,10 @@ const UpdateRestaurantForm = ({ restaurant }) => {
       state,
       zip,
       description,
-      price,
+      price: 1,
       category,
-      lat,
-      lng,
+      lat: 1,
+      lng: 1,
       logo
     }
     dispatch(updateRestaurantThunk(restaurantInfo))
@@ -106,7 +106,7 @@ const UpdateRestaurantForm = ({ restaurant }) => {
                 onChange={(e) => setDescription(e.target.value)}
               />
             </div>
-            <div>
+            {/* <div>
               <label htmlFor="price">Price</label>
               <input id="price"
                 type="number"
@@ -114,7 +114,7 @@ const UpdateRestaurantForm = ({ restaurant }) => {
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
               />
-            </div>
+            </div> */}
             <div>
               <label htmlFor="category">Category</label>
               <select id="category"
@@ -136,7 +136,7 @@ const UpdateRestaurantForm = ({ restaurant }) => {
                 onChange={(e) => setLogo(e.target.value)}
               />
             </div>
-            <div>
+            {/* <div>
               <label htmlFor="lat">Latitude</label>
               <input id="lat"
                 type="number"
@@ -153,7 +153,7 @@ const UpdateRestaurantForm = ({ restaurant }) => {
                 value={lng}
                 onChange={(e) => setLng(e.target.value)}
               />
-            </div>
+            </div> */}
             <button>Submit</button>
           </form>
         </fieldset>
