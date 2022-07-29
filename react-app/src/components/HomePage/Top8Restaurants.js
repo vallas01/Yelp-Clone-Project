@@ -67,7 +67,7 @@ const Top8Restaurants = () => {
               )}
               {restaurant.rating === 0 && (
                 <label style={{ cursor: "pointer" }}
-                  className="star-review"> <span className="no-reviews-yet">  No Reviews Yet </span></label>
+                  className="star-review"> <span className="no-reviews-yet">  No Ratings Yet </span></label>
               )}
             </div>
             <img className="top8-Image" src={restaurant.logo} alt={restaurant.name} />

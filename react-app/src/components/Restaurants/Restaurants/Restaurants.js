@@ -38,6 +38,14 @@ const Restaurants = () => {
   })
   console.log(restaurants[3].reviews)
 
+  for (let restaurant of filteredRestaurants) {
+    let count = 0
+    for (let review of restaurant.reviews) {
+      count += review['rating']
+    }
+    if (count !== 0) restaurant["rating"] = Number((count / restaurant.reviews.length).toFixed())
+    else restaurant["rating"] = count
+  }
 
 
 
@@ -57,11 +65,40 @@ const Restaurants = () => {
           <img className="restaurant-logo" src={restaurant.logo} />
           <div className="restaurant-details-container">
             <div className="upperRestaurant-details">
-              <span className="restaurant-name" to={`/restaurants/${restaurant.id}`}>{restaurant.name}</span>
-              <div className="restaurant-address"> {restaurant.address} </div>
-              <div className="restaurant-address"> {restaurant.city} {restaurant.state} {restaurant.zip}</div>
-              <div className="restaurant-category"> {restaurant.category}</div>
-              <div className="restaurant-rating"> 5</div>
+              <div className="restaurant-information">
+                <span className="restaurant-name" to={`/restaurants/${restaurant.id}`}>{restaurant.name}</span>
+                <div className="restaurant-address top-address"> {restaurant.address} </div>
+                <div className="restaurant-address bottom-address"> {restaurant.city} {restaurant.state} {restaurant.zip}</div>
+              </div>
+              <div className="restaurant-category"> <div style={{ marginBottom: "20px" }}>Category</div>
+                {restaurant.category}</div>
+
+              <div className="restaurant-rating">
+                {restaurant.rating === 5 && (
+                  <label style={{ cursor: "pointer" }}
+                    className="star-review">&#9733; &#9733; &#9733; &#9733; &#9733;</label>
+                )}
+                {restaurant.rating === 4 && (
+                  <label style={{ cursor: "pointer" }}
+                    className="star-review">&#9733; &#9733; &#9733; &#9733; <span className="empty-stars">&#9733;</span> </label>
+                )}
+                {restaurant.rating === 3 && (
+                  <label style={{ cursor: "pointer" }}
+                    className="star-review">&#9733; &#9733; &#9733; <span className="empty-stars">&#9733; &#9733;</span></label>
+                )}
+                {restaurant.rating === 2 && (
+                  <label style={{ cursor: "pointer" }}
+                    className="star-review">&#9733; &#9733; <span className="empty-stars">&#9733; &#9733; &#9733;</span></label>
+                )}
+                {restaurant.rating === 1 && (
+                  <label style={{ cursor: "pointer" }}
+                    className="star-review">&#9733; <span className="empty-stars">&#9733; &#9733; &#9733; &#9733;</span> </label>
+                )}
+                {restaurant.rating === 0 && (
+                  <label style={{ cursor: "pointer" }}
+                    className="star-review"> <span className="no-reviews-yet">  No Ratings Yet </span></label>
+                )}
+              </div>
             </div>
             <div className="lowerRestaurant-details">
               {restaurant.reviews[0] && <>
@@ -90,10 +127,6 @@ const Restaurants = () => {
                   {restaurant.reviews[0].rating === 1 && (
                     <label style={{ cursor: "pointer" }}
                       className="star-review">&#9733; <span className="empty-stars">&#9733; &#9733; &#9733; &#9733;</span> </label>
-                  )}
-                  {restaurant.reviews[0].rating === 0 && (
-                    <label style={{ cursor: "pointer" }}
-                      className="star-review"> <span className="no-reviews-yet">  No Reviews Yet </span></label>
                   )}
                 </div>
               </>

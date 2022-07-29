@@ -48,14 +48,47 @@
 }
 
 .restaurant-name {
-  background: rgba(0, 0, 0, 5%);
+  /* background: rgba(0, 0, 0, 5%); */
+  border-radius: 5px;
   font-size: 1.2rem;
+  margin-left: 10px;
+
 
 }
 
 .restaurant-address {
   font-size: .8rem;
   color: tomato;
+  margin-left: 10px;
+}
+
+.restaurant-information {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+
+.restaurant-category {
+  /* border: 1px solid yellow; */
+  width: 30%;
+  text-align: center;
+}
+
+.restaurant-rating {
+  /* border: 1px solid plum; */
+  width: 30%;
+  text-align: end;
+  font-size: 25px;
+}
+
+
+.upperRestaurant-details {
+  /* border: 1px solid red; */
+  border-bottom: 1px rgba(0, 0, 0, 70%) solid;
+  height: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .lowerRestaurant-details {
@@ -63,12 +96,6 @@
   height: 50%;
   width: 100%;
   /* border-top: 1px rgba(0, 0, 0, 70%) solid; */
-}
-
-.upperRestaurant-details {
-  /* border: 1px solid red; */
-  height: 50%;
-  width: 100%;
 }
 
 .restaurant-details-container {
@@ -80,7 +107,7 @@
 .restaurant-review-text {
   /* border: 1px solid black; */
   margin-top: 5px;
-  font-size: medium;
+  font-size: 15px;
   text-align: center;
 
 
@@ -99,7 +126,7 @@
 .restaurant-no-reviews {
   margin-top: 5px;
   margin-bottom: 5px;
-  font-size: medium;
+  font-size: 17px;
   text-align: center;
 }
 
@@ -109,6 +136,9 @@
 }
 
 .restaurant-review-rating {
+  /* border-top: 1px rgba(0, 0, 0, 70%) solid; */
   position: relative;
   text-align: end;
+  right: 35px;
+  font-size: 15px;
 }
