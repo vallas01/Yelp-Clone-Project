@@ -19,6 +19,7 @@ import About from './components/Footer/About';
 import HomePage from './components/HomePage/HomePage';
 import Footer from './components/Footer/Footer';
 import EditReview from './components/reviews/editReview';
+import NotFound from './components/NotFound';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -97,6 +98,10 @@ function App() {
 
         <Route exact path="/about">
           <About />
+        </Route>
+
+        <Route path="">
+          <NotFound />
         </Route>
 
       </Switch>
