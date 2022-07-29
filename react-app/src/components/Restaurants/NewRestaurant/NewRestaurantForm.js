@@ -46,7 +46,6 @@ const RestaurantForm = () => {
       return setErrors(['Please enter a longer url address'])
     }
 
-
     const newRestaurant = {
       name,
       user_id: user.id,
@@ -117,6 +116,7 @@ const RestaurantForm = () => {
           required
         />
       </div>
+     
       <div>
         <label htmlFor="state">State</label>
         <input id="state"
@@ -164,9 +164,14 @@ const RestaurantForm = () => {
           onChange={(e) => setCategory(e.target.value)}
         >
           <option value='' disabled> Select A Food Category</option>
+          <option value='Burgers'>Burgers</option>
+          <option value='Chinese'>Chinese</option>
+          <option value='Italian'>Italian</option>
+          <option value='Mexican'>Mexican</option>
+          <option value='Greek'>Greek</option>
+          <option value='Coffee'>Coffe Shop</option>
           <option value='Donuts'>Donuts</option>
           <option value='Tacos'>Tacos</option>
-          <option value='Burgers'>Burgers</option>
         </select>
       </div>
       <div>
