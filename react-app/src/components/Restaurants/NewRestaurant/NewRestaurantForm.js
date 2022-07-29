@@ -11,11 +11,13 @@ const RestaurantForm = () => {
   const [state, setState] = useState('')
   const [zip, setZip] = useState('')
   const [description, setDescription] = useState('')
-  const [price, setPrice] = useState('')
   const [category, setCategory] = useState('')
-  const [lat, setLat] = useState('')
-  const [lng, setLng] = useState('')
   const [logo, setLogo] = useState('')
+  
+  // *****FOR FUTURE FEATURES***** 
+  // const [price, setPrice] = useState('')
+  // const [lat, setLat] = useState('')
+  // const [lng, setLng] = useState('')
 
   const user = useSelector(state => state.session.user)
 
@@ -31,10 +33,10 @@ const RestaurantForm = () => {
       state,
       zip,
       description,
-      price,
+      price: 1,
       category,
-      lat,
-      lng,
+      lat: 1,
+      lng: 1,
       logo
     }
     // console.log(newRestaurant)
@@ -51,6 +53,7 @@ const RestaurantForm = () => {
           placeholder='Restaurant Name'
           value={name}
           onChange={(e) => setName(e.target.value)}
+          required
         />
       </div>
       <div>
@@ -60,6 +63,7 @@ const RestaurantForm = () => {
           placeholder='Restaurant Address'
           value={address}
           onChange={(e) => setAddress(e.target.value)}
+          required
         />
       </div>
       <div>
@@ -69,6 +73,7 @@ const RestaurantForm = () => {
           placeholder='Restaurant City'
           value={city}
           onChange={(e) => setCity(e.target.value)}
+          required
         />
       </div>
       <div>
@@ -78,6 +83,7 @@ const RestaurantForm = () => {
           placeholder='Restaurant State'
           value={state}
           onChange={(e) => setState(e.target.value)}
+          required
         />
       </div>
       <div>
@@ -87,6 +93,7 @@ const RestaurantForm = () => {
           placeholder='Restaurant Zip'
           value={zip}
           onChange={(e) => setZip(e.target.value)}
+          required
         />
       </div>
       <div>
@@ -96,9 +103,11 @@ const RestaurantForm = () => {
           placeholder='Restaurant Description'
           value={description}
           onChange={(e) => setDescription(e.target.value)}
+          required
         />
       </div>
-      <div>
+      {/* FOR FUTURE DEVELOPMENT */}
+      {/* <div>
         <label htmlFor="price">Price</label>
         <input id="price"
           type="number"
@@ -106,7 +115,7 @@ const RestaurantForm = () => {
           value={price}
           onChange={(e) => setPrice(e.target.value)}
         />
-      </div>
+      </div> */}
       <div>
         <label htmlFor="category">Category</label>
         <select id="category"
@@ -126,9 +135,12 @@ const RestaurantForm = () => {
           placeholder='Restaurant Logo Image'
           value={logo}
           onChange={(e) => setLogo(e.target.value)}
+          required
         />
       </div>
-      <div>
+
+      {/* FOR FUTURE GOOGLE MAP FEATURE */}
+      {/* <div>
         <label htmlFor="lat">Latitude</label>
         <input id="lat"
           type="number"
@@ -145,7 +157,8 @@ const RestaurantForm = () => {
           value={lng}
           onChange={(e) => setLng(e.target.value)}
         />
-      </div>
+      </div> */}
+      {/* ******************************* */}
       <button>Submit</button>
     </form>
   </fieldset>

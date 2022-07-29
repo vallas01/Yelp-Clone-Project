@@ -11,7 +11,7 @@ function EditReview() {
   
   const [errors, setErrors] = useState([]);
   const [text, setText] = useState('');
-  const [rating, setRating] = useState('1');
+  const [rating, setRating] = useState('');
   const { reviewId } = useParams()
   
   // eslint-disable-next-line
@@ -29,7 +29,9 @@ console.log('review details====', review)
     e.preventDefault();
     setErrors([]);
 
-    if (!rating) alert('The minimum is one star, try again!');
+    if (!rating) {
+      return setErrors(['You must enter at least one star ! ! !'])
+    }
 
     const newReview = {
       user_id: review[0].user_id,
@@ -57,11 +59,13 @@ console.log('review details====', review)
     <>
       <h1> Edit Review </h1>
 
-      {errors.length > 0 && (
-        <ul className='error-container'>
-          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-        </ul>
-      )}
+      <div className='error-container'>
+        {errors.length > 0 && (
+          <ul >
+            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+          </ul>
+        )}
+      </div>
 
 
 
@@ -86,7 +90,7 @@ console.log('review details====', review)
             onChange={(e) => setRating(e.target.value)} />
           <label htmlFor="2-stars">&#9733;</label>
           <input type="radio" id="1-star" value="1" name="stars"
-            onChange={(e) => setRating(e.target.value)} checked="checked"/>
+            onChange={(e) => setRating(e.target.value)} />
           <label htmlFor="1-star">&#9733;</label>
         </div>
 
