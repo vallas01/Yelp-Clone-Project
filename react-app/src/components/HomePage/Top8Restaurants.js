@@ -22,7 +22,6 @@ const Top8Restaurants = () => {
       }
       if (count !== 0) restaurant["rating"] = Number((count / resReviews.length).toFixed())
       else restaurant["rating"] = count
-      console.log(typeof restaurant.rating)
     }
     topRestaurants = [...restaurants].sort((a, b) => (a.rating < b.rating) ? 1 : -1).splice(0, 8)
   }
@@ -36,35 +35,42 @@ const Top8Restaurants = () => {
     dispatch(getReviews())
   }, [dispatch])
 
+
+  if (!topRestaurants.length) return null
   return (<>
     <div className='homepage-list'>
-      <label> Our 8 Best Restaurants on Kelp-Me</label>
+      <h2> Our 8 Best Restaurants on Kelp-Me</h2>
       <div className='top8-Image-Container'>
         {topRestaurants.map(restaurant => (
-          <div key={restaurant.id}>
-            <h3>{restaurant.name} </h3>
-            <div>
-              <p>Rating: {restaurant.rating}</p>
+          <div className="top8-details" key={restaurant.id} onClick={() => handleClick(restaurant)}>
+            <h2 className="top8-name">{restaurant.name} </h2>
+            <div >
               {restaurant.rating === 5 && (
-                <label className="star-review">&#9733; &#9733; &#9733; &#9733; &#9733;</label>
+                <label style={{ cursor: "pointer" }}
+                  className="star-review">&#9733; &#9733; &#9733; &#9733; &#9733;</label>
               )}
               {restaurant.rating === 4 && (
-                <label className="star-review">&#9733; &#9733; &#9733; &#9733;</label>
+                <label style={{ cursor: "pointer" }}
+                  className="star-review">&#9733; &#9733; &#9733; &#9733; <span className="empty-stars">&#9733;</span> </label>
               )}
               {restaurant.rating === 3 && (
-                <label className="star-review">&#9733; &#9733; &#9733;</label>
+                <label style={{ cursor: "pointer" }}
+                  className="star-review">&#9733; &#9733; &#9733; <span className="empty-stars">&#9733; &#9733;</span></label>
               )}
               {restaurant.rating === 2 && (
-                <label className="star-review">&#9733; &#9733;</label>
+                <label style={{ cursor: "pointer" }}
+                  className="star-review">&#9733; &#9733; <span className="empty-stars">&#9733; &#9733; &#9733;</span></label>
               )}
               {restaurant.rating === 1 && (
-                <label className="star-review">&#9733;</label>
+                <label style={{ cursor: "pointer" }}
+                  className="star-review">&#9733; <span className="empty-stars">&#9733; &#9733; &#9733; &#9733;</span> </label>
               )}
               {restaurant.rating === 0 && (
-                <label >No reviews yet</label>
+                <label style={{ cursor: "pointer" }}
+                  className="star-review"> <span className="no-reviews-yet">  No Reviews Yet </span></label>
               )}
             </div>
-            <img className="top8-Image" onClick={() => handleClick(restaurant)} src={restaurant.logo} alt={restaurant.name} />
+            <img className="top8-Image" src={restaurant.logo} alt={restaurant.name} />
           </div>
         ))}
       </div>

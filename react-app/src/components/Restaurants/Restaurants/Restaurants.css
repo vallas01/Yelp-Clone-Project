@@ -1,5 +1,4 @@
 .Restaurants-Page-Container {
-  border: 1px solid blueviolet;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -7,22 +6,16 @@
 }
 
 .restaurants-filters {
-  /* border: 1px solid black; */
-  /* height: 100%; */
   width: 15%;
 }
 
 .restaurants-page-details {
   display: flex;
   flex-direction: column;
-  /* border: 1px solid red; */
   width: 55%;
-  /* height: 100%; */
 }
 
 .restaurants-map-details {
-  /* border: 1px solid green; */
-  /* height: 100%; */
   width: 25%;
 }
 
@@ -32,12 +25,17 @@
 
 .individual-restaurant-details {
   display: flex;
-  border: 1px rgba(0, 0, 0, 20%) solid;
+  border: 2px rgba(0, 0, 0, 20%) solid;
   height: 225px;
-  min-width: 200px;
+  min-width: 750px;
   width: 100%;
   margin: 10px;
   padding: 8px;
+  cursor: pointer;
+}
+
+.individual-restaurant-details:hover {
+  border: 2px rgba(0, 0, 0, 70%) solid;
 }
 
 .restaurant-logo {
@@ -45,6 +43,7 @@
   height: 200px;
   width: 200px;
   border-radius: 10px;
+  border: 1px solid black;
 
 }
 
@@ -57,4 +56,59 @@
 .restaurant-address {
   font-size: .8rem;
   color: tomato;
+}
+
+.lowerRestaurant-details {
+  /* border: 1px solid blue; */
+  height: 50%;
+  width: 100%;
+  /* border-top: 1px rgba(0, 0, 0, 70%) solid; */
+}
+
+.upperRestaurant-details {
+  /* border: 1px solid red; */
+  height: 50%;
+  width: 100%;
+}
+
+.restaurant-details-container {
+  /* border: 1px solid greenyellow; */
+  min-width: 500px;
+  width: 100%;
+}
+
+.restaurant-review-text {
+  /* border: 1px solid black; */
+  margin-top: 5px;
+  font-size: medium;
+  text-align: center;
+
+
+}
+
+.restaurant-review-owner-name {
+  /* margin-top: 5px; */
+  /* border: 1px solid green; */
+  position: relative;
+  left: 50px;
+  font-size: 20px;
+  text-align: left;
+  min-height: 20px;
+}
+
+.restaurant-no-reviews {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: medium;
+  text-align: center;
+}
+
+.restaurant-review-owner-name span {
+  font-size: 19px;
+  margin-right: 15px;
+}
+
+.restaurant-review-rating {
+  position: relative;
+  text-align: end;
 }

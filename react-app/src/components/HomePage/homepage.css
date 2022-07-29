@@ -31,13 +31,34 @@
     height: 250px;
     width: 250px;
     margin: 10px;
-    cursor: pointer;
+    border: .5px solid black;
+    border-radius: 8px;
 }
 
 .top8-Image-Container {
     display: flex;
     flex-wrap: wrap;
-    max-width: 1080px;
+    max-width: 1200px;
     justify-content: center;
 
+}
+
+.no-reviews-yet {
+    color: black;
+    font-size: .69em;
+}
+
+.top8-name {
+    margin-bottom: 0;
+}
+
+.top8-details {
+    border: rgba(0, 0, 0, 0.25) 2px solid;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.top8-details:hover {
+    border: rgba(0, 0, 0, 0.65) 2px solid;
 }
