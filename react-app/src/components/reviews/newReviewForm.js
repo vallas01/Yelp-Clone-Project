@@ -14,15 +14,15 @@ function ReviewForm() {
 
   const user = useSelector(state => state.session.user)
   const { restaurantId } = useParams()
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    
+
     if (!rating) {
       return setErrors(['You must enter at least one star ! ! !'])
     }
-    
+
 
     const newReview = {
       user_id: user.id,
@@ -69,7 +69,7 @@ function ReviewForm() {
 
 
         <div className="star-rating">
-          <input type="radio" id="5-stars" value="5" name="stars" 
+          <input type="radio" id="5-stars" value="5" name="stars"
             onChange={(e) => setRating(e.target.value)} />
           <label htmlFor="5-stars">&#9733;</label>
           <input type="radio" id="4-stars" value="4" name="stars"
@@ -87,13 +87,13 @@ function ReviewForm() {
         </div>
 
 
-          <input
-            type="text"
-            placeholder='Enter your review...'
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            required
-          />
+        <input
+          type="text"
+          placeholder='Enter your review...'
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          required
+        />
 
 
         <button className='hostSubmit' type="submit">Submit</button>
