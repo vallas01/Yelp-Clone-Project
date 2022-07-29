@@ -8,14 +8,16 @@ import './index.css'
 function EditReview() {
   const dispatch = useDispatch();
   const history = useHistory();
+  
   const [errors, setErrors] = useState([]);
   const [text, setText] = useState('');
   const [rating, setRating] = useState('');
   const { reviewId } = useParams()
-// eslint-disable-next-line
-  const user = useSelector(state => state.session.user)
-  const reviews = Object.values(useSelector(state => state.review))
-  const review = reviews.filter(review => review.id === Number(reviewId))
+  
+  // eslint-disable-next-line
+    const user = useSelector(state => state.session.user)
+    const reviews = Object.values(useSelector(state => state.review))
+    const review = reviews.filter(review => review.id === Number(reviewId))
   
 console.log('review details====', review)
 
@@ -27,7 +29,9 @@ console.log('review details====', review)
     e.preventDefault();
     setErrors([]);
 
-    if (!rating) alert('The minimum is one star, try again!');
+    if (!rating) {
+      return setErrors(['You must enter at least one star ! ! !'])
+    }
 
     const newReview = {
       user_id: review[0].user_id,
@@ -55,11 +59,13 @@ console.log('review details====', review)
     <>
       <h1> Edit Review </h1>
 
-      {errors.length > 0 && (
-        <ul className='error-container'>
-          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-        </ul>
-      )}
+      <div className='error-container'>
+        {errors.length > 0 && (
+          <ul >
+            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+          </ul>
+        )}
+      </div>
 
 
 

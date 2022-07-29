@@ -55,6 +55,13 @@ li a:hover {
     align-items: center;
     flex-direction: column;
 }
+
 .dropdown-menu ul li {
     margin: 12px;
+}
+
+.dropdown img {
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50% 50%;
 }
