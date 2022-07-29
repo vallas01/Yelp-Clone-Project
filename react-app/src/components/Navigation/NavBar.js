@@ -6,7 +6,7 @@ import './NavBar.css';
 import SearchBar from './SearchBar';
 
 const NavBar = () => {
-  const sessionUser = useSelector(state => state.session.user);
+  const sessionUser = useSelector(state => state?.session.user);
   const [showMenu, setShowMenu] = useState(false);
 
   const openMenu = () => {
@@ -37,7 +37,7 @@ const NavBar = () => {
           </NavLink>
         </li>
         <div className='dropdown' >
-          <img src={sessionUser.avatar} onClick={openMenu} width='40px' height='40px' alt={sessionUser.id} />
+          <img src={sessionUser?.avatar} onClick={openMenu} width='40px' height='40px' alt={sessionUser.id} />
 
             {showMenu && (
               <div className='dropdown-menu'>
