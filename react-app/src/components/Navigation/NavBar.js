@@ -7,7 +7,7 @@ import SearchBar from './SearchBar';
 
 const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user);
-  const [showMenu, setShowMenu] = useState(true);
+  const [showMenu, setShowMenu] = useState(false);
 
   const openMenu = () => {
     if (showMenu) return;
