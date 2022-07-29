@@ -48,7 +48,7 @@ const Restaurants = () => {
 
         {filteredRestaurants.map(restaurant => {
           return (<div className="individual-restaurant-details" key={restaurant.id}>
-            <img className="restaurant-logo" src={restaurant.logo} />
+            <img className="restaurant-logo" src={restaurant.logo} alt='logo'/>
             <div>
               <NavLink className="restaurant-name" to={`/restaurants/${restaurant.id}`}>{restaurant.name}</NavLink>
               <div className="restaurant-address"> {restaurant.address} </div>

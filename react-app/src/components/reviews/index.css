@@ -1,3 +1,10 @@
+.error-container {
+  color: red;
+  display: flex;
+  justify-content: center;
+  margin: 0px 18px 0px 0px;
+}
+
 #rating-input {
   width: 50px;
   height: 30px;
