@@ -10,15 +10,17 @@ import './UserPage.css'
 function User() {
   const dispatch = useDispatch()
   const history = useHistory()
-  const [user, setUser] = useState({});
-  const [name, setName] = useState('');
-  const [address, setAddress] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const [zip, setZip] = useState('');
-  const [avatar, setAvatar] = useState('');
-  const { userId } = useParams();
+
   const sessionUser = useSelector(state => state?.session.user)
+ 
+  const [user, setUser] = useState({});
+  const [name, setName] = useState(sessionUser.username);
+  const [address, setAddress] = useState(sessionUser.address||'');
+  const [city, setCity] = useState(sessionUser.city||'');
+  const [state, setState] = useState(sessionUser.state||'');
+  const [zip, setZip] = useState(sessionUser.zip||'');
+  const [avatar, setAvatar] = useState(sessionUser.avatar||'');
+  const { userId } = useParams();
   const userReviews = Object.values(useSelector(state => state?.review)).filter(review => review?.user_id === Number(userId))
   const userRestaurants = Object.values(useSelector(state => state?.restaurant)).filter(restaurant => restaurant?.user_id === Number(userId))
   const allRestaurants = Object.values(useSelector(state => state?.restaurant))
@@ -101,7 +103,9 @@ function User() {
 
       <h2 className='user-detail-header' style={{color:'tomato'}}>User Details</h2>
 
-    <form onSubmit={handleSubmit} className='user-details-form'>
+    { sessionUser.id === user.id && (
+    <>
+      <form onSubmit={handleSubmit} className='user-details-form'>
       <div className='info'>
         <div>
           <label htmlFor="name">Name</label>
@@ -221,6 +225,10 @@ function User() {
         })}
       </ul>
     </div>
+  </>)
+  }
+
+    
     </>
   );
 }

@@ -62,7 +62,7 @@ const Restaurants = () => {
         return (<div className="individual-restaurant-details" key={restaurant.id}
           onClick={() => handleClick(restaurant)}
         >
-          <img className="restaurant-logo" src={restaurant.logo} />
+          <img className="restaurant-logo" src={restaurant.logo} alt='logo'/>
           <div className="restaurant-details-container">
             <div className="upperRestaurant-details">
               <div className="restaurant-information">
