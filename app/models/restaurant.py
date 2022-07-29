@@ -6,7 +6,7 @@ class Restaurant(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id	= db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    name = db.Column(db.String(40), nullable=False, unique=True)
+    name = db.Column(db.String(40), nullable=False)
     address	= db.Column(db.String(255), nullable=False, unique=True)
     city = db.Column(db.String(40), nullable=False)
     state = db.Column(db.String(20), nullable=False)
