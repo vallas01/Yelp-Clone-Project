@@ -19,6 +19,8 @@ const SignUpForm = () => {
       if (data) {
         setErrors(data)
       }
+    } else {
+      return setErrors(['Passwords must be the same'])
     }
   };
 
@@ -44,11 +46,13 @@ const SignUpForm = () => {
 
   return (
     <form onSubmit={onSignUp}>
-      <div>
+      <div className='error-container'>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
+
+      
       <div>
         <label>User Name</label>
         <input
