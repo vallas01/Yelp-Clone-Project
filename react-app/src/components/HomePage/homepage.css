@@ -30,7 +30,8 @@
 .top8-Image {
     height: 250px;
     width: 250px;
-    margin: 10px
+    margin: 10px;
+    cursor: pointer;
 }
 
 .top8-Image-Container {

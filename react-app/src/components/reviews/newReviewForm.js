@@ -14,11 +14,11 @@ function ReviewForm() {
 
   const user = useSelector(state => state.session.user)
   const { restaurantId } = useParams()
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    
+
     if (!rating) alert('The minimum is one star, try again!');
 
     const newReview = {
@@ -63,7 +63,7 @@ function ReviewForm() {
         </label>
 
         <div className="star-rating">
-          <input type="radio" id="5-stars" value="5" name="stars" 
+          <input type="radio" id="5-stars" value="5" name="stars"
             onChange={(e) => setRating(e.target.value)} />
           <label htmlFor="5-stars">&#9733;</label>
           <input type="radio" id="4-stars" value="4" name="stars"
