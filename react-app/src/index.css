@@ -59,3 +59,13 @@ textarea:focus {
     border-color: tomato;
     border-radius: 3px;
 }
+
+.notfound {
+    align-items: center;
+}
+
+.notfound img {
+    width: 100vw;
+    object-fit: cover;
+    object-position: center;
+}
