@@ -1,10 +1,14 @@
 import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { addRestaurantThunk } from '../../../store/restaurant'
+import './NewRestaurant.css'
 
 const RestaurantForm = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
 
+  const [errors, setErrors] = useState([]);
   const [name, setName] = useState('')
   const [address, setAddress] = useState('')
   const [city, setCity] = useState('')
@@ -23,6 +27,9 @@ const RestaurantForm = () => {
 
   const submitRestaurant = async (e) => {
     e.preventDefault()
+    if (name.length<3) {
+      return setErrors(['Please enter a longer name'])
+    }
 
 
     const newRestaurant = {
@@ -41,10 +48,29 @@ const RestaurantForm = () => {
     }
     // console.log(newRestaurant)
 
-    dispatch(addRestaurantThunk(newRestaurant))
+    const myRest = await dispatch(addRestaurantThunk(newRestaurant))
+    
+    if (myRest) {
+      history.push(`/restaurants/${myRest.id}`)
+    }
+     
+
   }
 
-  return (<fieldset>
+  return (
+  <fieldset>
+
+
+    <div className='error-container'>
+        {errors.length > 0 && (
+          <ul >
+            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+          </ul>
+        )}
+    </div>
+
+
+    
     <form onSubmit={submitRestaurant}>
       <div>
         <label htmlFor="name">Name</label>
