@@ -41,7 +41,7 @@ const UpdateRestaurantForm = ({ restaurant }) => {
       logo
     }
     dispatch(updateRestaurantThunk(restaurantInfo))
-
+    setOpenEdit(!openEdit)
 
   }
 

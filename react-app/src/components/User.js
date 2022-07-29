@@ -18,6 +18,7 @@ function User() {
   const [zip, setZip] = useState('');
   const [avatar, setAvatar] = useState('');
   const { userId } = useParams();
+  const sessionUser = useSelector(state => state?.session.user)
   const userReviews = Object.values(useSelector(state => state?.review)).filter(review => review?.user_id === Number(userId))
   const userRestaurants = Object.values(useSelector(state => state?.restaurant)).filter(restaurant => restaurant?.user_id === Number(userId))
   const allRestaurants = Object.values(useSelector(state => state?.restaurant))
@@ -46,7 +47,7 @@ function User() {
 
     const response = await dispatch(updateUserThunk(updatedUser, userId))
     if(response.ok){
-      history.push(`/users`)
+      history.push(`/users/${sessionUser.id}`)
     }
   }
 
@@ -59,6 +60,10 @@ function User() {
     await dispatch(deleteReview(id))
     .then(() => getReviews())
 }
+
+  useEffect(() => {
+    setUser(sessionUser)
+  }, [sessionUser])
 
 
   useEffect(() => {
