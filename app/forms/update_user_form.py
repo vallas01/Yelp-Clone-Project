@@ -12,7 +12,7 @@ class UpdateUserForm(FlaskForm):
         if user:
             raise ValidationError('Username is already in use.')
 
-    username = StringField('username', validators=[DataRequired(), username_exists])
+    username = StringField('username', validators=[DataRequired()])
     city = StringField('city')
     address = StringField('address')
     state = StringField('state')
