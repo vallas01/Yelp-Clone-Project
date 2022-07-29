@@ -8,14 +8,16 @@ import './index.css'
 function EditReview() {
   const dispatch = useDispatch();
   const history = useHistory();
+  
   const [errors, setErrors] = useState([]);
   const [text, setText] = useState('');
-  const [rating, setRating] = useState('');
+  const [rating, setRating] = useState('1');
   const { reviewId } = useParams()
-// eslint-disable-next-line
-  const user = useSelector(state => state.session.user)
-  const reviews = Object.values(useSelector(state => state.review))
-  const review = reviews.filter(review => review.id === Number(reviewId))
+  
+  // eslint-disable-next-line
+    const user = useSelector(state => state.session.user)
+    const reviews = Object.values(useSelector(state => state.review))
+    const review = reviews.filter(review => review.id === Number(reviewId))
   
 console.log('review details====', review)
 
@@ -84,7 +86,7 @@ console.log('review details====', review)
             onChange={(e) => setRating(e.target.value)} />
           <label htmlFor="2-stars">&#9733;</label>
           <input type="radio" id="1-star" value="1" name="stars"
-            onChange={(e) => setRating(e.target.value)} />
+            onChange={(e) => setRating(e.target.value)} checked="checked"/>
           <label htmlFor="1-star">&#9733;</label>
         </div>
 
