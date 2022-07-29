@@ -33,7 +33,7 @@ function User() {
   const changeAvatar = e => setAvatar(e.target.value)
 
   const handleSubmit = async e => {
-
+    e.preventDefault()
 
     const updatedUser = {
       username: name,
@@ -105,7 +105,8 @@ function User() {
             placeholder={user.username}
             value={name}
             onChange={changeName}
-          />
+            required
+            />
         </div>
         <div>
           <label htmlFor="address">Address</label>
@@ -114,7 +115,8 @@ function User() {
             placeholder={user.address}
             value={address}
             onChange={changeAddress}
-          />
+            required
+            />
         </div>
         <div>
           <label htmlFor="city">City</label>
@@ -123,7 +125,8 @@ function User() {
             placeholder={user.city}
             value={city}
             onChange={changeCity}
-          />
+            required
+            />
         </div>
         <div>
           <label htmlFor="state">State</label>
@@ -132,7 +135,8 @@ function User() {
             placeholder={user.state}
             value={state}
             onChange={changeState}
-          />
+            required
+            />
         </div>
         <div>
           <label htmlFor="zip">Zip</label>
@@ -141,7 +145,8 @@ function User() {
             placeholder={user.zip}
             value={zip}
             onChange={changeZip}
-          />
+            required
+            />
         </div>
         <div>
           <label htmlFor="avatar">Avatar</label>
@@ -150,10 +155,10 @@ function User() {
             placeholder={'Img-URL'}
             value={avatar}
             onChange={changeAvatar}
-          />
+            required
+            />
         </div>
       </div>
-
 
       <div className='user-avatar'>
         <img src={user.avatar} style={{height:'250px', width:'auto'}} alt='avatar'/>
