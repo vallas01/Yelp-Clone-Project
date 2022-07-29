@@ -30,6 +30,21 @@ const RestaurantForm = () => {
     if (name.length<3) {
       return setErrors(['Please enter a longer name'])
     }
+    if (address.length<3) {
+      return setErrors(['Please enter a longer address'])
+    }
+    if (city.length<3) {
+      return setErrors(['Please enter a longer city name'])
+    }
+    if (zip.length<5) {
+      return setErrors(['Please enter at least 5 digits for the zipcode'])
+    }
+    if (description.length<5) {
+      return setErrors(['Please enter a longer description'])
+    }
+    if (logo.length<5) {
+      return setErrors(['Please enter a longer url address'])
+    }
 
 
     const newRestaurant = {
