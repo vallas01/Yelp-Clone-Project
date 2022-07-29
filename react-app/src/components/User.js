@@ -33,7 +33,7 @@ function User() {
   const changeAvatar = e => setAvatar(e.target.value)
 
   const handleSubmit = async e => {
-
+    e.preventDefault()
 
     const updatedUser = {
       username: name,
