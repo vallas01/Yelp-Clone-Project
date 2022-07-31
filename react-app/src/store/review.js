@@ -41,7 +41,7 @@ export const createReview = (details) => async dispatch => {
       method: 'POST',
       body: JSON.stringify(details)
     })
-    console.log(response)
+     
     if(response.ok){
       const newReview = await response.json()
       dispatch(addReview(newReview))
