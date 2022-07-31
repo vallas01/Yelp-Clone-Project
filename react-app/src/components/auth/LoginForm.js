@@ -13,7 +13,7 @@ const LoginForm = () => {
 
   const demoUser = async (e) => {
     // e.preventDefault();
-    return await dispatch(login( "demo@aa.io", "password" ))
+    return await dispatch(login("demo@aa.io", "password"))
 
   }
 

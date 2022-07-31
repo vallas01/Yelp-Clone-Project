@@ -1,0 +1,46 @@
+.user-details-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+.info {
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+}
+
+.user-detail-header {
+    display: flex;
+    justify-content: center;
+}
+
+.user-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-header-details {
+    display: flex;
+
+}
+
+.user-details-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.user-individual-review {
+    border-top: 1px solid black;
+    /* border-bottom: 1px solid black; */
+}
+
+.open-update-user-form-button {
+    height: 60px;
+    width: 90px;
+    align-self: center;
+}

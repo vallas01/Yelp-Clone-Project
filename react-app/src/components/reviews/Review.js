@@ -7,9 +7,9 @@ import './index.css'
 
 function Review() {
     const dispatch = useDispatch();
-    const reviews = useSelector(state=> state.review)
+    const reviews = useSelector(state => state.review)
     const history = useHistory()
-    
+
 
     useEffect(() => {
         dispatch(getReviews())
@@ -21,45 +21,44 @@ function Review() {
     }
 
 
-    
+
     return (
         <>
             <h1>Review</h1>
             <ul>
 
-            {Object.values(reviews).map(review=>{
-                return(
-                    <li  key={review.id} >
-                        <div>{review.text}</div>
+                {Object.values(reviews).map(review => {
+                    return (
+                        <li key={review.id} >
+                            <div>{review.text}</div>
 
-                        <div>
-                            { review.rating === 5 && (
-                                <label  className="star-review">&#9733; &#9733; &#9733; &#9733; &#9733;</label>
+                            <div>
+                                {review.rating === 5 && (
+                                    <label className="star-review">&#9733; &#9733; &#9733; &#9733; &#9733;</label>
                                 )}
-                            { review.rating === 4 && (
-                                <label  className="star-review">&#9733; &#9733; &#9733; &#9733;</label>
+                                {review.rating === 4 && (
+                                    <label className="star-review">&#9733; &#9733; &#9733; &#9733;</label>
                                 )}
-                            { review.rating === 3 && (
-                                <label  className="star-review">&#9733; &#9733; &#9733;</label>
+                                {review.rating === 3 && (
+                                    <label className="star-review">&#9733; &#9733; &#9733;</label>
                                 )}
-                            { review.rating === 2 && (
-                                <label  className="star-review">&#9733; &#9733;</label>
+                                {review.rating === 2 && (
+                                    <label className="star-review">&#9733; &#9733;</label>
                                 )}
-                            { review.rating === 1 && (
-                                <label  className="star-review">&#9733;</label>
+                                {review.rating === 1 && (
+                                    <label className="star-review">&#9733;</label>
                                 )}
-                        </div>
-                        
-                         <button onClick={()=>deleteThisReview(review.id)}>Delete</button>
-                    </li>
-                )
-            })}
-                
-           </ul>
-         
+                            </div>
+
+                            <button onClick={() => deleteThisReview(review.id)}>Delete</button>
+                        </li>
+                    )
+                })}
+
+            </ul>
+
         </>
     );
 }
 
 export default Review;
-

@@ -8,23 +8,21 @@ import './index.css'
 function EditReview() {
   const dispatch = useDispatch();
   const history = useHistory();
-  
+
   const [errors, setErrors] = useState([]);
   const [text, setText] = useState('');
   const [rating, setRating] = useState('');
   const { reviewId } = useParams()
-  
+
   // eslint-disable-next-line
-    const user = useSelector(state => state.session.user)
-    const reviews = Object.values(useSelector(state => state.review))
-    const review = reviews.filter(review => review.id === Number(reviewId))
-  
-console.log('review details====', review)
+  const user = useSelector(state => state.session.user)
+  const reviews = Object.values(useSelector(state => state.review))
+  const review = reviews.filter(review => review.id === Number(reviewId))
 
   useEffect(() => {
     dispatch(getReviews())
-    }, [dispatch]);
-  
+  }, [dispatch]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
@@ -52,7 +50,7 @@ console.log('review details====', review)
 
 
 
-
+  if (!reviews.length) return null
 
 
   return (
@@ -98,7 +96,7 @@ console.log('review details====', review)
 
         <input
           type="text"
-          placeholder= {review[0].text}
+          placeholder={review[0].text}
           value={text}
           onChange={(e) => setText(e.target.value)}
           required

@@ -7,11 +7,11 @@ function Footer() {
     return (
         <div className='footer-container'>
             <div className='link-container'>
-                    <NavLink className="footer-link" to="/technology">TECH</NavLink>
-                    <img className='footerImage' src='https://res.cloudinary.com/kelp-me/image/upload/v1658938161/favicon.png_ko2k5y.png' alt='yelp'></img>
-                    <NavLink className="footer-link" to="/about">ABOUT</NavLink>
+                <NavLink className="footer-link" to="/technology">TECH</NavLink>
+                <img className='footerImage' src='https://res.cloudinary.com/kelp-me/image/upload/v1658938161/favicon.png_ko2k5y.png' alt='yelp'></img>
+                <NavLink className="footer-link" to="/about">ABOUT</NavLink>
             </div>
-                <hr></hr>
+            <hr></hr>
             <div className='team-container'>
                 <a href='https://github.com/vallas01' target="_blank" rel="noopener noreferrer" className='developer-link'>Andy Vallas</a>
                 <a href='https://github.com/Palillo10' target="_blank" rel="noopener noreferrer" className='developer-link'>Isaac Diaz</a>

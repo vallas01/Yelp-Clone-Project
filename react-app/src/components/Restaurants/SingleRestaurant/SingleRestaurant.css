@@ -17,23 +17,26 @@
     display: flex;
     justify-content: left;
 }
+
 .navBtn {
-    
+
     margin: 0px 40px;
     list-style-type: none;
+    border: 1px solid black;
 }
 
 .navBtn:hover {
     color: tomato;
+    border: 1px solid tomato;
 }
 
 .restaurant-data-container {
-    
+
     width: 25%;
 }
 
 .restaurant-images-container {
-    
+
     display: flex;
     align-items: center;
     /* flex-wrap: wrap; */
@@ -50,7 +53,7 @@
     align-items: center;
 }
 
-.restaurant-data-container > p {
+.restaurant-data-container>p {
     color: tomato;
     margin: 0px 30px;
     font-size: .9rem;
@@ -67,12 +70,12 @@
     top: 105px;
     margin-left: 5px;
     color: white;
-    outline: 5px solid rgba(0,0,0,25%);
+    outline: 5px solid rgba(0, 0, 0, 25%);
     border-radius: 10px;
-    background: rgba(0,0,0,30%);
+    background: rgba(0, 0, 0, 30%);
     font-size: 1.8rem;
 }
- 
+
 .descRest {
     margin: 10px 30px;
 }
@@ -91,10 +94,10 @@
 .star-review {
     color: #fc0;
     font-size: 1.5em;
-  }
-  
+}
+
 
 .reviewedBy {
     color: tomato;
     margin-left: 20px;
-}  
+}

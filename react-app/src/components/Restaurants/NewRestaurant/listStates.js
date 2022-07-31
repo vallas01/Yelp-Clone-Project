@@ -1,4 +1,4 @@
-export const USStates =  [
+export const USStates = [
     { value: "AL", label: "Alabama" },
     { value: "AK", label: "Alaska" },
     { value: "AS", label: "American Samoa" },

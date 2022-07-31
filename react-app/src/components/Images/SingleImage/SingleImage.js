@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import './SingleImageModal.css'
 
 const SingleImage = ({ img }) => {
-  // eslint-disable-next-line 
+  // eslint-disable-next-line
   const history = useHistory()
   const dispatch = useDispatch();
   const [title, setTitle] = useState("")
@@ -29,11 +29,11 @@ const SingleImage = ({ img }) => {
     e.preventDefault()
     dispatch(deleteimage(img.id))
     // history.push(`/restaurants/${img.restaurant_id}`)
-    
+
   }
 
   return (<div>
-    <img className="imageRestaurant"  src={img.img_url} alt={img.title} />
+    <img className="imageRestaurant" src={img.img_url} alt={img.title} />
     <h1>{img.title}</h1>
     <form onSubmit={handleEdit}>
       <label htmlFor="ImageName"></label>
