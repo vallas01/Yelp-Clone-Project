@@ -36,6 +36,7 @@ export const getReviews = () => async (dispatch) => {
 
 
 export const createReview = (details) => async dispatch => {
+
   const response = await fetch('/api/review', {
     headers: { 'Content-Type': 'application/json' },
     method: 'POST',
@@ -48,6 +49,7 @@ export const createReview = (details) => async dispatch => {
     return newReview;
   }
 };
+
 
 export const updateReviewDetails = (reviewDetails, id) => async dispatch => {
   const response = await fetch(`/api/review/${id}`, {
