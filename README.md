@@ -1,8 +1,24 @@
-# Flask React Project
+# Kelp-Me, An App Academy Group Project
 
-This is the starter for the Flask React project.
 
-## Getting started
+<p align="center">
+Written by Edward Wang, Andy Vallas, Isaac Diaz, Joel Cruz
+</p>
+<p align="center">
+https://kelp-me.herokuapp.com (live link)
+</p>
+<p align="center">
+(Login, write a review or add a photo and then click on your icon in the upper right corner to edit or delete your posts.)
+</p>
+
+<p align="center"> ************************************************************************************ </p>
+
+
+## Flask React Project
+
+Below is original the starter for the Flask React project.
+
+### Getting started
 1. Clone this repository (only this branch)
 
    ```bash
