@@ -19,7 +19,7 @@ function EditReview() {
     const reviews = Object.values(useSelector(state => state.review))
     const review = reviews.filter(review => review.id === Number(reviewId))
   
-console.log('review details====', review)
+// console.log('review details====', review)
 
   useEffect(() => {
     dispatch(getReviews())
