@@ -12,7 +12,6 @@ const Restaurants = () => {
   const history = useHistory()
   const [restaurants, setRestaurants] = useState('')
   const { searchTerm } = useSearchBar()
-
   useEffect(() => {
     (async function () {
       const response = await fetch('/api/restaurants/2');
@@ -35,7 +34,7 @@ const Restaurants = () => {
       || restaurant.category.toLowerCase().includes(searchTerm.toLowerCase())
     )
   })
-  console.log(restaurants[3].reviews)
+  // console.log(restaurants[3].reviews)
 
   for (let restaurant of filteredRestaurants) {
     let count = 0

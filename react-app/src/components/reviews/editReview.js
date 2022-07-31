@@ -15,9 +15,11 @@ function EditReview() {
   const { reviewId } = useParams()
 
   // eslint-disable-next-line
+
   const user = useSelector(state => state.session.user)
   const reviews = Object.values(useSelector(state => state.review))
   const review = reviews.filter(review => review.id === Number(reviewId))
+
 
   useEffect(() => {
     dispatch(getReviews())

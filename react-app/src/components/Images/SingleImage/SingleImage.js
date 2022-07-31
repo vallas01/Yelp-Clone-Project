@@ -21,7 +21,7 @@ const SingleImage = ({ img }) => {
 
     }
     if (!img.review_id) delete updatedImage["review_id"]
-    console.log(updatedImage)
+    // console.log(updatedImage)
     dispatch(updateImage(updatedImage, img.id))
     setTitle("")
   }

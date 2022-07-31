@@ -37,18 +37,18 @@ export const getReviews = () => async (dispatch) => {
 
 export const createReview = (details) => async dispatch => {
 
-  const response = await fetch('/api/review', {
-    headers: { 'Content-Type': 'application/json' },
-    method: 'POST',
-    body: JSON.stringify(details)
-  })
-  console.log(response)
-  if (response.ok) {
-    const newReview = await response.json()
-    dispatch(addReview(newReview))
-    return newReview;
-  }
-};
+    const response = await fetch('/api/review', {
+      headers: {'Content-Type': 'application/json'},
+      method: 'POST',
+      body: JSON.stringify(details)
+    })
+    
+    if(response.ok){
+      const newReview = await response.json()
+      dispatch(addReview(newReview))
+      return newReview;
+    }
+  };
 
 
 export const updateReviewDetails = (reviewDetails, id) => async dispatch => {
