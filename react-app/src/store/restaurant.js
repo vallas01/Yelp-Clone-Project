@@ -51,8 +51,8 @@ export const getRestaurantsThunk = () => async (dispatch) => {
         dispatch(getRestaurants(data))
         // console.log(data)
 
+        return data
     }
-    return null
 }
 
 export const addRestaurantThunk = (newRestaurant) => async (dispatch) => {

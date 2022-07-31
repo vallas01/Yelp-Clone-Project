@@ -10,20 +10,23 @@ import SingleImageModal from "../../Images/SingleImage/SingleImageModal"
 // import ReviewForm from "../../reviews/newReviewForm"
 import './SingleRestaurant.css'
 import { getReviews } from "../../../store/review"
+import { useHistory } from "react-router-dom"
 
 const SingleRestaurant = () => {
   const dispatch = useDispatch()
   const { restaurantId } = useParams()
   const restaurant = useSelector(state => state?.restaurant[restaurantId])
   const images = useSelector(state => state?.image)
-  const reviews = Object.values(useSelector(state=> state?.review))
+  const reviews = Object.values(useSelector(state => state?.review))
   const [users, setUsers] = useState([]);
+  const history = useHistory()
 
   useEffect(() => {
     async function fetchData() {
       const response = await fetch('/api/users/');
       const responseData = await response.json();
-      setUsers(responseData.users);
+      setUsers(responseData);
+
     }
     fetchData();
   }, []);
@@ -33,10 +36,17 @@ const SingleRestaurant = () => {
   const restaurantImgs = Object.values(images).filter(img => img.restaurant_id === Number(restaurantId))
 
   useEffect(() => {
-    dispatch(getRestaurantsThunk())
-    dispatch(getAllImages())
-    dispatch(getReviews())
-  }, [dispatch])
+    const func = async () => {
+      const res = await dispatch(getRestaurantsThunk())
+      if (!(res.restaurant.map(res => res.id).includes(Number(restaurantId)))) {
+        history.replace('/restaurant-not-found')
+      }
+      dispatch(getAllImages())
+      dispatch(getReviews())
+    }
+
+    func()
+  }, [dispatch, history, restaurantId])
 
   if (!restaurant) return ("loading")
 
@@ -46,67 +56,84 @@ const SingleRestaurant = () => {
   return (
     <div>
       <div className='container-redirect'>
-          <NavLink className="navBtn" to={`/new-image/${restaurantId}`}>Add a Photo</NavLink>
-          <NavLink className="navBtn" to={`/new-review/${restaurantId}`}>Write a Review</NavLink>
+        <NavLink className="navBtn" to={`/new-image/${restaurantId}`}>Add a Photo</NavLink>
+        <NavLink className="navBtn" to={`/new-review/${restaurantId}`}>Write a Review</NavLink>
       </div>
 
       <div className="single-image-page">
-          <div className='restaurant-data-container'>
-              <img className="logoRest" src={restaurant.logo} alt='logo'></img>
-              <h2 className="nameRest">{restaurant.name}</h2>
-              <p>{restaurant.address}</p>
-              <p>{restaurant.city}, {restaurant.state} {restaurant.zip}</p>
-              <div className="descRest">{restaurant.description}</div>
-              <div className="ownerRest">Account Owner: {owner}</div>
+        <div className='restaurant-data-container'>
+          <img className="logoRest" src={restaurant.logo} alt='logo'></img>
+          <h2 className="nameRest">{restaurant.name}</h2>
+          <p>{restaurant.address}</p>
+          <p>{restaurant.city}, {restaurant.state} {restaurant.zip}</p>
+          <div className="descRest">{restaurant.description}</div>
+          <div className="ownerRest">Owner: {owner}</div>
 
-          </div>
+        </div>
 
-          <div className="restaurant-images-container">
-              {restaurantImgs && restaurantImgs.map(img => {
-                  return (
-                    <div key={img.id} className="restaurant-single-image-container">
-                        <img className="imageRestaurant" src={img.img_url} alt={img.title} />
-                        <SingleImageModal img={img} />
-                    </div>
-                  )
-              })}
-          </div>
+        <div className="restaurant-images-container">
+          {restaurantImgs && restaurantImgs.map(img => {
+            return (
+              <div key={img.id} className="restaurant-single-image-container">
+                <img className="imageRestaurant" src={img.img_url} alt={img.title} />
+                <SingleImageModal img={img} />
+              </div>
+            )
+          })}
+        </div>
 
       </div>
 
 
-      { user && user.id===restaurant.user_id && (
+      {user && user.id === restaurant.user_id && (
         <div className="container-buttons">
           <UpdateRestaurantForm restaurant={restaurant} />
           <RestaurantToDelete restaurant={restaurant} />
         </div>
       )}
       <div className="container-review">
-          <h2>Reviews</h2>
-          <ul>
+        <h2>Reviews</h2>
+        <ul>
 
           {filteredReviews.map(review => {
             return (
-              <li key={review.id}>
+              <li
+                style={{
+                  borderTop: "1px solid black"
+                }}
+                key={review.id}>
+                <span className="reviewedBy">Reviewed By: {review.owner.username} </span>
+                <div style={{
+                  marginLeft: "50px",
+                  marginBottom: "10px",
+                  marginTop: "10px"
+                }}
+                >'{review.text}' </div>
 
-                <div>
+                <div
+                  style={{ marginLeft: "75px" }}
+                >
                   {review.rating === 5 && (
-                    <label className="star-review">&#9733; &#9733; &#9733; &#9733; &#9733;</label>
+                    <label style={{ cursor: "pointer" }}
+                      className="star-review">&#9733; &#9733; &#9733; &#9733; &#9733;</label>
                   )}
                   {review.rating === 4 && (
-                    <label className="star-review">&#9733; &#9733; &#9733; &#9733;</label>
+                    <label style={{ cursor: "pointer" }}
+                      className="star-review">&#9733; &#9733; &#9733; &#9733; <span className="empty-stars">&#9733;</span> </label>
                   )}
                   {review.rating === 3 && (
-                    <label className="star-review">&#9733; &#9733; &#9733;</label>
+                    <label style={{ cursor: "pointer" }}
+                      className="star-review">&#9733; &#9733; &#9733; <span className="empty-stars">&#9733; &#9733;</span></label>
                   )}
                   {review.rating === 2 && (
-                    <label className="star-review">&#9733; &#9733;</label>
+                    <label style={{ cursor: "pointer" }}
+                      className="star-review">&#9733; &#9733; <span className="empty-stars">&#9733; &#9733; &#9733;</span></label>
                   )}
                   {review.rating === 1 && (
-                    <label className="star-review">&#9733;</label>
+                    <label style={{ cursor: "pointer" }}
+                      className="star-review">&#9733; <span className="empty-stars">&#9733; &#9733; &#9733; &#9733;</span> </label>
                   )}
 
-                  <div>{review.text} <span className="reviewedBy">Reviewer: {review.owner.username} </span></div>
 
                 </div >
 
@@ -116,21 +143,6 @@ const SingleRestaurant = () => {
 
         </ul >
       </div >
-
-
-
-
-      {
-        user ?
-          <div>
-
-
-          </div>
-          :
-          <div>
-            <p>Please log in to discover more features!</p>
-          </div>
-      }
 
     </div >
 

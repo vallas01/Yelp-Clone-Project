@@ -12,8 +12,6 @@ const Restaurants = () => {
   const history = useHistory()
   const [restaurants, setRestaurants] = useState('')
   const { searchTerm } = useSearchBar()
-  // console.log(searchTerm)
-
   useEffect(() => {
     (async function () {
       const response = await fetch('/api/restaurants/2');
@@ -62,7 +60,7 @@ const Restaurants = () => {
         return (<div className="individual-restaurant-details" key={restaurant.id}
           onClick={() => handleClick(restaurant)}
         >
-          <img className="restaurant-logo" src={restaurant.logo} alt='logo'/>
+          <img className="restaurant-logo" src={restaurant.logo} alt='logo' />
           <div className="restaurant-details-container">
             <div className="upperRestaurant-details">
               <div className="restaurant-information">
@@ -103,7 +101,7 @@ const Restaurants = () => {
             <div className="lowerRestaurant-details">
               {restaurant.reviews[0] && <>
                 <div className="restaurant-review-owner-name">
-                  <span> Reviewer: </span>
+                  <span> Reviewed By: </span>
                   {restaurant.reviews[0].owner.username}
                 </div>
                 <div className="restaurant-review-text">  {`"${restaurant.reviews[0].text}"`}</div>

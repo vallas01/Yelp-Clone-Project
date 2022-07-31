@@ -1,9 +1,9 @@
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    margin: 0; 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
 }
 
 
@@ -72,6 +72,8 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .restaurant-information {
+  /* border: 1px solid red; */
+
   width: 30%;
   display: flex;
   flex-direction: column;
@@ -79,13 +81,13 @@ input[type=number]::-webkit-outer-spin-button {
 
 .restaurant-category {
   /* border: 1px solid yellow; */
-  width: 30%;
+  width: 20%;
   text-align: center;
 }
 
 .restaurant-rating {
   /* border: 1px solid plum; */
-  width: 30%;
+  width: 40%;
   text-align: end;
   font-size: 25px;
 }
@@ -125,6 +127,7 @@ input[type=number]::-webkit-outer-spin-button {
 .restaurant-review-owner-name {
   /* margin-top: 5px; */
   /* border: 1px solid green; */
+  color: tomato;
   position: relative;
   left: 50px;
   font-size: 20px;

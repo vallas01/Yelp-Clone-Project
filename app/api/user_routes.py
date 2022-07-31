@@ -19,7 +19,11 @@ def validation_errors_to_error_messages(validation_errors):
 # @login_required
 def users():
     users = User.query.all()
-    return {'users': [user.to_dict() for user in users]}
+    users_obj = {}
+    for user in users:
+        users_obj[user.id] = user.to_dict()
+
+    return users_obj
 
 
 @user_routes.route('/<int:id>')

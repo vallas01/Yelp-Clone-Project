@@ -6,7 +6,7 @@
     /* border: red 1px solid; */
 }
 
-#navbar-body > ul {
+#navbar-body>ul {
     display: flex;
     justify-content: space-around;
     align-items: center;
