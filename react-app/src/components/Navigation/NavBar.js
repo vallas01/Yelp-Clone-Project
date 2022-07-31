@@ -39,24 +39,24 @@ const NavBar = () => {
         <div className='dropdown' >
           <img src={sessionUser?.avatar} onClick={openMenu} width='40px' height='40px' alt={sessionUser.id} />
 
-            {showMenu && (
-              <div className='dropdown-menu'>
-                  <ul>
-                    <li>
-                      <NavLink to={`/users/${sessionUser.id}`} exact={true} activeClassName='active'>
-                        About Me
-                      </NavLink>
-                    </li>
-                    {/* <li>
+          {showMenu && (
+            <div className='dropdown-menu'>
+              <ul>
+                <li>
+                  <NavLink to={`/users/${sessionUser.id}`} exact={true} activeClassName='active'>
+                    About Me
+                  </NavLink>
+                </li>
+                {/* <li>
                       <a>Account setting</a>
                     </li> */}
-                    <li>
-                      <LogoutButton />
-                    </li>
-                  </ul>
+                <li>
+                  <LogoutButton />
+                </li>
+              </ul>
 
-              </div>
-            )}
+            </div>
+          )}
         </div>
       </>
     )
@@ -97,7 +97,7 @@ const NavBar = () => {
     </nav>
   );
 
-/* top: var(--navbar-body-height); */
+  /* top: var(--navbar-body-height); */
 
 }
 

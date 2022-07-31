@@ -113,12 +113,12 @@ export const updateUserThunk = (data, userId) => async (dispatch) => {
   })
 
   const user = await response.json()
-  if(response.ok){
+  if (response.ok) {
     dispatch(updateUser(user))
   }
   return user
 }
-;
+  ;
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {

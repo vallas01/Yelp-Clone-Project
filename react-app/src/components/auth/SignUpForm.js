@@ -52,7 +52,7 @@ const SignUpForm = () => {
         ))}
       </div>
 
-      
+
       <div>
         <label>User Name</label>
         <input

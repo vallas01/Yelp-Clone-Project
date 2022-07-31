@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
 import { deleteRestaurantThunk } from "../../../store/restaurant"
 
-const RestaurantToDelete = ({restaurant}) => {
+const RestaurantToDelete = ({ restaurant }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const user = useSelector(state => state.session.user)
