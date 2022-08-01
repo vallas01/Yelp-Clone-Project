@@ -78,5 +78,11 @@
 .footerImage {
     width: 20px;
     height: 20px;
+    
+}
 
+.about {
+    text-align: center;
+    font-size: 1.1rem;
+    margin: 100px;
 }
