@@ -17,7 +17,13 @@ function User() {
   const { userId } = useParams();
   const userReviews = Object.values(useSelector(state => state?.review)).filter(review => review?.user_id === Number(userId))
   const userRestaurants = Object.values(useSelector(state => state?.restaurant)).filter(restaurant => restaurant?.user_id === Number(userId))
-  const allRestaurants = Object.values(useSelector(state => state?.restaurant))
+  const restaurants = Object.values(useSelector(state => state?.restaurant))
+  const allRestaurants = {}
+
+  restaurants.forEach(restaurant => {
+    allRestaurants[restaurant.id] = restaurant
+  })
+
   // console.log('COMPONENT HEREEEEEEEEEEEEEEE', userReviews)
   // console.log('COMPONENT HEREEEEEEEEEEEEEEE', allRestaurants)
   // const reviewRest = userRestaurants.filter(restName => restName.id == )
@@ -85,7 +91,7 @@ function User() {
               return (
                 <li className='user-individual-review' key={review.id}>
                   <>
-                    <h4 style={{ marginBottom: "0" }}> Restaurant: {allRestaurants[review?.restaurant_id - 1]?.name}</h4>
+                    <h4 style={{ marginBottom: "0" }}> Restaurant: {allRestaurants[review.restaurant_id]?.name}</h4>
                     <div>
                       <h4
                         style={{
