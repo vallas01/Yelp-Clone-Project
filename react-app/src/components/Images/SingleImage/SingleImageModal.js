@@ -11,7 +11,9 @@ function SingleImageModal({ img }) {
     {user && user.id === img.user_id && <button onClick={() => setOpenModal(true)}>Edit Image</button>}
     {openModal && <div className="ImageModalBackground">
       <div className="ImageModalContent">
-        <button onClick={() => setOpenModal(false)}>X</button>
+        <button
+          style={{ alignSelf: "start" }}
+          onClick={() => setOpenModal(false)}>X</button>
         <SingleImage img={img} />
       </div>
     </div>}

@@ -167,7 +167,7 @@ const RestaurantForm = () => {
             onChange={(e) => setCategory(e.target.value)}
           >
             <option value='' disabled> Select A Food Category</option>
-            <option value='Tacos'>Wings</option>
+            <option value='Wings'>Wings</option>
             <option value='Burgers'>Burgers</option>
             <option value='Chinese'>Chinese</option>
             <option value='Italian'>Italian</option>
@@ -176,8 +176,8 @@ const RestaurantForm = () => {
             <option value='Coffee'>Coffe Shop</option>
             <option value='Donuts'>Donuts</option>
             <option value='Tacos'>Tacos</option>
-            <option value='Tacos'>Pizza</option>
-            <option value='Tacos'>Ice Cream</option>
+            <option value='Pizza'>Pizza</option>
+            <option value='Ice Cream'>Ice Cream</option>
           </select>
         </div>
         <div>

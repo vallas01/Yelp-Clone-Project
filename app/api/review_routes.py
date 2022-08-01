@@ -70,14 +70,14 @@ def edit_post(id):
     form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     review = Review.query.get(id)
-    print('GOT HERE======================================================', review)
+    # print('GOT HERE======================================================', review)
 
     if form.validate_on_submit():
         review.user_id = form.user_id.data
         review.restaurant_id = form.restaurant_id.data
         review.text = form.text.data
         review.rating = form.rating.data
-        print('REVIEW=====================',review)
+        # print('REVIEW=====================',review)
         db.session.commit()
 
         return review.to_dict()
