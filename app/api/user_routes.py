@@ -52,4 +52,4 @@ def update_user(id):
         db.session.commit()
         return user.to_dict()
 
-    return {'errors': validation_errors_to_error_messages(form.errors)}
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400

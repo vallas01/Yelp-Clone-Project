@@ -112,11 +112,14 @@ export const updateUserThunk = (data, userId) => async (dispatch) => {
     body: JSON.stringify(data)
   })
 
-  const user = await response.json()
   if (response.ok) {
+    const user = await response.json()
     dispatch(updateUser(user))
+    return user
+  } else {
+    const errors = await response.json()
+    return errors
   }
-  return user
 }
   ;
 
