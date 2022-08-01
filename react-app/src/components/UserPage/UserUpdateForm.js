@@ -34,6 +34,7 @@ const UserUpdateForm = ({ user }) => {
     }
 
     const updatedUser = {
+      user_id: sessionUser.id,
       username: name,
       address,
       city,
@@ -43,11 +44,13 @@ const UserUpdateForm = ({ user }) => {
     }
 
     const response = await dispatch(updateUserThunk(updatedUser, userId))
-    if (response.ok) {
+    if (response.id) {
       history.push(`/users/${sessionUser.id}`)
+      setOpenUpdateForm(!openUpdateForm)
+      setErrors([])
+    } else {
+      setErrors(response.errors)
     }
-    setOpenUpdateForm(!openUpdateForm)
-    setErrors([])
   }
 
 

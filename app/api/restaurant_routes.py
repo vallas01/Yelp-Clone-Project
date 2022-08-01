@@ -77,7 +77,7 @@ def update_restaurant():
         db.session.commit()
         return restaurant.to_dict()
 
-    return {'errors': validation_errors_to_error_messages(form.errors)}
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
 

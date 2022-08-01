@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useParams } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { updateRestaurantThunk } from "../../../store/restaurant"
+import './EditRestaurantModal.css'
 
 const UpdateRestaurantForm = ({ restaurant }) => {
   const { restaurantId } = useParams()
@@ -9,6 +10,7 @@ const UpdateRestaurantForm = ({ restaurant }) => {
   const user = useSelector(state => state.session.user)
 
   const [openEdit, setOpenEdit] = useState(false)
+  const [errors, setErrors] = useState([])
 
   const [name, setName] = useState(restaurant.name)
   const [address, setAddress] = useState(restaurant.address)
@@ -22,8 +24,12 @@ const UpdateRestaurantForm = ({ restaurant }) => {
   // const [lng, setLng] = useState(restaurant.lng)
   // const [price, setPrice] = useState(restaurant.price)
 
-  const updateRestaurant = e => {
+  const updateRestaurant = async e => {
     e.preventDefault()
+
+    if (!/^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(logo)) {
+      return setErrors(['Please enter a valid image url'])
+    }
 
     const restaurantInfo = {
       restaurant_id: restaurantId,
@@ -40,9 +46,27 @@ const UpdateRestaurantForm = ({ restaurant }) => {
       lng: 1,
       logo
     }
-    dispatch(updateRestaurantThunk(restaurantInfo))
-    setOpenEdit(!openEdit)
+    const response = await dispatch(updateRestaurantThunk(restaurantInfo))
+    if (response.id) {
+      setErrors([])
+      setOpenEdit(!openEdit)
+    } else {
+      setErrors(["Address is already In Use"])
+    }
+  }
 
+
+  const resetForm = () => {
+    setOpenEdit(false)
+    setErrors([])
+    setName(restaurant.name)
+    setAddress(restaurant.address)
+    setCity(restaurant.city)
+    setState(restaurant.state)
+    setZip(restaurant.zip)
+    setDescription(restaurant.description)
+    setCategory(restaurant.category)
+    setLogo(restaurant.logo)
   }
 
   if (user && user.id === restaurant.user_id) return (
@@ -50,113 +74,137 @@ const UpdateRestaurantForm = ({ restaurant }) => {
       <button onClick={() => { setOpenEdit(!openEdit) }}>Edit Restaurant</button>
       {
         openEdit &&
-        <fieldset>
-          <form onSubmit={updateRestaurant}>
-            <div>
-              <label htmlFor="name">Name</label>
-              <input id="name"
-                type="text"
-                placeholder='Restaurant Name'
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </div>
-            <div>
-              <label htmlFor="address">Address</label>
-              <input id="address"
-                type="text"
-                placeholder='Restaurant Address'
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-              />
-            </div>
-            <div>
-              <label htmlFor="city">City</label>
-              <input id="city"
-                type="text"
-                placeholder='Restaurant City'
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-              />
-            </div>
-            <div>
-              <label htmlFor="state">State</label>
-              <input id="state"
-                type="text"
-                placeholder='Restaurant State'
-                value={state}
-                onChange={(e) => setState(e.target.value)}
-              />
-            </div>
-            <div>
-              <label htmlFor="zip">Zip</label>
-              <input id="zip"
-                type="number"
-                placeholder='Restaurant Zip'
-                value={zip}
-                onChange={(e) => setZip(e.target.value)}
-              />
-            </div>
-            <div>
-              <label htmlFor="description">Description</label>
-              <textarea id="description"
-                type="text"
-                placeholder='Restaurant Description'
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-              />
-            </div>
-            {/* <div>
+        <>
+          <div className="editRestaurantModalBackground">
+            <div className="editRestaurantModalContent">
+              <button
+                className="editRestaurantCloseButton"
+                onClick={() => resetForm()}>X</button>
+              <fieldset>
+                <div className='error-container'>
+                  {errors.length > 0 && (
+                    <ul >
+                      {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                    </ul>
+                  )}
+                </div>
+                <form onSubmit={updateRestaurant}>
+                  <div>
+                    <label htmlFor="name">Name</label>
+                    <input id="name"
+                      type="text"
+                      placeholder='Restaurant Name'
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="address">Address</label>
+                    <input id="address"
+                      type="text"
+                      placeholder='Restaurant Address'
+                      value={address}
+                      onChange={(e) => setAddress(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="city">City</label>
+                    <input id="city"
+                      type="text"
+                      placeholder='Restaurant City'
+                      value={city}
+                      onChange={(e) => setCity(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="state">State</label>
+                    <input id="state"
+                      type="text"
+                      placeholder='Restaurant State'
+                      value={state}
+                      onChange={(e) => setState(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="zip">Zip</label>
+                    <input id="zip"
+                      type="number"
+                      placeholder='Restaurant Zip'
+                      value={zip}
+                      onChange={(e) => setZip(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="description">Description</label>
+                    <textarea id="description"
+                      type="text"
+                      placeholder='Restaurant Description'
+                      value={description}
+                      onChange={(e) => setDescription(e.target.value)}
+                    />
+                  </div>
+                  {/* <div>
               <label htmlFor="price">Price</label>
               <input id="price"
-                type="number"
-                placeholder='Restaurant Price'
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
+              type="number"
+              placeholder='Restaurant Price'
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
               />
             </div> */}
-            <div>
-              <label htmlFor="category">Category</label>
-              <select id="category"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-              >
-                <option value='' disabled> Select A Food Category</option>
-                <option value='Donuts'>Donuts</option>
-                <option value='Tacos'>Tacos</option>
-                <option value='Burgers'>Burgers</option>
-              </select>
-            </div>
-            <div>
-              <label htmlFor="logo">Logo</label>
-              <input id="logo"
-                type="text"
-                placeholder='Restaurant Logo Image'
-                value={logo}
-                onChange={(e) => setLogo(e.target.value)}
-              />
-            </div>
-            {/* <div>
+                  <div>
+                    <label htmlFor="category">Category</label>
+                    <select id="category"
+                      value={category}
+                      onChange={(e) => setCategory(e.target.value)}
+                    >
+                      <option value='' disabled> Select A Food Category</option>
+                      <option value='Tacos'>Wings</option>
+                      <option value='Burgers'>Burgers</option>
+                      <option value='Chinese'>Chinese</option>
+                      <option value='Italian'>Italian</option>
+                      <option value='Mexican'>Mexican</option>
+                      <option value='Greek'>Greek</option>
+                      <option value='Coffee'>Coffe Shop</option>
+                      <option value='Donuts'>Donuts</option>
+                      <option value='Tacos'>Tacos</option>
+                      <option value='Tacos'>Pizza</option>
+                      <option value='Tacos'>Ice Cream</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="logo">Logo</label>
+                    <input id="logo"
+                      type="text"
+                      placeholder='Restaurant Logo Image'
+                      value={logo}
+                      onChange={(e) => setLogo(e.target.value)}
+                    />
+                  </div>
+                  {/* <div>
               <label htmlFor="lat">Latitude</label>
               <input id="lat"
-                type="number"
+              type="number"
                 placeholder='Location Latitude'
                 value={lat}
                 onChange={(e) => setLat(e.target.value)}
-              />
-            </div>
-            <div>
-              <label htmlFor="lng">Longitude</label>
-              <input id="lng"
+                />
+                </div>
+                <div>
+                <label htmlFor="lng">Longitude</label>
+                <input id="lng"
                 type="number"
                 placeholder='Location Longitude'
                 value={lng}
                 onChange={(e) => setLng(e.target.value)}
-              />
-            </div> */}
-            <button>Submit</button>
-          </form>
-        </fieldset>
+                />
+              </div> */}
+                  <button>Submit</button>
+                </form>
+              </fieldset>
+            </div>
+          </div>
+        </>
       }
     </div >
   )

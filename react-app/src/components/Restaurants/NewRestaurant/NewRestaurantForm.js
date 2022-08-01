@@ -46,6 +46,7 @@ const RestaurantForm = () => {
       return setErrors(['Please enter a valid image url'])
     }
 
+
     const newRestaurant = {
       name,
       user_id: user.id,
@@ -64,13 +65,15 @@ const RestaurantForm = () => {
 
     const myRest = await dispatch(addRestaurantThunk(newRestaurant))
 
-    if (myRest) {
+    if (myRest.id) {
       history.push(`/restaurants/${myRest.id}`)
+    } else {
+      setErrors(["Address is already in use"])
     }
-
 
   }
 
+  console.log("ERRORS", errors)
   return (
     <fieldset>
 
@@ -164,6 +167,7 @@ const RestaurantForm = () => {
             onChange={(e) => setCategory(e.target.value)}
           >
             <option value='' disabled> Select A Food Category</option>
+            <option value='Tacos'>Wings</option>
             <option value='Burgers'>Burgers</option>
             <option value='Chinese'>Chinese</option>
             <option value='Italian'>Italian</option>
@@ -172,6 +176,8 @@ const RestaurantForm = () => {
             <option value='Coffee'>Coffe Shop</option>
             <option value='Donuts'>Donuts</option>
             <option value='Tacos'>Tacos</option>
+            <option value='Tacos'>Pizza</option>
+            <option value='Tacos'>Ice Cream</option>
           </select>
         </div>
         <div>
