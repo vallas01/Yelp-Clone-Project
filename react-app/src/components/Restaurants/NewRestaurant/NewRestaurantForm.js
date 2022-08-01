@@ -42,8 +42,8 @@ const RestaurantForm = () => {
     if (description.length < 5) {
       return setErrors(['Please enter a longer description'])
     }
-    if (logo.length < 5) {
-      return setErrors(['Please enter a longer url address'])
+    if (!/^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(logo)) {
+      return setErrors(['Please enter a valid image url'])
     }
 
     const newRestaurant = {

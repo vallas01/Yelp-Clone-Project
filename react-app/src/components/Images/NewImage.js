@@ -22,7 +22,9 @@ function NewImage() {
 
     const handleSubmit = async e => {
         e.preventDefault()
-        setErrors([])
+        if (!/^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(img_url)) {
+            return setErrors(['Please enter a valid image url'])
+        }
         const data = { userId, restaurant_id: restaurantId, title, img_url }
 
         const createdImg = await dispatch(createImage(data))
@@ -46,7 +48,7 @@ function NewImage() {
             <div className='create-form'>
 
                 <form onSubmit={handleSubmit}>
-                    <div className='errors'>
+                    <div className='error-container'>
                         <ul>
                             {errors.map((error, i) => (
                                 <li key={i}>{error}</li>
