@@ -46,6 +46,7 @@ const RestaurantForm = () => {
       return setErrors(['Please enter a valid image url'])
     }
 
+
     const newRestaurant = {
       name,
       user_id: user.id,
@@ -64,13 +65,15 @@ const RestaurantForm = () => {
 
     const myRest = await dispatch(addRestaurantThunk(newRestaurant))
 
-    if (myRest) {
+    if (myRest.id) {
       history.push(`/restaurants/${myRest.id}`)
+    } else {
+      setErrors(["Address is already in use"])
     }
-
 
   }
 
+  console.log("ERRORS", errors)
   return (
     <fieldset>
 

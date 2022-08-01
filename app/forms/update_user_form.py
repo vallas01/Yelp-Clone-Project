@@ -9,6 +9,7 @@ class UpdateUserForm(FlaskForm):
     # Checking if username is already in use
         username = field.data
         user = User.query.filter(User.username == username).first()
+
         if user and user.id != form.user_id.data:
             raise ValidationError('Username is already in use.')
 
