@@ -8,6 +8,7 @@ const UserUpdateForm = ({ user }) => {
   const dispatch = useDispatch()
   const history = useHistory()
   const sessionUser = useSelector(state => state?.session.user)
+  const [errors, setErrors] = useState([]);
   const [name, setName] = useState(sessionUser.username);
   const [address, setAddress] = useState(sessionUser.address);
   const [city, setCity] = useState(sessionUser.city);
@@ -28,6 +29,10 @@ const UserUpdateForm = ({ user }) => {
   const handleSubmit = async e => {
     e.preventDefault()
 
+    if (!/^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(avatar)) {
+      return setErrors(['Please enter a valid image url'])
+    }
+
     const updatedUser = {
       username: name,
       address,
@@ -41,6 +46,8 @@ const UserUpdateForm = ({ user }) => {
     if (response.ok) {
       history.push(`/users/${sessionUser.id}`)
     }
+    setOpenUpdateForm(!openUpdateForm)
+    setErrors([])
   }
 
 
@@ -50,6 +57,13 @@ const UserUpdateForm = ({ user }) => {
       <fieldset>
 
         <form onSubmit={handleSubmit} className='user-details-form'>
+          <div className='error-container'>
+            {errors.length > 0 && (
+              <ul >
+                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+              </ul>
+            )}
+          </div>
           <div className='info'>
             <div>
               <label htmlFor="name">Name</label>
