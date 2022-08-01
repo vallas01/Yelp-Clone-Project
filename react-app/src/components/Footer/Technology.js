@@ -41,8 +41,8 @@ const Technology = () => {
                     <a className="developer-link" target="_blank" rel="noopener noreferrer" href='https://www.postgresql.org/' >PostgreSQL</a>
                 </div>
                 <div className='tech'>
-                    <i className="fa-brands fa-node fa-2xl"></i>
-                    <a className="developer-link" target="_blank" rel="noopener noreferrer" href='https://expressjs.com/en/api.html' >Express</a>
+                    <i className="fa-solid fa-flask fa-2xl"></i>
+                    <a className="developer-link" target="_blank" rel="noopener noreferrer" href='https://flask.palletsprojects.com/en/2.1.x/' >Flask</a>
                 </div>
 
             </div>
