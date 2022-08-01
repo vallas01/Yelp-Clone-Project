@@ -73,7 +73,7 @@ const RestaurantForm = () => {
 
   }
 
-  console.log("ERRORS", errors)
+  // console.log("ERRORS", errors)
   return (
     <fieldset>
 
