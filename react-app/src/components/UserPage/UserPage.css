@@ -1,8 +1,7 @@
 .user-details-form {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
-
 }
 
 .info {
@@ -24,7 +23,8 @@
 
 .user-header-details {
     display: flex;
-
+    flex-direction: column;
+    align-items: center;
 }
 
 .user-details-info {
