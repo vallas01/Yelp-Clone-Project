@@ -55,7 +55,7 @@ const UserUpdateForm = ({ user }) => {
 
 
   return (<>
-    <button className="open-update-user-form-button" onClick={() => setOpenUpdateForm(!openUpdateForm)}> Edit User?</button>
+    <button className="open-update-user-form-button" onClick={() => setOpenUpdateForm(!openUpdateForm)}> Edit Profile</button>
     {openUpdateForm &&
       <fieldset>
 
