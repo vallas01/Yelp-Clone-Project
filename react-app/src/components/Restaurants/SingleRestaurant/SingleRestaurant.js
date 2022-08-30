@@ -55,10 +55,6 @@ const SingleRestaurant = () => {
 
   return (
     <div>
-      <div className='container-redirect'>
-        <NavLink className="navBtn" to={`/new-image/${restaurantId}`}>Add a Photo</NavLink>
-        <NavLink className="navBtn" to={`/new-review/${restaurantId}`}>Write a Review</NavLink>
-      </div>
 
       <div className="single-image-page">
         <div className='restaurant-data-container'>
@@ -68,8 +64,14 @@ const SingleRestaurant = () => {
           <p>{restaurant.city}, {restaurant.state} {restaurant.zip}</p>
           <div className="descRest">{restaurant.description}</div>
           <div className="ownerRest">Owner: {owner}</div>
-
         </div>
+
+        {user && user.id === restaurant.user_id && (
+          <div className="container-buttons">
+            <UpdateRestaurantForm restaurant={restaurant} />
+            <RestaurantToDelete restaurant={restaurant} />
+          </div>
+        )}
 
         <div className="restaurant-images-container">
           {restaurantImgs && restaurantImgs.map(img => {
@@ -82,17 +84,19 @@ const SingleRestaurant = () => {
           })}
         </div>
 
+        <div className='container-redirect'>
+          <NavLink className="navBtn" to={`/new-image/${restaurantId}`}>Add a Photo</NavLink>
+        </div>
+
       </div>
 
 
-      {user && user.id === restaurant.user_id && (
-        <div className="container-buttons">
-          <UpdateRestaurantForm restaurant={restaurant} />
-          <RestaurantToDelete restaurant={restaurant} />
-        </div>
-      )}
       <div className="container-review">
         <h2>Reviews</h2>
+        <div className='container-redirect'>
+
+          <NavLink className="navBtn" to={`/new-review/${restaurantId}`}>Write a Review</NavLink>
+        </div>
         <ul>
 
           {filteredReviews.map(review => {
