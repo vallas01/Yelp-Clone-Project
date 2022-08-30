@@ -11,6 +11,7 @@ import SingleImageModal from "../../Images/SingleImage/SingleImageModal"
 import './SingleRestaurant.css'
 import { getReviews } from "../../../store/review"
 import { useHistory } from "react-router-dom"
+import GoogleMap from "../../GoogleMap/GoogleMap"
 
 const SingleRestaurant = () => {
   const dispatch = useDispatch()
@@ -84,6 +85,7 @@ const SingleRestaurant = () => {
 
       </div>
 
+      <GoogleMap />    
 
       {user && user.id === restaurant.user_id && (
         <div className="container-buttons">

@@ -1,0 +1,17 @@
+.mapContainer {
+    display: flex;
+    justify-content: center;
+ }
+
+ .info {
+   width: 175px;
+   height: 35px;
+  color: red;
+  font-style: italic;
+  font-size: small;
+  padding: 0px;
+ }
+
+ .info:hover {
+   background-color: rgba(0,0,0,.2);
+ }
