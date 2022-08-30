@@ -32,6 +32,7 @@ def add_restaurant():
 
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        print(form.data)
         new_restaurant = Restaurant(
             user_id = form.data["user_id"],
             name = form.data["name"],
@@ -44,7 +45,8 @@ def add_restaurant():
             price = form.data["price"],
             lat = form.data["lat"],
             lng = form.data["lng"],
-            logo = form.data["logo"]
+            logo = form.data["logo"],
+            menuImg = form.data["menuImg"]
             )
         db.session.add(new_restaurant)
         db.session.commit()
@@ -74,6 +76,7 @@ def update_restaurant():
         restaurant.lat = form.lat.data
         restaurant.lng = form.lng.data
         restaurant.logo = form.logo.data
+        restaurant.menuImg = form.menuImg.data
         db.session.commit()
         return restaurant.to_dict()
 

@@ -20,6 +20,7 @@ const UpdateRestaurantForm = ({ restaurant }) => {
   const [description, setDescription] = useState(restaurant.description)
   const [category, setCategory] = useState(restaurant.category)
   const [logo, setLogo] = useState(restaurant.logo)
+  const [menuImg, setMenuImg] = useState(restaurant.menuImg)
   // const [lat, setLat] = useState(restaurant.lat)
   // const [lng, setLng] = useState(restaurant.lng)
   // const [price, setPrice] = useState(restaurant.price)
@@ -29,6 +30,9 @@ const UpdateRestaurantForm = ({ restaurant }) => {
 
     if (!/^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(logo)) {
       return setErrors(['Please enter a valid image url'])
+    }
+    if (!/^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(menuImg)) {
+      return setErrors(['Please enter a valid image url for Menu Image'])
     }
 
     const restaurantInfo = {
@@ -44,7 +48,8 @@ const UpdateRestaurantForm = ({ restaurant }) => {
       category,
       lat: 1,
       lng: 1,
-      logo
+      logo,
+      menuImg
     }
     const response = await dispatch(updateRestaurantThunk(restaurantInfo))
     if (response.id) {
@@ -141,6 +146,16 @@ const UpdateRestaurantForm = ({ restaurant }) => {
                       placeholder='Restaurant Description'
                       value={description}
                       onChange={(e) => setDescription(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="menuImg">Menu Image</label>
+                    <input id="menuImg"
+                      type="text"
+                      placeholder='Restaurant Menu'
+                      value={menuImg}
+                      onChange={(e) => setMenuImg(e.target.value)}
+                      required
                     />
                   </div>
                   {/* <div>
