@@ -17,6 +17,7 @@ class Restaurant(db.Model):
     lat	= db.Column(db.Integer, nullable=False)
     lng	= db.Column(db.Integer, nullable=False)
     logo = db.Column(db.String(255), nullable=True)
+    menuImg = db.Column(db.Text, nullable=False)
 
     user = db.relationship("User", back_populates="restaurants")
     images = db.relationship("Image", back_populates="restaurants")
@@ -36,7 +37,8 @@ class Restaurant(db.Model):
             "price": self.price,
             "lat": self.lat,
             "lng": self.lng,
-            "logo": self.logo
+            "logo": self.logo,
+            "menuImg": self.menuImg
         }
 
     def to_dict_2(self):
@@ -54,6 +56,7 @@ class Restaurant(db.Model):
             "lat": self.lat,
             "lng": self.lng,
             "logo": self.logo,
+            "menuImg": self.menuImg,
             "owner": self.user.to_dict(),
             "images": [image.to_dict() for image in self.images],
             "reviews": [review.to_dict() for review in self.reviews],

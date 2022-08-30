@@ -24,6 +24,7 @@ class RestaurantForm(FlaskForm):
   lat = IntegerField('Latitude', validators)
   lng = IntegerField('Longittude', validators)
   logo = StringField('Logo', validators)
+  menuImg = StringField('Menu', validators)
 
 
 
@@ -49,3 +50,4 @@ class UpdateRestaurantForm(FlaskForm):
   lat = IntegerField('Latitude', validators)
   lng = IntegerField('Longittude', validators)
   logo = StringField('Logo', validators)
+  menuImg = StringField('Menu', validators)

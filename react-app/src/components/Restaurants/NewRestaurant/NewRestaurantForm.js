@@ -17,6 +17,7 @@ const RestaurantForm = () => {
   const [description, setDescription] = useState('')
   const [category, setCategory] = useState('')
   const [logo, setLogo] = useState('')
+  const [menuImg, setMenuImg] = useState('')
 
   // *****FOR FUTURE FEATURES*****
   // const [price, setPrice] = useState('')
@@ -43,7 +44,10 @@ const RestaurantForm = () => {
       return setErrors(['Please enter a longer description'])
     }
     if (!/^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(logo)) {
-      return setErrors(['Please enter a valid image url'])
+      return setErrors(['Please enter a valid image url for Logo'])
+    }
+    if (!/^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(menuImg)) {
+      return setErrors(['Please enter a valid image url for Menu Image'])
     }
 
 
@@ -59,9 +63,10 @@ const RestaurantForm = () => {
       category,
       lat: 1,
       lng: 1,
-      logo
+      logo,
+      menuImg
     }
-    // console.log(newRestaurant)
+
 
     const myRest = await dispatch(addRestaurantThunk(newRestaurant))
 
@@ -147,6 +152,16 @@ const RestaurantForm = () => {
             placeholder='Restaurant Description'
             value={description}
             onChange={(e) => setDescription(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="menuImg">Menu Image</label>
+          <input id="menuImg"
+            type="text"
+            placeholder='Restaurant Menu'
+            value={menuImg}
+            onChange={(e) => setMenuImg(e.target.value)}
             required
           />
         </div>
