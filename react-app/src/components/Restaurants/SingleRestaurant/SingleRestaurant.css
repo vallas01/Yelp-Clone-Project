@@ -1,12 +1,14 @@
 .single-image-page {
     display: flex;
-    flex-direction: row;
     margin: 20px;
+    flex-direction: column;
+    align-items: center;
+
 }
 
 .container-redirect {
     display: flex;
-    justify-content: right;
+    justify-content: space-around;
 }
 
 .container-review {
@@ -15,42 +17,46 @@
 
 .container-buttons {
     display: flex;
-    justify-content: left;
+    justify-content: center;
 }
 
-.navBtn {
+/* .navBtn {
 
     margin: 0px 40px;
     list-style-type: none;
     border: 1px solid black;
-}
+} */
 
-.navBtn:hover {
+/* .navBtn:hover {
     color: tomato;
     border: 1px solid tomato;
-}
+} */
 
 .restaurant-data-container {
-
     width: 25%;
 }
 
 .restaurant-images-container {
-
     display: flex;
-    align-items: center;
-    /* flex-wrap: wrap; */
-    justify-content: center;
     width: 75%;
-    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    column-gap: 20px;
+    justify-content: center;
+    margin: 0px 10px;
 }
 
 .restaurant-single-image-container {
     display: flex;
-    height: 100%;
-    width: 100%;
+    height: 300px;
+    width: 250px;
     flex-direction: column;
     align-items: center;
+}
+
+.restaurant-single-image-container img {
+    width: 100%;
 }
 
 .restaurant-data-container>p {
@@ -59,9 +65,15 @@
     font-size: .9rem;
 }
 
+.restaurant-data-container>img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .logoRest {
     position: static;
-    width: 100%;
+    width: 500px;
     z-index: 0;
 }
 
@@ -78,6 +90,8 @@
 
 .descRest {
     margin: 10px 30px;
+    word-wrap: break-word;
+    overflow-y: scroll;
 }
 
 .ownerRest {
@@ -100,4 +114,16 @@
 .reviewedBy {
     color: tomato;
     margin-left: 20px;
+}
+
+.navBtn {
+    background-color: tomato;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-family: 'Raleway', sans-serif;
+    margin: 5px;
+    cursor: pointer;
 }
